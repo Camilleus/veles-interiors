@@ -1,0 +1,221 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Veles Interiors - Visual Identity Guide</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500&family=Montserrat:wght@900&display=swap" rel="stylesheet">
+    <style>
+        :root {
+            --base-1: #DED3C1; /* Greige */
+            --base-2: #B0A087; /* Warm Taupe */
+            --primary-text: #2B2B2B; /* Industrial Anthracite */
+            --accent: #FE1110; /* Vibrant Red */
+            --tertiary: #0C182A; /* Naval Blue */
+
+            --font-header: 'Montserrat', sans-serif;
+            --font-body: 'Inter', sans-serif;
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: var(--font-body);
+            background-color: var(--base-1);
+            color: var(--primary-text);
+            line-height: 1.6;
+            overflow-x: hidden;
+        }
+
+        /* Subtle Texture implementation */
+        .texture-overlay {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            pointer-events: none;
+            opacity: 0.05;
+            z-index: 9999;
+            background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 200 200' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='noiseFilter'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.65' numOctaves='3' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23noiseFilter)'/%3E%3C/svg%3E");
+        }
+
+        header {
+            padding: 40px 80px;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        .logo {
+            max-width: 180px;
+        }
+
+        section {
+            padding: 80px;
+        }
+
+        h1, h2, h3 {
+            font-family: var(--font-header);
+            text-transform: uppercase;
+            font-weight: 900;
+            letter-spacing: -0.02em;
+            margin-bottom: 24px;
+        }
+
+        .hero {
+            min-height: 80vh;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            max-width: 1200px;
+        }
+
+        .hero h1 {
+            font-size: 5rem;
+            line-height: 0.9;
+            margin-bottom: 40px;
+        }
+
+        .hero p {
+            font-size: 1.25rem;
+            max-width: 600px;
+            margin-bottom: 48px;
+        }
+
+        .btn {
+            display: inline-block;
+            padding: 20px 48px;
+            background-color: transparent;
+            color: var(--primary-text);
+            text-decoration: none;
+            font-family: var(--font-header);
+            font-size: 1rem;
+            border: 2px solid var(--primary-text);
+            text-transform: uppercase;
+            transition: all 0.3s ease;
+            cursor: pointer;
+        }
+
+        .btn:hover {
+            background-color: var(--accent);
+            border-color: var(--accent);
+            color: white;
+        }
+
+        .palette-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(200px, 1fr));
+            gap: 24px;
+            margin-top: 40px;
+        }
+
+        .swatch {
+            height: 150px;
+            border: 1px solid rgba(0,0,0,0.1);
+            position: relative;
+        }
+
+        .swatch-info {
+            padding: 12px;
+            background: rgba(255,255,255,0.8);
+            position: absolute;
+            bottom: 0;
+            left: 0;
+            right: 0;
+            font-size: 0.8rem;
+        }
+
+        .swatch-label {
+            font-weight: bold;
+            display: block;
+        }
+
+        .bg-base-2 {
+            background-color: var(--base-2);
+        }
+
+        .footer-preview {
+            background-color: var(--tertiary);
+            color: white;
+            padding: 100px 80px;
+        }
+
+        .footer-preview h2 {
+            color: white;
+        }
+
+        .accent-rule {
+            height: 4px;
+            background-color: var(--accent);
+            width: 80px;
+            margin-bottom: 24px;
+        }
+    </style>
+</head>
+<body>
+    <div class="texture-overlay"></div>
+
+    <header>
+        <img src="veles-interiors-full.png" alt="Veles Interiors Logo" class="logo">
+        <nav>
+            <a href="#" class="btn" style="padding: 10px 24px; font-size: 0.8rem;">Contact Us</a>
+        </nav>
+    </header>
+
+    <section class="hero">
+        <div class="accent-rule"></div>
+        <h1>RAW MATERIALS.<br>REFINED LIVING.</h1>
+        <p>A minimalist, premium interior renovation studio. We bridge modern industrial aesthetics with the warmth of home comfort.</p>
+        <a href="#" class="btn">Start Your Project</a>
+    </section>
+
+    <section class="bg-base-2">
+        <h2>Visual Palette</h2>
+        <div class="palette-grid">
+            <div class="swatch" style="background-color: var(--base-1);">
+                <div class="swatch-info">
+                    <span class="swatch-label">BASE 1 (Greige)</span>
+                    <code>#DED3C1</code>
+                </div>
+            </div>
+            <div class="swatch" style="background-color: var(--base-2);">
+                <div class="swatch-info">
+                    <span class="swatch-label">BASE 2 (Warm Taupe)</span>
+                    <code>#B0A087</code>
+                </div>
+            </div>
+            <div class="swatch" style="background-color: var(--primary-text);">
+                <div class="swatch-info" style="color: white; background: rgba(0,0,0,0.4);">
+                    <span class="swatch-label">PRIMARY (Anthracite)</span>
+                    <code>#2B2B2B</code>
+                </div>
+            </div>
+            <div class="swatch" style="background-color: var(--accent);">
+                <div class="swatch-info">
+                    <span class="swatch-label">ACCENT (Vibrant Red)</span>
+                    <code>#FE1110</code>
+                </div>
+            </div>
+            <div class="swatch" style="background-color: var(--tertiary);">
+                <div class="swatch-info" style="color: white; background: rgba(0,0,0,0.4);">
+                    <span class="swatch-label">TERTIARY (Naval Blue)</span>
+                    <code>#0C182A</code>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <footer class="footer-preview">
+        <h2>Trust Elements</h2>
+        <p style="opacity: 0.7;">Veles Interiors is committed to delivering industrial excellence with a warm human touch.</p>
+    </footer>
+
+</body>
+</html>
