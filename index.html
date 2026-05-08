@@ -3,39 +3,38 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Veles Interiors – Kompleksowe Wykończenia Wnętrz | Twoja Zaufana Ekipa</title>
-    <meta name="description" content="Veles Interiors – profesjonalne wykończenia pod klucz i remonty w terminie. Zero ukrytych kosztów, czysty plac budowy. Zamów bezpłatną wycenę.">
+    <title>Veles Interiors | Inżynieria Luksusu</title>
+
+    <!-- Google Fonts -->
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,400;0,600;0,700;1,400;1,600&family=DM+Sans:wght@300;400;500;600&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500&family=Playfair+Display:wght@400;700&display=swap" rel="stylesheet">
+
     <style>
         :root {
+            /* Palette Setup - Light Mode (Default) */
             --bg: #FFFFFF;
-            --bg-offset: #FAFAFA;
-            --text: #1A1A1A;
-            --text-muted: #666666;
-            --card-bg: #FFFFFF;
+            --text: #121212;
             --accent: #FE1110;
-            --border: #E5E5E5;
-            --nav-bg: rgba(255, 255, 255, 0.9);
-            --transition: 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+            --sub-text: #666666;
+            --surface: #F9F9F9;
+            --transition: 0.6s cubic-bezier(0.16, 1, 0.3, 1);
+            --header-height: 100px;
         }
 
         [data-theme="dark"] {
             --bg: #121212;
-            --bg-offset: #0F0F0F;
             --text: #F5F5F5;
-            --text-muted: #A0A0A0;
-            --card-bg: #1E1E1E;
             --accent: #FE1110;
-            --border: #333333;
-            --nav-bg: rgba(18, 18, 18, 0.9);
+            --sub-text: #AAAAAA;
+            --surface: #1E1E1E;
         }
 
         * {
             margin: 0;
             padding: 0;
             box-sizing: border-box;
+            cursor: none; /* Custom cursor */
         }
 
         html {
@@ -43,1046 +42,712 @@
         }
 
         body {
-            font-family: 'DM Sans', sans-serif;
+            font-family: 'Inter', sans-serif;
             background-color: var(--bg);
             color: var(--text);
-            line-height: 1.6;
             transition: background-color var(--transition), color var(--transition);
             overflow-x: hidden;
+            line-height: 1.6;
         }
 
-        h1, h2, h3, .logo-name, .cormorant {
-            font-family: 'Cormorant Garamond', serif;
-        }
-
-        .container {
-            max-width: 1200px;
-            margin: 0 auto;
-            padding: 0 24px;
-        }
-
-        section {
-            padding: 100px 0;
-        }
-
-        /* NAVBAR */
-        .navbar {
+        /* Grain Effect */
+        body::after {
+            content: "";
             position: fixed;
             top: 0;
             left: 0;
             width: 100%;
-            z-index: 1000;
-            background: var(--nav-bg);
-            backdrop-filter: blur(10px);
-            border-bottom: 1px solid var(--border);
-            transition: background var(--transition), border var(--transition);
+            height: 100%;
+            pointer-events: none;
+            opacity: 0.04;
+            z-index: 9998;
+            background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 200 200' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='noiseFilter'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.65' numOctaves='3' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23noiseFilter)'/%3E%3C/svg%3E");
         }
 
-        .nav-container {
+        h1, h2, h3, h4, .heading {
+            font-family: 'Playfair Display', serif;
+            font-weight: 700;
+            line-height: 1.1;
+        }
+
+        a {
+            text-decoration: none;
+            color: inherit;
+            transition: var(--transition);
+        }
+
+        /* Custom Cursor */
+        #cursor {
+            position: fixed;
+            width: 12px;
+            height: 12px;
+            background-color: var(--accent);
+            border-radius: 50%;
+            pointer-events: none;
+            z-index: 9999;
+            transform: translate(-50%, -50%);
+            transition: width 0.3s, height 0.3s, background-color 0.3s;
+        }
+
+        #cursor.hover {
+            width: 60px;
+            height: 60px;
+            background-color: rgba(254, 17, 16, 0.15);
+            border: 1px solid var(--accent);
+        }
+
+        /* Navigation */
+        header {
+            position: fixed;
+            top: 0;
+            width: 100%;
+            height: var(--header-height);
             display: flex;
             justify-content: space-between;
             align-items: center;
-            height: 80px;
-            max-width: 1400px;
-            margin: 0 auto;
-            padding: 0 40px;
+            padding: 0 5%;
+            z-index: 1000;
+            background: transparent;
         }
 
-        .nav-logo {
+        .logo img {
+            height: 32px;
+            transition: opacity 0.4s ease;
+        }
+
+        .nav-controls {
             display: flex;
             align-items: center;
-            text-decoration: none;
-            color: inherit;
-            gap: 12px;
+            gap: 40px;
         }
 
-        .nav-logo img {
-            height: 50px;
-            width: auto;
-        }
-
-        .logo-text {
-            display: flex;
-            flex-direction: column;
-            line-height: 1;
-        }
-
-        .logo-name {
-            font-size: 1.5rem;
-            font-weight: 700;
-            letter-spacing: 1px;
-        }
-
-        .logo-sub {
-            font-size: 0.7rem;
-            letter-spacing: 3px;
-            font-weight: 400;
-            opacity: 0.8;
-        }
-
-        .nav-links {
-            display: flex;
-            list-style: none;
-            gap: 32px;
-        }
-
-        .nav-links a {
-            text-decoration: none;
-            color: var(--text);
-            font-weight: 500;
-            font-size: 0.95rem;
-            transition: color var(--transition);
-        }
-
-        .nav-links a:hover {
-            color: var(--accent);
-        }
-
-        .nav-actions {
-            display: flex;
-            align-items: center;
-            gap: 24px;
-        }
-
-        /* BUTTONS */
-        .btn-primary {
-            display: inline-flex;
-            align-items: center;
-            gap: 8px;
-            background-color: var(--accent);
-            color: white;
-            padding: 12px 28px;
-            border-radius: 4px;
-            text-decoration: none;
-            font-weight: 600;
-            font-size: 0.95rem;
-            transition: var(--transition);
-            border: none;
-            cursor: pointer;
-        }
-
-        .btn-primary:hover {
-            opacity: 0.9;
-            transform: translateY(-2px);
-        }
-
-        .btn-outline {
-            display: inline-flex;
-            align-items: center;
-            gap: 8px;
-            background-color: transparent;
-            color: var(--text);
-            padding: 12px 28px;
-            border-radius: 4px;
-            text-decoration: none;
-            font-weight: 600;
-            font-size: 0.95rem;
-            border: 2px solid var(--text);
-            transition: var(--transition);
-        }
-
-        .btn-outline:hover {
-            background-color: var(--text);
-            color: var(--bg);
-        }
-
-        /* THEME TOGGLE */
         .theme-toggle {
             background: none;
             border: none;
             color: var(--text);
-            cursor: pointer;
-            padding: 8px;
-            border-radius: 50%;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            transition: background var(--transition);
-        }
-
-        .theme-toggle:hover {
-            background: rgba(128, 128, 128, 0.1);
-            color: var(--accent);
-        }
-
-        /* HERO */
-        .hero {
-            position: relative;
-            padding-top: 180px;
-            padding-bottom: 120px;
-            background: var(--bg-offset);
-            min-height: 90vh;
-            display: flex;
-            align-items: center;
-        }
-
-        .hero-content {
-            max-width: 800px;
-            position: relative;
-            z-index: 2;
-        }
-
-        .hero-badge {
-            display: inline-flex;
-            align-items: center;
-            gap: 12px;
-            font-size: 0.85rem;
-            font-weight: 600;
-            letter-spacing: 2px;
-            margin-bottom: 24px;
-            color: var(--accent);
-        }
-
-        .badge-line {
-            width: 30px;
-            height: 2px;
-            background: var(--accent);
-        }
-
-        .hero-title {
-            font-size: clamp(2.5rem, 6vw, 4.5rem);
-            line-height: 1.1;
-            margin-bottom: 32px;
-            font-weight: 700;
-        }
-
-        .hero-accent {
-            color: var(--accent);
-            font-style: italic;
-        }
-
-        .hero-desc {
             font-size: 1.2rem;
-            color: var(--text-muted);
-            margin-bottom: 48px;
-            max-width: 650px;
-        }
-
-        .hero-cta {
-            display: flex;
-            gap: 16px;
-            flex-wrap: wrap;
-            margin-bottom: 56px;
-        }
-
-        .hero-pills {
-            display: flex;
-            gap: 24px;
-            flex-wrap: wrap;
-            font-size: 0.8rem;
-            font-weight: 700;
-            letter-spacing: 1px;
-            opacity: 0.8;
-        }
-
-        .hero-pills span {
-            display: flex;
-            align-items: center;
-            gap: 6px;
-        }
-
-        /* TRUST BAR */
-        .trust-bar {
-            background: var(--bg);
-            border-top: 1px solid var(--border);
-            border-bottom: 1px solid var(--border);
-            padding: 60px 0;
-        }
-
-        .trust-grid {
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
-            gap: 40px;
-            text-align: center;
-        }
-
-        .trust-num {
-            font-size: 3rem;
-            font-weight: 700;
-            font-family: 'Cormorant Garamond', serif;
-            color: var(--accent);
-            line-height: 1;
-            margin-bottom: 8px;
-        }
-
-        .trust-label {
-            font-size: 0.8rem;
-            font-weight: 600;
-            letter-spacing: 1px;
-            text-transform: uppercase;
-            opacity: 0.7;
-        }
-
-        /* SERVICES */
-        .section-header {
-            text-align: center;
-            max-width: 700px;
-            margin: 0 auto 64px;
-        }
-
-        .section-badge {
-            display: inline-flex;
-            align-items: center;
-            gap: 12px;
-            font-size: 0.8rem;
-            font-weight: 700;
-            letter-spacing: 2px;
-            color: var(--accent);
-            margin-bottom: 16px;
-            text-transform: uppercase;
-        }
-
-        .section-title {
-            font-size: clamp(2rem, 4vw, 3rem);
-            line-height: 1.2;
-            margin-bottom: 24px;
-        }
-
-        .section-title em {
-            font-style: italic;
-            font-weight: 400;
-        }
-
-        .services-grid {
-            display: grid;
-            grid-template-columns: repeat(auto-fill, minmax(350px, 1fr));
-            gap: 32px;
-        }
-
-        .service-card {
-            background: var(--card-bg);
-            padding: 48px;
-            border: 1px solid var(--border);
-            transition: var(--transition);
-            display: flex;
-            flex-direction: column;
-            gap: 20px;
-        }
-
-        .service-card:hover {
-            transform: translateY(-10px);
-            border-color: var(--accent);
-            box-shadow: 0 20px 40px rgba(0,0,0,0.05);
-        }
-
-        .service-icon {
-            color: var(--accent);
-            width: 40px;
-            height: 40px;
-        }
-
-        .service-card h3 {
-            font-size: 1.5rem;
-            font-weight: 700;
-        }
-
-        .service-card p {
-            color: var(--text-muted);
-            font-size: 0.95rem;
-        }
-
-        /* WHY US */
-        .why-us {
-            background: var(--bg-offset);
-        }
-
-        .why-grid {
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
-            gap: 32px;
-        }
-
-        .why-card {
-            background: var(--card-bg);
-            padding: 40px;
-            border-radius: 4px;
-        }
-
-        .why-header {
-            display: flex;
-            justify-content: space-between;
-            align-items: center;
-            margin-bottom: 24px;
-        }
-
-        .why-num {
-            font-family: 'Cormorant Garamond', serif;
-            font-size: 1.5rem;
-            font-weight: 700;
-            opacity: 0.3;
-        }
-
-        /* ABOUT */
-        .about-grid {
-            display: grid;
-            grid-template-columns: 1fr 1fr;
-            gap: 80px;
-            align-items: center;
-        }
-
-        .about-content p {
-            margin-bottom: 24px;
-            font-size: 1.1rem;
-            color: var(--text-muted);
-        }
-
-        .about-stats {
-            display: grid;
-            grid-template-columns: repeat(3, 1fr);
-            gap: 24px;
-            margin-top: 40px;
-        }
-
-        .about-stat {
-            display: flex;
-            flex-direction: column;
-        }
-
-        .stat-val {
-            font-family: 'Cormorant Garamond', serif;
-            font-size: 2rem;
-            font-weight: 700;
-            color: var(--accent);
-        }
-
-        .stat-label {
-            font-size: 0.7rem;
-            font-weight: 700;
-            letter-spacing: 1px;
-            opacity: 0.6;
-        }
-
-        .about-image {
-            background: var(--border);
-            aspect-ratio: 4/5;
+            cursor: none;
             display: flex;
             align-items: center;
             justify-content: center;
-            border-radius: 4px;
-            position: relative;
+        }
+
+        .hamburger {
+            width: 30px;
+            height: 20px;
+            display: flex;
+            flex-direction: column;
+            justify-content: space-between;
+            background: none;
+            border: none;
+            cursor: none;
+        }
+
+        .hamburger span {
+            width: 100%;
+            height: 2px;
+            background-color: var(--text);
+            transition: var(--transition);
+        }
+
+        .hamburger.active span:nth-child(1) { transform: translateY(9px) rotate(45deg); }
+        .hamburger.active span:nth-child(2) { opacity: 0; }
+        .hamburger.active span:nth-child(3) { transform: translateY(-9px) rotate(-45deg); }
+
+        /* Fullscreen Menu */
+        #full-menu {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100vh;
+            background-color: var(--bg);
+            z-index: 900;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            clip-path: circle(0% at 95% 5%);
+            transition: clip-path 0.8s cubic-bezier(0.16, 1, 0.3, 1);
+            pointer-events: none;
+        }
+
+        #full-menu.active {
+            clip-path: circle(150% at 95% 5%);
+            pointer-events: all;
+        }
+
+        .menu-links {
+            list-style: none;
+            text-align: center;
+        }
+
+        .menu-links li {
+            margin: 20px 0;
             overflow: hidden;
         }
 
-        .placeholder-label {
-            display: flex;
-            flex-direction: column;
-            align-items: center;
-            gap: 16px;
-            font-size: 0.8rem;
-            font-weight: 600;
-            text-align: center;
-            padding: 40px;
-            opacity: 0.5;
+        .menu-links a {
+            font-family: 'Playfair Display', serif;
+            font-size: clamp(2.5rem, 8vw, 5rem);
+            font-weight: 700;
+            display: block;
+            transform: translateY(100%);
+            transition: transform 0.5s;
         }
 
-        /* TESTIMONIALS */
-        .testimonials-grid {
+        #full-menu.active .menu-links a {
+            transform: translateY(0);
+        }
+
+        .menu-links a:hover {
+            color: var(--accent);
+            padding-left: 20px;
+        }
+
+        /* Container & SPA Transition */
+        main {
+            min-height: 100vh;
+            opacity: 1;
+            transition: opacity 0.5s, transform 0.5s;
+        }
+
+        main.fade-out {
+            opacity: 0;
+            transform: translateY(20px);
+        }
+
+        /* Scroll Reveal */
+        .reveal {
+            opacity: 0;
+            transform: translateY(40px);
+            transition: 1.2s cubic-bezier(0.16, 1, 0.3, 1);
+        }
+
+        .reveal.visible {
+            opacity: 1;
+            transform: translateY(0);
+        }
+
+        .section-padding {
+            padding: 160px 5% 100px;
+        }
+
+        @media (max-width: 768px) {
+            .section-padding {
+                padding: 120px 5% 60px;
+            }
+        }
+
+        /* Layout Grids */
+        .grid-hero {
+            display: grid;
+            grid-template-columns: 1.1fr 0.9fr;
+            gap: 60px;
+            width: 100%;
+            align-items: center;
+        }
+
+        .grid-values {
             display: grid;
             grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
-            gap: 32px;
+            gap: 40px;
         }
 
-        .testimonial-card {
-            background: var(--card-bg);
-            padding: 40px;
-            border: 1px solid var(--border);
-            position: relative;
-        }
-
-        .quote-mark {
-            font-family: 'Cormorant Garamond', serif;
-            font-size: 4rem;
-            color: var(--accent);
-            line-height: 1;
-            margin-bottom: -20px;
-            opacity: 0.3;
-        }
-
-        .testimonial-text {
-            font-style: italic;
-            font-size: 1.1rem;
-            margin-bottom: 32px;
-        }
-
-        .testimonial-author {
-            display: flex;
-            align-items: center;
-            gap: 16px;
-        }
-
-        .author-avatar {
-            width: 50px;
-            height: 50px;
-            background: var(--accent);
-            color: white;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            border-radius: 50%;
-            font-weight: 700;
-            font-size: 0.8rem;
-        }
-
-        .author-info strong {
-            display: block;
-            font-size: 1rem;
-        }
-
-        .author-info span {
-            display: block;
-            font-size: 0.8rem;
-            opacity: 0.6;
-        }
-
-        /* CONTACT */
-        .contact-grid {
-            display: grid;
-            grid-template-columns: 1.5fr 1fr;
-            gap: 80px;
-        }
-
-        .form-group {
-            margin-bottom: 24px;
-        }
-
-        .form-group label {
-            display: block;
-            font-size: 0.7rem;
-            font-weight: 700;
-            letter-spacing: 1px;
-            margin-bottom: 8px;
-            opacity: 0.8;
-        }
-
-        .form-group input,
-        .form-group select,
-        .form-group textarea {
-            width: 100%;
-            padding: 16px;
-            background: var(--bg-offset);
-            border: 1px solid var(--border);
-            color: var(--text);
-            font-family: inherit;
-            border-radius: 4px;
-            transition: var(--transition);
-        }
-
-        .form-group input:focus,
-        .form-group select:focus,
-        .form-group textarea:focus {
-            outline: none;
-            border-color: var(--accent);
-        }
-
-        .form-row {
+        .grid-process {
             display: grid;
             grid-template-columns: 1fr 1fr;
-            gap: 24px;
+            gap: 60px;
+            align-items: center;
         }
 
-        .form-footer {
-            margin-top: 32px;
-        }
-
-        .form-consent {
-            font-size: 0.8rem;
-            opacity: 0.6;
-            margin-bottom: 24px;
-        }
-
-        .contact-info {
-            display: flex;
-            flex-direction: column;
-            gap: 32px;
-        }
-
-        .contact-card {
-            display: flex;
-            gap: 20px;
-            align-items: flex-start;
-        }
-
-        .contact-card-icon {
-            color: var(--accent);
-            width: 24px;
-            height: 24px;
-            flex-shrink: 0;
-        }
-
-        .contact-card-label {
-            display: block;
-            font-size: 0.7rem;
-            font-weight: 700;
-            letter-spacing: 1px;
-            margin-bottom: 4px;
-            opacity: 0.6;
-        }
-
-        .contact-card-value {
-            font-size: 1.1rem;
-            font-weight: 600;
-            text-decoration: none;
-            color: inherit;
-        }
-
-        /* FOOTER */
-        .footer {
-            background: var(--bg-offset);
-            padding: 100px 0 40px;
-            border-top: 1px solid var(--border);
-        }
-
-        .footer-grid {
+        .grid-about {
             display: grid;
-            grid-template-columns: 1.5fr 1fr 1.5fr;
+            grid-template-columns: 1fr 1fr;
             gap: 80px;
-            margin-bottom: 80px;
+            align-items: start;
         }
 
-        .footer-brand p {
-            margin: 24px 0;
-            opacity: 0.7;
-            font-size: 0.95rem;
+        .grid-contact {
+            display: grid;
+            grid-template-columns: 1fr 1.2fr;
+            gap: 100px;
+            width: 100%;
         }
 
-        .footer-social {
-            display: flex;
-            gap: 16px;
+        .grid-footer {
+            display: grid;
+            grid-template-columns: 2fr 1fr 1fr;
+            gap: 80px;
         }
 
-        .footer-social a {
-            color: var(--text);
-            opacity: 0.5;
-            transition: var(--transition);
-        }
-
-        .footer-social a:hover {
-            color: var(--accent);
-            opacity: 1;
-        }
-
-        .footer h4 {
-            font-size: 0.8rem;
-            letter-spacing: 2px;
-            margin-bottom: 24px;
-        }
-
-        .footer ul {
-            list-style: none;
-        }
-
-        .footer ul li {
-            margin-bottom: 12px;
-        }
-
-        .footer ul a {
-            text-decoration: none;
-            color: var(--text);
-            opacity: 0.7;
-            transition: var(--transition);
-        }
-
-        .footer ul a:hover {
-            color: var(--accent);
-            opacity: 1;
-        }
-
-        .footer-bottom {
-            display: flex;
-            justify-content: space-between;
-            padding-top: 40px;
-            border-top: 1px solid var(--border);
-            font-size: 0.8rem;
-            opacity: 0.5;
-        }
-
-        /* RESPONSIVE */
         @media (max-width: 992px) {
-            .nav-links, .nav-actions .btn-primary {
-                display: none;
-            }
-            .about-grid, .contact-grid, .footer-grid {
+            .grid-hero, .grid-process, .grid-about, .grid-contact, .grid-footer {
                 grid-template-columns: 1fr;
-                gap: 56px;
+                gap: 40px;
             }
-            .hero {
-                padding-top: 140px;
-                text-align: center;
-            }
-            .hero-content {
-                margin: 0 auto;
-            }
-            .hero-cta {
-                justify-content: center;
-            }
-            .hero-pills {
-                justify-content: center;
+            .grid-process div:nth-child(1) { order: 1; }
+            .grid-process div:nth-child(2) { order: 2; }
+            .grid-process[style*="text-align: right"] { text-align: left !important; }
+            .grid-process[style*="text-align: right"] div { margin-left: 0 !important; }
+        }
+
+        /* Floating CTA */
+        .floating-cta {
+            position: fixed;
+            bottom: 40px;
+            left: 40px;
+            z-index: 800;
+            display: flex;
+            align-items: center;
+            gap: 15px;
+            background: var(--accent);
+            color: white;
+            padding: 15px 25px;
+            font-size: 0.7rem;
+            font-weight: 600;
+            text-transform: uppercase;
+            letter-spacing: 0.1em;
+            box-shadow: 0 10px 30px rgba(254, 17, 16, 0.3);
+            transition: var(--transition);
+            transform: translateY(0);
+        }
+
+        .floating-cta:hover {
+            transform: translateY(-5px);
+            background: var(--text);
+            color: var(--bg);
+        }
+
+        @media (max-width: 768px) {
+            .floating-cta {
+                bottom: 20px;
+                left: 20px;
+                padding: 12px 20px;
             }
         }
 
-        @media (max-width: 600px) {
-            .form-row {
-                grid-template-columns: 1fr;
-            }
-            .hero-title {
-                font-size: 2.5rem;
-            }
+        /* Utility */
+        .container {
+            max-width: 1400px;
+            margin: 0 auto;
         }
+
+        .btn {
+            display: inline-block;
+            padding: 20px 40px;
+            background-color: var(--accent);
+            color: white;
+            font-weight: 500;
+            text-transform: uppercase;
+            letter-spacing: 0.1em;
+            font-size: 0.8rem;
+            position: relative;
+            overflow: hidden;
+            transition: var(--transition);
+        }
+
+        .btn:hover {
+            background-color: var(--text);
+            color: var(--bg);
+        }
+
+        /* Specific Page Styles will be added here */
+
     </style>
 </head>
 <body>
 
-<nav class="navbar">
-    <div class="nav-container">
-        <a href="index.html" class="nav-logo">
-            <img src="veles-interiors-full.png" alt="Veles Interiors Logo">
-            <div class="logo-text">
-                <span class="logo-name">VELES</span>
-                <span class="logo-sub">— INTERIORS —</span>
-            </div>
+    <div id="cursor"></div>
+
+    <header>
+        <a href="#/" class="logo">
+            <img id="logo-img" src="veles-interiors-full.png" alt="Veles Interiors">
         </a>
-        <ul class="nav-links">
-            <li><a href="#uslugi">Usługi</a></li>
-            <li><a href="#o-nas">O nas</a></li>
-            <li><a href="#realizacje">Realizacje</a></li>
-            <li><a href="#kontakt">Kontakt</a></li>
-        </ul>
-        <div class="nav-actions">
-            <button class="theme-toggle" id="themeToggle" aria-label="Toggle theme">
-                <svg id="sunIcon" style="display:none" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="5"/><line x1="12" y1="1" x2="12" y2="3"/><line x1="12" y1="21" x2="12" y2="23"/><line x1="4.22" y1="4.22" x2="5.64" y2="5.64"/><line x1="18.36" y1="18.36" x2="19.78" y2="19.78"/><line x1="1" y1="12" x2="3" y2="12"/><line x1="21" y1="12" x2="23" y2="12"/><line x1="4.22" y1="19.78" x2="5.64" y2="18.36"/><line x1="18.36" y1="5.64" x2="19.78" y2="4.22"/></svg>
-                <svg id="moonIcon" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M21 12.79A9 9 0 1111.21 3 7 7 0 0021 12.79z"/></svg>
+        <div class="nav-controls">
+            <button class="theme-toggle" id="theme-toggle" title="Przełącz tryb">
+                <!-- Sun/Moon icons will be handled by JS -->
+                <span id="theme-icon">🌙</span>
             </button>
-            <a href="#kontakt" class="btn-primary">Darmowa Wycena</a>
+            <button class="hamburger" id="hamburger">
+                <span></span>
+                <span></span>
+                <span></span>
+            </button>
         </div>
-    </div>
-</nav>
+    </header>
 
-<section class="hero">
-    <div class="container">
-        <div class="hero-content">
-            <div class="hero-badge">
-                <span class="badge-line"></span>
-                <span>KOMPLEKSOWE WYKOŃCZENIA WNĘTRZ</span>
-            </div>
-            <h1 class="hero-title">
-                Koniec z użeraniem się z niesłownymi ekipami.
-                <span class="hero-accent">Oddajemy w terminie.</span>
-            </h1>
-            <p class="hero-desc">Veles Interiors to Twoja jedna, zaufana ekipa do wykończeń i remontów. Od stanu deweloperskiego po gotowe do zamieszkania wnętrze. Zero ukrytych kosztów, czysty plac budowy, jedna umowa.</p>
-            <div class="hero-cta">
-                <a href="#kontakt" class="btn-primary">Zamów bezpłatną wycenę</a>
-                <a href="#realizacje" class="btn-outline">Zobacz nasze realizacje</a>
-            </div>
-            <div class="hero-pills">
-                <span>✓ GWARANCJA TERMINOWOŚCI</span>
-                <span>✓ JEDNA EKIPA</span>
-                <span>✓ CZYSTOŚĆ PO PRACY</span>
-            </div>
-        </div>
+    <div id="full-menu">
+        <ul class="menu-links">
+            <li><a href="#/" class="menu-item">Start</a></li>
+            <li><a href="#/o-nas" class="menu-item">O nas</a></li>
+            <li><a href="#/kariera" class="menu-item">Kariera</a></li>
+            <li><a href="#/kontakt" class="menu-item">Kontakt</a></li>
+        </ul>
     </div>
-</section>
 
-<section class="trust-bar">
-    <div class="container">
-        <div class="trust-grid">
-            <div class="trust-item">
-                <div class="trust-num">10+</div>
-                <div class="trust-label">LAT DOŚWIADCZENIA</div>
-            </div>
-            <div class="trust-item">
-                <div class="trust-num">150+</div>
-                <div class="trust-label">ODDANYCH WNĘTRZ</div>
-            </div>
-            <div class="trust-item">
-                <div class="trust-num">100%</div>
-                <div class="trust-label">GWARANCJA NA PRACE</div>
-            </div>
-            <div class="trust-item">
-                <div class="trust-num">0</div>
-                <div class="trust-label">UKRYTYCH KOSZTÓW</div>
-            </div>
-        </div>
-    </div>
-</section>
+    <a href="#/kontakt" class="floating-cta">
+        <span>Umów konsultację</span>
+        <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"><line x1="12" y1="5" x2="12" y2="19"></line><line x1="5" y1="12" x2="19" y2="12"></line></svg>
+    </a>
 
-<section class="services" id="uslugi">
-    <div class="container">
-        <div class="section-header">
-            <div class="section-badge">CO ROBIMY</div>
-            <h2 class="section-title">To robimy<br><em>— i robimy to dobrze.</em></h2>
-        </div>
-        <div class="services-grid">
-            <div class="service-card">
-                <svg class="service-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M3 9l9-7 9 7v11a2 2 0 01-2 2H5a2 2 0 01-2-2z"/><path d="M9 22V12h6v10"/></svg>
-                <h3>Wykończenia pod klucz</h3>
-                <p>Od stanu deweloperskiego pod sam klucz. Ty wybierasz materiały, my robimy resztę.</p>
-            </div>
-            <div class="service-card">
-                <svg class="service-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M14.7 6.3a1 1 0 000 1.4l1.6 1.6a1 1 0 001.4 0l3.77-3.77a6 6 0 01-7.94 7.94l-6.91 6.91a2.12 2.12 0 01-3-3l6.91-6.91a6 6 0 017.94-7.94l-3.76 3.76z"/></svg>
-                <h3>Kompleksowe remonty łazienek</h3>
-                <p>Hydroizolacje, precyzyjne układanie gresu, biały montaż na najwyższym poziomie.</p>
-            </div>
-            <div class="service-card">
-                <svg class="service-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M12 20v-5M9 11l3 3 3-3M12 4v10"/></svg>
-                <h3>Gładzie i malowanie natryskowe</h3>
-                <p>Idealnie gładkie ściany i sufity. Używamy agregatów dla perfekcyjnego efektu.</p>
-            </div>
-            <div class="service-card">
-                <svg class="service-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M4 7h16M4 12h16M4 17h16"/></svg>
-                <h3>Zabudowy G-K i sufity podwieszane</h3>
-                <p>Zabudowy LED, nietypowe kształty, ścianki działowe z pełnym wygłuszeniem.</p>
-            </div>
-            <div class="service-card">
-                <svg class="service-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><rect x="3" y="3" width="18" height="18" rx="2"/><path d="M3 9h18M9 21V9"/></svg>
-                <h3>Układanie podłóg</h3>
-                <p>Panele, deska barlinecka, winyle (LVT). Zawsze z dbałością o idealne dylatacje.</p>
-            </div>
-            <div class="service-card">
-                <svg class="service-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M13 2L3 14h9l-1 8 10-12h-9l1-8z"/></svg>
-                <h3>Przeróbki hydrauliczno-elektryczne</h3>
-                <p>Dostosowanie punktów pod projekt kuchni czy łazienki bez wzywania zewnętrznych fachowców.</p>
-            </div>
-        </div>
-    </div>
-</section>
+    <main id="main-content">
+        <!-- Content injected by JS -->
+    </main>
 
-<section class="why-us">
-    <div class="container">
-        <div class="section-badge">DLACZEGO MY</div>
-        <h2 class="section-title">Dlaczego inwestorzy<br><em>nam ufają</em></h2>
-        <div class="why-grid">
-            <div class="why-card">
-                <div class="why-header">
-                    <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="var(--accent)" stroke-width="2"><circle cx="12" cy="12" r="10"/><polyline points="12 6 12 12 16 14"/></svg>
-                    <span class="why-num">01</span>
-                </div>
-                <h3>Dotrzymujemy terminów.</h3>
-                <p>Harmonogram to dla nas świętość. Płacisz kary za opóźnienia? Z nami o tym zapomnisz.</p>
-            </div>
-            <div class="why-card">
-                <div class="why-header">
-                    <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="var(--accent)" stroke-width="2"><path d="M20 7l-8-4-8 4m16 0l-8 4m8-4v10l-8 4m0-10L4 7m8 4v10M4 7v10l8 4"/></svg>
-                    <span class="why-num">02</span>
-                </div>
-                <h3>Czystość na budowie.</h3>
-                <p>Zabezpieczamy części wspólne, klatki schodowe i codziennie sprzątamy po sobie.</p>
-            </div>
-            <div class="why-card">
-                <div class="why-header">
-                    <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="var(--accent)" stroke-width="2"><path d="M12 1v22M17 5H9.5a3.5 3.5 0 000 7h5a3.5 3.5 0 010 7H6"/></svg>
-                    <span class="why-num">03</span>
-                </div>
-                <h3>Przejrzysty kosztorys.</h3>
-                <p>Dostajesz dokładną wycenę przed startem. Zero tekstów "panie, to wyjdzie w praniu".</p>
-            </div>
-            <div class="why-card">
-                <div class="why-header">
-                    <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="var(--accent)" stroke-width="2"><path d="M20 21v-2a4 4 0 00-4-4H8a4 4 0 00-4 4v2"/><circle cx="12" cy="7" r="4"/></svg>
-                    <span class="why-num">04</span>
-                </div>
-                <h3>Jeden kierownik projektu.</h3>
-                <p>Nie musisz pilnować kilku ekip. Masz jednego opiekuna, który odpowiada za cały remont.</p>
-            </div>
-        </div>
-    </div>
-</section>
+    <footer id="footer">
+        <!-- Dynamic footer -->
+    </footer>
 
-<section class="about" id="o-nas">
-    <div class="container">
-        <div class="about-grid">
-            <div class="about-content">
-                <div class="section-badge">O FIRMIE</div>
-                <h2 class="section-title">Veles Interiors — marka,<br><em>za którą stoi jakość</em></h2>
-                <p>Nie jesteśmy "panem z ogłoszenia", który znika po wzięciu zaliczki. Jesteśmy zorganizowaną firmą, która traktuje Twoje wnętrze z szacunkiem. Pracujemy na profesjonalnym sprzęcie (Festool, Graco), co przekłada się na precyzję, której oczekujesz. Twój spokój to nasz priorytet.</p>
-                <div class="about-stats">
-                    <div class="about-stat">
-                        <span class="stat-val">10+</span>
-                        <span class="stat-label">LAT DOŚWIADCZENIA</span>
-                    </div>
-                    <div class="about-stat">
-                        <span class="stat-val">24/7</span>
-                        <span class="stat-label">WSPARCIE</span>
-                    </div>
-                    <div class="about-stat">
-                        <span class="stat-val">OC</span>
-                        <span class="stat-label">PEŁNE UBEZPIECZENIE</span>
-                    </div>
-                </div>
-            </div>
-            <div class="about-image">
-                <div class="placeholder-label">
-                    <svg width="40" height="40" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><rect x="3" y="3" width="18" height="18" rx="2"/><circle cx="8.5" cy="8.5" r="1.5"/><polyline points="21 15 16 10 5 21"/></svg>
-                    ZASTĄP PRAWDZIWYM ZDJĘCIEM EKIPY / REALIZACJI
-                </div>
-            </div>
-        </div>
-    </div>
-</section>
-
-<section class="testimonials">
-    <div class="container">
-        <div class="section-header">
-            <div class="section-badge">OPINIE KLIENTÓW</div>
-            <h2 class="section-title">Co mówią <em>nasi klienci</em></h2>
-        </div>
-        <div class="testimonials-grid">
-            <div class="testimonial-card">
-                <div class="quote-mark">"</div>
-                <p class="testimonial-text">Ekipa Veles uratowała nasz remont po poprzednich 'fachowcach'. Szybko, czysto i co do milimetra zgadzało się z projektem architekta.</p>
-                <div class="testimonial-author">
-                    <div class="author-avatar">MS</div>
-                    <div class="author-info">
-                        <strong>Marek Sadowski</strong>
-                        <span>Inwestor Prywatny</span>
-                    </div>
-                </div>
-            </div>
-            <!-- More testimonials can be added here -->
-        </div>
-    </div>
-</section>
-
-<section class="contact" id="kontakt">
-    <div class="container">
-        <div class="section-badge">KONTAKT</div>
-        <h2 class="section-title">Umów <em>bezpłatną wycenę</em></h2>
-        <div class="contact-grid">
-            <div class="contact-form-wrap">
-                <form id="contactForm">
-                    <div class="form-group">
-                        <label>IMIĘ I NAZWISKO *</label>
-                        <input type="text" placeholder="Jan Kowalski" required>
-                    </div>
-                    <div class="form-row">
-                        <div class="form-group">
-                            <label>METRAŻ NIERUCHOMOŚCI (M2) *</label>
-                            <input type="number" placeholder="np. 65" required>
+    <script>
+        // --- CONFIG & STATE ---
+        const routes = {
+            '/': {
+                title: 'Veles Interiors | Inżynieria Luksusu',
+                render: () => `
+                    <section class="hero-section" style="min-height: 100vh; display: flex; align-items: center; padding: 80px 5% 0;">
+                        <div class="grid-hero">
+                            <div class="reveal">
+                                <h1 style="font-size: clamp(3rem, 6vw, 5rem); margin-bottom: 30px;">Przestrzeń, która definiuje Twój sukces.</h1>
+                                <p style="font-size: 1.2rem; color: var(--sub-text); max-width: 500px; margin-bottom: 40px;">
+                                    Veles Interiors to nie tylko remonty. To inżynieria luksusu i rzemiosło, które zamienia surowe m² w Twój dom.
+                                </p>
+                                <a href="#/kontakt" class="btn">Opowiedz o swoim projekcie</a>
+                            </div>
+                            <div class="reveal" style="position: relative; height: 75vh; min-height: 400px; background: var(--surface); overflow: hidden; clip-path: polygon(0 0, 100% 0, 100% 100%, 15% 100%);">
+                                <img src="https://images.unsplash.com/photo-1600210492486-724fe5c67fb0?auto=format&fit=crop&q=80&w=1000" alt="Interior" style="width: 100%; height: 100%; object-fit: cover; filter: grayscale(1);">
+                                <div style="position: absolute; bottom: 40px; right: -20px; background: var(--accent); color: white; padding: 40px; font-family: 'Playfair Display'; font-size: 2rem; z-index: 2;">
+                                    The Signature
+                                </div>
+                            </div>
                         </div>
-                        <div class="form-group">
-                            <label>TELEFON *</label>
-                            <input type="tel" placeholder="+48 ..." required>
+                    </section>
+
+                    <section class="values-section section-padding">
+                        <div class="container">
+                            <h2 class="reveal" style="font-size: clamp(2rem, 4vw, 3rem); margin-bottom: 80px; text-align: center;">Wartości</h2>
+                            <div class="grid-values">
+                                <div class="reveal" style="padding: 60px; background: var(--surface); position: relative;">
+                                    <span style="font-size: 5rem; font-family: 'Playfair Display'; color: var(--accent); opacity: 0.1; position: absolute; top: 20px; left: 20px;">I</span>
+                                    <h3 style="margin-bottom: 20px; font-size: 1.5rem;">Precyzja co do milimetra.</h3>
+                                    <p style="color: var(--sub-text);">Każdy detal jest dla nas kluczowy. Nie uznajemy półśrodków.</p>
+                                </div>
+                                <div class="reveal" style="padding: 60px; background: var(--surface); position: relative; margin-top: 40px;">
+                                    <span style="font-size: 5rem; font-family: 'Playfair Display'; color: var(--accent); opacity: 0.1; position: absolute; top: 20px; left: 20px;">II</span>
+                                    <h3 style="margin-bottom: 20px; font-size: 1.5rem;">Transparentność kosztorysu.</h3>
+                                    <p style="color: var(--sub-text);">Wiesz dokładnie, na co przeznaczany jest Twój budżet.</p>
+                                </div>
+                                <div class="reveal" style="padding: 60px; background: var(--surface); position: relative;">
+                                    <span style="font-size: 5rem; font-family: 'Playfair Display'; color: var(--accent); opacity: 0.1; position: absolute; top: 20px; left: 20px;">III</span>
+                                    <h3 style="margin-bottom: 20px; font-size: 1.5rem;">Gwarancja świętego spokoju.</h3>
+                                    <p style="color: var(--sub-text);">Przejmujemy całą logistykę i nadzór nad realizacją.</p>
+                                </div>
+                            </div>
+                        </div>
+                    </section>
+
+                    <section class="process-section section-padding">
+                        <div class="container">
+                            <h2 class="reveal" style="font-size: clamp(2rem, 4vw, 3rem); margin-bottom: 80px;">Etapy Transformacji</h2>
+                            <div style="display: flex; flex-direction: column; gap: 120px;">
+                                <div class="reveal grid-process">
+                                    <div style="font-size: clamp(4rem, 10vw, 8rem); font-family: 'Playfair Display'; font-weight: 700; opacity: 0.05;">01</div>
+                                    <div>
+                                        <h3 style="font-size: 2rem; margin-bottom: 15px;">Audyt i Planowanie</h3>
+                                        <p style="max-width: 500px; color: var(--sub-text);">Analizujemy przestrzeń i Twoje potrzeby, tworząc fundament pod perfekcyjną realizację.</p>
+                                    </div>
+                                </div>
+                                <div class="reveal grid-process" style="text-align: right;">
+                                    <div style="order: 2; font-size: clamp(4rem, 10vw, 8rem); font-family: 'Playfair Display'; font-weight: 700; opacity: 0.05;">02</div>
+                                    <div style="order: 1;">
+                                        <h3 style="font-size: 2rem; margin-bottom: 15px;">Realizacja Premium</h3>
+                                        <p style="max-width: 500px; color: var(--sub-text); margin-left: auto;">Nasi rzemieślnicy wkraczają do akcji, dbając o każdy detal wykończenia.</p>
+                                    </div>
+                                </div>
+                                <div class="reveal grid-process">
+                                    <div style="font-size: clamp(4rem, 10vw, 8rem); font-family: 'Playfair Display'; font-weight: 700; opacity: 0.05;">03</div>
+                                    <div>
+                                        <h3 style="font-size: 2rem; margin-bottom: 15px;">Przekazanie Kluczy</h3>
+                                        <p style="max-width: 500px; color: var(--sub-text);">Twój dom jest gotowy. Czysty, pachnący i dopracowany do perfekcji.</p>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </section>
+
+                    <section class="quote-section section-padding" style="background: var(--surface); position: relative; overflow: hidden;">
+                        <div class="container reveal" style="text-align: center; position: relative; z-index: 2;">
+                            <blockquote style="font-size: clamp(1.8rem, 4vw, 3.5rem); font-family: 'Playfair Display'; font-style: italic; max-width: 900px; margin: 0 auto 40px;">
+                                „Nie szukamy kompromisów. Jeśli projekt wymaga gresu w formacie XXL, kładziemy go bezbłędnie…”
+                            </blockquote>
+                            <p style="text-transform: uppercase; letter-spacing: 0.3em; font-weight: 500; font-size: 0.8rem; color: var(--accent);">Standard Veles</p>
+                        </div>
+                        <div style="position: absolute; top: 50%; left: 50%; transform: translate(-50%, -50%); font-size: 25vw; font-family: 'Playfair Display'; font-weight: 700; opacity: 0.02; white-space: nowrap; pointer-events: none;">
+                            VELES QUALITY
+                        </div>
+                    </section>
+                `
+            },
+            '/o-nas': {
+                title: 'O nas | Veles Interiors',
+                render: () => `
+                    <section class="section-padding container">
+                        <h1 class="reveal" style="font-size: clamp(3rem, 6vw, 5rem); margin-bottom: 60px;">Inżynieria z Pasji.</h1>
+                        <div class="grid-about">
+                            <div class="reveal">
+                                <p style="font-size: 1.2rem; margin-bottom: 30px;">
+                                    Veles Interiors powstało z pasji do perfekcyjnego wykończenia. Od lat realizujemy najbardziej wymagające projekty w Polsce, stawiając na jakość, której nie trzeba udowadniać.
+                                </p>
+                                <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 40px; margin-top: 60px;">
+                                    <div>
+                                        <div style="font-size: 3rem; font-family: 'Playfair Display'; color: var(--accent);">10+</div>
+                                        <div style="text-transform: uppercase; font-size: 0.7rem; letter-spacing: 0.1em; color: var(--sub-text);">Lat doświadczenia</div>
+                                    </div>
+                                    <div>
+                                        <div style="font-size: 3rem; font-family: 'Playfair Display'; color: var(--accent);">200+</div>
+                                        <div style="text-transform: uppercase; font-size: 0.7rem; letter-spacing: 0.1em; color: var(--sub-text);">Zrealizowanych inwestycji</div>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="reveal" style="position: relative;">
+                                <div style="background: var(--surface); padding: 10px; transform: rotate(-2deg);">
+                                    <img src="https://images.unsplash.com/photo-1581094794329-c8112a89af12?auto=format&fit=crop&q=80&w=800" alt="Team" style="width: 100%; filter: grayscale(1); display: block;">
+                                </div>
+                                <div style="margin-top: 40px; padding-left: 40px; border-left: 4px solid var(--accent);">
+                                    <p style="font-style: italic; font-size: 1.4rem; font-family: 'Playfair Display'; line-height: 1.4;">
+                                        „Nie ma dla nas rzeczy niemożliwych – są tylko te, które wymagają lepszego planu.”
+                                    </p>
+                                    <p style="margin-top: 20px; font-weight: 600; text-transform: uppercase; font-size: 0.7rem; letter-spacing: 0.1em;">Założyciel Veles Interiors</p>
+                                </div>
+                            </div>
+                        </div>
+                    </section>
+                `
+            },
+            '/kariera': {
+                title: 'Kariera | Veles Interiors',
+                render: () => `
+                    <section class="section-padding container reveal" style="min-height: 80vh; display: flex; flex-direction: column; justify-content: center; position: relative;">
+                        <div style="position: absolute; top: 10%; right: 5%; width: 40%; height: 60%; background: var(--surface); z-index: -1; clip-path: polygon(10% 0, 100% 0, 100% 100%, 0 100%);"></div>
+                        <h1 style="font-size: clamp(3rem, 8vw, 6rem); margin-bottom: 40px; line-height: 0.9;">Buduj standard<br>z nami.</h1>
+                        <p style="font-size: 1.5rem; max-width: 600px; margin-bottom: 60px; color: var(--sub-text); border-left: 1px solid var(--accent); padding-left: 30px;">
+                            Szukamy rzemieślników, nie tylko pracowników. Jeśli dbasz o narzędzia i detale tak samo jak my – dołącz do zespołu.
+                        </p>
+                        <div>
+                            <a href="mailto:rekrutacja@veles-interiors.pl" class="btn">Aplikuj teraz</a>
+                        </div>
+                    </section>
+                `
+            },
+            '/kontakt': {
+                title: 'Kontakt | Veles Interiors',
+                render: () => `
+                    <section class="section-padding" style="background: #121212; color: #F5F5F5; min-height: 100vh; display: flex; align-items: center;">
+                        <div class="container grid-contact">
+                            <div class="reveal">
+                                <h1 style="font-size: clamp(3rem, 6vw, 5rem); margin-bottom: 30px; line-height: 1;">Zacznijmy tworzyć.</h1>
+                                <p style="color: #AAAAAA; font-size: 1.1rem; margin-bottom: 40px; max-width: 400px;">
+                                    Skontaktujemy się w ciągu 24h. Działamy punktualnie i bezpośrednio.
+                                </p>
+                                <div style="margin-top: 60px;">
+                                    <div style="margin-bottom: 30px;">
+                                        <div style="text-transform: uppercase; font-size: 0.6rem; letter-spacing: 0.2em; color: var(--accent); margin-bottom: 8px;">Telefon</div>
+                                        <div style="font-size: 1.4rem; font-family: 'Playfair Display';">+48 000 000 000</div>
+                                    </div>
+                                    <div>
+                                        <div style="text-transform: uppercase; font-size: 0.6rem; letter-spacing: 0.2em; color: var(--accent); margin-bottom: 8px;">E-mail</div>
+                                        <div style="font-size: 1.4rem; font-family: 'Playfair Display';">office@veles-interiors.pl</div>
+                                    </div>
+                                </div>
+                            </div>
+                            <form id="contact-form" class="reveal" onsubmit="event.preventDefault(); alert('Wiadomość wysłana! Skontaktujemy się wkrótce.');" style="background: #1A1A1A; padding: 60px; position: relative;">
+                                <div style="position: absolute; top: -10px; left: -10px; width: 40px; height: 40px; border-top: 2px solid var(--accent); border-left: 2px solid var(--accent);"></div>
+                                <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 30px; margin-bottom: 30px;">
+                                    <div>
+                                        <label style="display: block; font-size: 0.6rem; text-transform: uppercase; letter-spacing: 0.1em; margin-bottom: 10px; color: #666;">Imię i nazwisko</label>
+                                        <input type="text" required style="width: 100%; background: transparent; border: none; border-bottom: 1px solid #333; padding: 10px 0; color: white; outline: none; transition: border-color 0.3s;">
+                                    </div>
+                                    <div>
+                                        <label style="display: block; font-size: 0.6rem; text-transform: uppercase; letter-spacing: 0.1em; margin-bottom: 10px; color: #666;">E-mail</label>
+                                        <input type="email" required style="width: 100%; background: transparent; border: none; border-bottom: 1px solid #333; padding: 10px 0; color: white; outline: none;">
+                                    </div>
+                                </div>
+                                <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 30px; margin-bottom: 30px;">
+                                    <div>
+                                        <label style="display: block; font-size: 0.6rem; text-transform: uppercase; letter-spacing: 0.1em; margin-bottom: 10px; color: #666;">Planowany termin</label>
+                                        <input type="text" placeholder="np. Q3 2025" style="width: 100%; background: transparent; border: none; border-bottom: 1px solid #333; padding: 10px 0; color: white; outline: none;">
+                                    </div>
+                                    <div>
+                                        <label style="display: block; font-size: 0.6rem; text-transform: uppercase; letter-spacing: 0.1em; margin-bottom: 10px; color: #666;">Metraż (m²)</label>
+                                        <input type="number" style="width: 100%; background: transparent; border: none; border-bottom: 1px solid #333; padding: 10px 0; color: white; outline: none;">
+                                    </div>
+                                </div>
+                                <div style="margin-bottom: 40px;">
+                                    <label style="display: block; font-size: 0.6rem; text-transform: uppercase; letter-spacing: 0.1em; margin-bottom: 10px; color: #666;">Wiadomość</label>
+                                    <textarea rows="4" style="width: 100%; background: transparent; border: none; border-bottom: 1px solid #333; padding: 10px 0; color: white; outline: none; resize: none;"></textarea>
+                                </div>
+                                <button type="submit" class="btn" style="width: 100%;">Wyślij zapytanie</button>
+                            </form>
+                        </div>
+                    </section>
+                `
+            }
+        };
+
+        // --- CORE FUNCTIONS ---
+        const handleRoute = () => {
+            const path = window.location.hash.slice(1) || '/';
+            const route = routes[path] || routes['/'];
+            const main = document.getElementById('main-content');
+
+            // Fade out
+            main.classList.add('fade-out');
+
+            setTimeout(() => {
+                main.innerHTML = route.render();
+                document.title = route.title;
+                window.scrollTo(0, 0);
+
+                // Fade in
+                main.classList.remove('fade-out');
+                closeMenu();
+                initCursor(); // Re-init hover effects
+                initScrollReveal(); // Re-init scroll observer
+            }, 500);
+        };
+
+        // Theme Logic
+        const initTheme = () => {
+            const toggle = document.getElementById('theme-toggle');
+            const icon = document.getElementById('theme-icon');
+            const logo = document.getElementById('logo-img');
+
+            const setDarkMode = (isDark) => {
+                const footerLogo = document.getElementById('footer-logo');
+                if (isDark) {
+                    document.documentElement.setAttribute('data-theme', 'dark');
+                    icon.textContent = '☀️';
+                    logo.src = 'veles-interiors-full-reversed.png';
+                    if (footerLogo) footerLogo.src = 'veles-interiors-full-reversed.png';
+                    localStorage.setItem('theme', 'dark');
+                } else {
+                    document.documentElement.removeAttribute('data-theme');
+                    icon.textContent = '🌙';
+                    logo.src = 'veles-interiors-full.png';
+                    if (footerLogo) footerLogo.src = 'veles-interiors-full.png';
+                    localStorage.setItem('theme', 'light');
+                }
+            };
+
+            // Check initial theme
+            const savedTheme = localStorage.getItem('theme');
+            if (savedTheme === 'dark') setDarkMode(true);
+
+            toggle.addEventListener('click', () => {
+                const isDark = document.documentElement.hasAttribute('data-theme');
+                setDarkMode(!isDark);
+            });
+        };
+
+        // Hamburger Menu
+        const initMenu = () => {
+            const hamburger = document.getElementById('hamburger');
+            const menu = document.getElementById('full-menu');
+
+            hamburger.addEventListener('click', () => {
+                hamburger.classList.toggle('active');
+                menu.classList.toggle('active');
+                document.body.style.overflow = menu.classList.contains('active') ? 'hidden' : 'auto';
+            });
+        };
+
+        const closeMenu = () => {
+            document.getElementById('hamburger').classList.remove('active');
+            document.getElementById('full-menu').classList.remove('active');
+            document.body.style.overflow = 'auto';
+        };
+
+        // Custom Cursor
+        const initCursor = () => {
+            const cursor = document.getElementById('cursor');
+            document.addEventListener('mousemove', (e) => {
+                cursor.style.left = e.clientX + 'px';
+                cursor.style.top = e.clientY + 'px';
+            });
+
+            const interactables = document.querySelectorAll('a, button, input, textarea, .btn');
+            interactables.forEach(el => {
+                el.addEventListener('mouseenter', () => cursor.classList.add('hover'));
+                el.addEventListener('mouseleave', () => cursor.classList.remove('hover'));
+            });
+        };
+
+        // Footer
+        const initFooter = () => {
+            const footer = document.getElementById('footer');
+            footer.innerHTML = `
+                <div style="padding: 100px 5% 40px; border-top: 1px solid var(--surface);">
+                    <div class="container grid-footer">
+                        <div>
+                            <img src="${document.documentElement.hasAttribute('data-theme') ? 'veles-interiors-full-reversed.png' : 'veles-interiors-full.png'}" alt="Logo" style="height: 30px; margin-bottom: 30px;" id="footer-logo">
+                            <p style="color: var(--sub-text); max-width: 300px;">
+                                Eksperci w dziedzinie wykonawstwa wnętrz luksusowych. Inżynieria, która buduje wartość.
+                            </p>
+                        </div>
+                        <div>
+                            <h4 style="margin-bottom: 25px; text-transform: uppercase; font-size: 0.7rem; letter-spacing: 0.1em;">Nawigacja</h4>
+                            <ul style="list-style: none; display: flex; flex-direction: column; gap: 10px;">
+                                <li><a href="#/o-nas" style="color: var(--sub-text);">O nas</a></li>
+                                <li><a href="#/kariera" style="color: var(--sub-text);">Kariera</a></li>
+                                <li><a href="#/kontakt" style="color: var(--sub-text);">Kontakt</a></li>
+                                <li><a href="#" style="color: var(--sub-text);">Polityka prywatności</a></li>
+                            </ul>
+                        </div>
+                        <div>
+                            <h4 style="margin-bottom: 25px; text-transform: uppercase; font-size: 0.7rem; letter-spacing: 0.1em;">Social</h4>
+                            <ul style="list-style: none; display: flex; flex-direction: column; gap: 10px;">
+                                <li><a href="#" style="color: var(--sub-text);">Instagram</a></li>
+                                <li><a href="#" style="color: var(--sub-text);">LinkedIn</a></li>
+                            </ul>
                         </div>
                     </div>
-                    <div class="form-group">
-                        <label>RODZAJ PRAC *</label>
-                        <select required>
-                            <option value="">Wybierz...</option>
-                            <option>Wykończenie deweloperskie</option>
-                            <option>Remont generalny</option>
-                            <option>Tylko łazienka</option>
-                            <option>Inne</option>
-                        </select>
-                    </div>
-                    <div class="form-group">
-                        <label>WIADOMOŚĆ</label>
-                        <textarea rows="4" placeholder="Opisz swoje potrzeby..."></textarea>
-                    </div>
-                    <div class="form-footer">
-                        <p class="form-consent">Wysyłając formularz wyrażasz zgodę na kontakt telefoniczny w celu przygotowania oferty.</p>
-                        <button type="submit" class="btn-primary">Wyślij zapytanie — wyceniamy w 48h</button>
-                    </div>
-                </form>
-            </div>
-            <div class="contact-info">
-                <div class="contact-card">
-                    <div class="contact-card-icon">
-                        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M22 16.92v3a2 2 0 01-2.18 2 19.79 19.79 0 01-8.63-3.07A19.5 19.5 0 013.07 9.81a19.79 19.79 0 01-3.07-8.67A2 2 0 012 0h3a2 2 0 012 1.72c.127.96.361 1.903.7 2.81a2 2 0 01-.45 2.11L6.91 7.91a16 16 0 006.18 6.18l1.27-1.27a2 2 0 012.11-.45c.907.339 1.85.573 2.81.7A2 2 0 0122 16.92z"/></svg>
-                    </div>
-                    <div class="contact-card-body">
-                        <span class="contact-card-label">TELEFON</span>
-                        <a href="tel:+48500600700" class="contact-card-value">+48 500 600 700</a>
+                    <div class="container" style="margin-top: 80px; padding-top: 40px; border-top: 1px solid var(--surface); display: flex; justify-content: space-between; font-size: 0.8rem; color: var(--sub-text);">
+                        <p>&copy; <span id="year"></span> Veles Interiors. Wszystkie prawa zastrzeżone.</p>
+                        <p>Realizacja: Excellence</p>
                     </div>
                 </div>
-                <div class="contact-card">
-                    <div class="contact-card-icon">
-                        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"/><polyline points="22,6 12,13 2,6"/></svg>
-                    </div>
-                    <div class="contact-card-body">
-                        <span class="contact-card-label">EMAIL</span>
-                        <a href="mailto:biuro@velesinteriors.pl" class="contact-card-value">biuro@velesinteriors.pl</a>
-                    </div>
-                </div>
-            </div>
-        </div>
-    </div>
-</section>
+            `;
+            document.getElementById('year').textContent = new Date().getFullYear();
+        };
 
-<footer class="footer">
-    <div class="container">
-        <div class="footer-grid">
-            <div class="footer-brand">
-                <a href="index.html" class="nav-logo">
-                    <img src="veles-interiors-full.png" alt="Veles Interiors Logo">
-                    <div class="logo-text">
-                        <span class="logo-name">VELES</span>
-                        <span class="logo-sub">— INTERIORS —</span>
-                    </div>
-                </a>
-                <p>Twoja zaufana ekipa do wykończeń i remontów. Profesjonalizm, terminowość i czystość na każdym etapie prac.</p>
-                <div class="footer-social">
-                    <a href="#" aria-label="Facebook"><svg width="20" height="20" viewBox="0 0 24 24" fill="currentColor"><path d="M18 2h-3a5 5 0 00-5 5v3H7v4h3v8h4v-8h3l1-4h-4V7a1 1 0 011-1h3z"/></svg></a>
-                    <a href="#" aria-label="Instagram"><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="2" y="2" width="20" height="20" rx="5" ry="5"/><path d="M16 11.37A4 4 0 1 1 12.63 8 4 4 0 0 1 16 11.37z"/><line x1="17.5" y1="6.5" x2="17.51" y2="6.5"/></svg></a>
-                </div>
-            </div>
-            <div class="footer-nav">
-                <h4>NAWIGACJA</h4>
-                <ul>
-                    <li><a href="#uslugi">Usługi</a></li>
-                    <li><a href="#o-nas">O nas</a></li>
-                    <li><a href="#realizacje">Realizacje</a></li>
-                    <li><a href="#kontakt">Kontakt</a></li>
-                </ul>
-            </div>
-            <div class="footer-data">
-                <h4>DANE FIRMY</h4>
-                <address style="font-style: normal; opacity: 0.7;">
-                    Veles Interiors Sp. z o.o.<br>
-                    ul. Przykładowa 123<br>
-                    00-001 Warszawa<br><br>
-                    NIP: 1234567890
-                </address>
-            </div>
-        </div>
-        <div class="footer-bottom">
-            <span>© 2025 Veles Interiors. Wszystkie prawa zastrzeżone.</span>
-            <span>Premium Interior Renovation</span>
-        </div>
-    </div>
-</footer>
+        // Scroll Reveal Observer
+        const initScrollReveal = () => {
+            const observerOptions = {
+                threshold: 0.1,
+                rootMargin: "0px 0px -50px 0px"
+            };
 
-<script>
-    const themeToggle = document.getElementById('themeToggle');
-    const sunIcon = document.getElementById('sunIcon');
-    const moonIcon = document.getElementById('moonIcon');
-    const html = document.documentElement;
+            const observer = new IntersectionObserver((entries) => {
+                entries.forEach(entry => {
+                    if (entry.isIntersecting) {
+                        entry.target.classList.add('visible');
+                    }
+                });
+            }, observerOptions);
 
-    function setTheme(theme) {
-        html.setAttribute('data-theme', theme);
-        localStorage.setItem('theme', theme);
-        if (theme === 'dark') {
-            sunIcon.style.display = 'block';
-            moonIcon.style.display = 'none';
-        } else {
-            sunIcon.style.display = 'none';
-            moonIcon.style.display = 'block';
-        }
-    }
+            document.querySelectorAll('.reveal').forEach(el => observer.observe(el));
+        };
 
-    const savedTheme = localStorage.getItem('theme');
-    const systemTheme = window.matchMedia('(prefers-color-scheme: dark)').matches ? 'dark' : 'light';
-    setTheme(savedTheme || systemTheme);
+        // --- INIT ---
+        window.addEventListener('hashchange', handleRoute);
+        window.addEventListener('load', () => {
+            initTheme();
+            handleRoute();
+            initMenu();
+            initCursor();
+            initFooter();
+        });
 
-    themeToggle.addEventListener('click', () => {
-        const currentTheme = html.getAttribute('data-theme');
-        setTheme(currentTheme === 'dark' ? 'light' : 'dark');
-    });
-
-    window.matchMedia('(prefers-color-scheme: dark)').addEventListener('change', e => {
-        if (!localStorage.getItem('theme')) {
-            setTheme(e.matches ? 'dark' : 'light');
-        }
-    });
-</script>
-
+    </script>
 </body>
 </html>
