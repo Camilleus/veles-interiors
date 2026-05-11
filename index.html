@@ -1,0 +1,1139 @@
+<!DOCTYPE html>
+<html lang="pl">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Veles Interiors | Wykończenia Premium - Niemiecki Standard</title>
+    <meta name="description" content="Veles Interiors - profesjonalne wykończenia wnętrz dla inwestorów. Niemiecki standard jakości, polska cena, międzynarodowa komunikacja.">
+
+    <!-- Google Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;700;900&family=JetBrains+Mono:wght@500&display=swap" rel="stylesheet">
+
+    <style>
+        :root {
+            /* Colors - Dark Mode (Default) */
+            --bg-color: #1A1A1A;
+            --text-primary: #FFFFFF;
+            --text-secondary: #B0B0B0;
+            --accent-red: #FF3131;
+            --accent-hover: #E02020;
+            --card-bg: #2D2D2D;
+            --border-color: rgba(255, 49, 49, 0.1);
+            --header-bg: rgba(26, 26, 26, 0.95);
+            --nav-link: #FFFFFF;
+
+            /* Spacing */
+            --container-width: 1200px;
+            --section-padding: 100px 20px;
+
+            /* Transitions */
+            --transition-speed: 0.3s;
+        }
+
+        [data-theme="light"] {
+            --bg-color: #FFFFFF;
+            --text-primary: #1A1A1A;
+            --text-secondary: #666666;
+            --card-bg: #F5F5F5;
+            --header-bg: rgba(255, 255, 255, 0.95);
+            --nav-link: #1A1A1A;
+            --border-color: rgba(255, 49, 49, 0.05);
+        }
+
+        * {
+            box-sizing: border-box;
+            margin: 0;
+            padding: 0;
+        }
+
+        html {
+            scroll-behavior: smooth;
+        }
+
+        body {
+            font-family: 'Inter', sans-serif;
+            background-color: var(--bg-color);
+            color: var(--text-primary);
+            line-height: 1.6;
+            transition: background-color var(--transition-speed), color var(--transition-speed);
+            overflow-x: hidden;
+        }
+
+        /* Subtle concrete texture overlay */
+        body::before {
+            content: "";
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background-image: url('https://www.transparenttextures.com/patterns/concrete-wall.png');
+            opacity: 0.03;
+            pointer-events: none;
+            z-index: 9999;
+        }
+
+        h1, h2, h3, h4 {
+            font-weight: 900;
+            text-transform: uppercase;
+            letter-spacing: -0.02em;
+        }
+
+        a {
+            text-decoration: none;
+            color: inherit;
+            transition: var(--transition-speed);
+        }
+
+        ul {
+            list-style: none;
+        }
+
+        .container {
+            max-width: var(--container-width);
+            margin: 0 auto;
+            padding: 0 20px;
+        }
+
+        /* Header & Navigation */
+        header {
+            position: fixed;
+            top: 0;
+            width: 100%;
+            background: var(--header-bg);
+            backdrop-filter: blur(10px);
+            z-index: 1000;
+            border-bottom: 1px solid var(--border-color);
+        }
+
+        nav {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            height: 80px;
+            max-width: var(--container-width);
+            margin: 0 auto;
+            padding: 0 20px;
+        }
+
+        .logo img {
+            height: 40px;
+            transition: transform var(--transition-speed);
+        }
+
+        .nav-links {
+            display: flex;
+            gap: 30px;
+            align-items: center;
+        }
+
+        .nav-link {
+            font-weight: 700;
+            font-size: 0.9rem;
+            text-transform: uppercase;
+            color: var(--nav-link);
+        }
+
+        .nav-link:hover, .nav-link.active {
+            color: var(--accent-red);
+        }
+
+        .nav-link.active {
+            border-bottom: 2px solid var(--accent-red);
+        }
+
+        .theme-toggle {
+            background: none;
+            border: none;
+            cursor: pointer;
+            color: var(--text-primary);
+            font-size: 1.2rem;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+
+        /* Buttons */
+        .cta-primary {
+            display: inline-block;
+            background: var(--accent-red);
+            color: #FFFFFF;
+            padding: 16px 32px;
+            font-weight: 900;
+            text-transform: uppercase;
+            border: none;
+            cursor: pointer;
+            transition: all var(--transition-speed) ease;
+        }
+
+        .cta-primary:hover {
+            background: var(--accent-hover);
+            box-shadow: 0 8px 24px rgba(255, 49, 49, 0.3);
+            transform: translateY(-2px);
+        }
+
+        .cta-secondary {
+            display: inline-block;
+            background: transparent;
+            color: var(--accent-red);
+            padding: 14px 30px;
+            font-weight: 900;
+            text-transform: uppercase;
+            border: 2px solid var(--accent-red);
+            cursor: pointer;
+            transition: all var(--transition-speed) ease;
+        }
+
+        .cta-secondary:hover {
+            background: rgba(255, 49, 49, 0.1);
+        }
+
+        /* Sections */
+        section {
+            padding: var(--section-padding);
+        }
+
+        .section-title {
+            font-size: 2.5rem;
+            margin-bottom: 50px;
+            text-align: center;
+        }
+
+        .section-title::after {
+            content: "";
+            display: block;
+            width: 60px;
+            height: 4px;
+            background: var(--accent-red);
+            margin: 20px auto 0;
+        }
+
+        /* Hero Section */
+        #hero {
+            height: 100vh;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            text-align: center;
+            background: radial-gradient(circle at center, rgba(255, 49, 49, 0.05) 0%, transparent 70%);
+            padding-top: 80px;
+        }
+
+        .hero-content h1 {
+            font-size: 4rem;
+            line-height: 1.1;
+            margin-bottom: 24px;
+        }
+
+        .hero-content p {
+            font-size: 1.25rem;
+            color: var(--text-secondary);
+            margin-bottom: 40px;
+            max-width: 800px;
+            margin-left: auto;
+            margin-right: auto;
+        }
+
+        .hero-btns {
+            display: flex;
+            gap: 20px;
+            justify-content: center;
+            margin-bottom: 60px;
+        }
+
+        .trust-bar {
+            display: flex;
+            gap: 40px;
+            justify-content: center;
+            flex-wrap: wrap;
+            font-family: 'JetBrains Mono', monospace;
+            font-size: 0.9rem;
+            color: var(--text-secondary);
+        }
+
+        .trust-bar span {
+            border-bottom: 1px solid rgba(255, 49, 49, 0.3);
+            padding-bottom: 4px;
+        }
+
+        /* Pillars Section */
+        .grid-pillars {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 30px;
+        }
+
+        .pillar-card {
+            background: var(--card-bg);
+            padding: 40px;
+            border-left: 4px solid var(--accent-red);
+            transition: transform var(--transition-speed);
+        }
+
+        .pillar-card:hover {
+            transform: translateY(-10px);
+        }
+
+        .pillar-card .icon {
+            font-size: 2rem;
+            margin-bottom: 20px;
+        }
+
+        .pillar-card h3 {
+            margin-bottom: 15px;
+        }
+
+        .pillar-card p {
+            color: var(--text-secondary);
+        }
+
+        /* Services Section */
+        .grid-services {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 20px;
+        }
+
+        .service-card {
+            background: var(--card-bg);
+            padding: 30px;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .service-card h3 {
+            margin-bottom: 15px;
+            font-size: 1.2rem;
+        }
+
+        .service-card p {
+            color: var(--text-secondary);
+            font-size: 0.95rem;
+            margin-bottom: 20px;
+        }
+
+        .service-scope {
+            font-family: 'JetBrains Mono', monospace;
+            font-size: 0.8rem;
+            color: var(--accent-red);
+            background: rgba(255, 49, 49, 0.1);
+            padding: 4px 8px;
+        }
+
+        /* Realizations Section */
+        .case-studies-list {
+            display: flex;
+            flex-direction: column;
+            gap: 60px;
+        }
+
+        .case-study {
+            display: grid;
+            grid-template-columns: 1.2fr 1fr;
+            background: var(--card-bg);
+            align-items: stretch;
+            overflow: hidden;
+        }
+
+        .case-study:nth-child(even) {
+            direction: rtl;
+        }
+
+        .case-study:nth-child(even) .case-content {
+            direction: ltr;
+        }
+
+        .case-image {
+            overflow: hidden;
+            height: 100%;
+            min-height: 400px;
+        }
+
+        .case-image img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            display: block;
+        }
+
+        .case-content {
+            padding: 50px;
+        }
+
+        .case-content h3 {
+            margin-bottom: 20px;
+            font-size: 1.8rem;
+        }
+
+        .case-stats {
+            margin-bottom: 30px;
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 15px;
+        }
+
+        .case-stats p {
+            font-size: 0.9rem;
+        }
+
+        .accent-mono {
+            color: var(--accent-red);
+            font-family: 'JetBrains Mono', monospace;
+            font-weight: 700;
+            display: block;
+            font-size: 0.75rem;
+            text-transform: uppercase;
+        }
+
+        .case-description {
+            font-size: 0.95rem;
+        }
+
+        .case-description p {
+            margin-bottom: 15px;
+        }
+
+        /* Before/After Slider */
+        .before-after-container {
+            position: relative;
+            width: 100%;
+            height: 100%;
+            min-height: 400px;
+            overflow: hidden;
+        }
+
+        .before-after-container .img {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+        }
+
+        .foreground-img {
+            width: 50%;
+            overflow: hidden;
+            z-index: 2;
+            border-right: 2px solid #FFFFFF;
+        }
+
+        .before-after-container .slider {
+            position: absolute;
+            -webkit-appearance: none;
+            appearance: none;
+            width: 100%;
+            height: 100%;
+            background: transparent;
+            outline: none;
+            margin: 0;
+            z-index: 10;
+            cursor: ew-resize;
+        }
+
+        .before-after-container .slider::-webkit-slider-thumb {
+            -webkit-appearance: none;
+            appearance: none;
+            width: 40px;
+            height: 40px;
+            background: var(--accent-red);
+            border: 4px solid #FFFFFF;
+            border-radius: 50%;
+            cursor: ew-resize;
+            box-shadow: 0 0 10px rgba(0,0,0,0.5);
+        }
+
+        .slider-label {
+            position: absolute;
+            bottom: 20px;
+            padding: 5px 10px;
+            background: rgba(0,0,0,0.7);
+            color: white;
+            font-family: 'JetBrains Mono', monospace;
+            font-size: 0.7rem;
+            z-index: 3;
+            text-transform: uppercase;
+        }
+
+        .label-before { left: 20px; }
+        .label-after { right: 20px; }
+
+        /* Process Section */
+        .timeline {
+            display: flex;
+            justify-content: space-between;
+            gap: 20px;
+            position: relative;
+        }
+
+        .timeline::before {
+            content: "";
+            position: absolute;
+            top: 30px;
+            left: 0;
+            width: 100%;
+            height: 2px;
+            background: var(--border-color);
+            z-index: 1;
+        }
+
+        .step {
+            position: relative;
+            z-index: 2;
+            flex: 1;
+            text-align: center;
+        }
+
+        .step-num {
+            display: inline-block;
+            width: 60px;
+            height: 60px;
+            background: var(--bg-color);
+            border: 2px solid var(--accent-red);
+            color: var(--accent-red);
+            line-height: 56px;
+            font-weight: 900;
+            font-family: 'JetBrains Mono', monospace;
+            margin-bottom: 20px;
+            transition: all var(--transition-speed);
+        }
+
+        .step:hover .step-num {
+            background: var(--accent-red);
+            color: #FFFFFF;
+        }
+
+        .step h4 {
+            margin-bottom: 10px;
+            font-size: 1rem;
+        }
+
+        .step p {
+            font-size: 0.85rem;
+            color: var(--text-secondary);
+        }
+
+        /* FAQ Section */
+        .faq-grid {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 40px;
+        }
+
+        .faq-item h4 {
+            color: var(--accent-red);
+            margin-bottom: 10px;
+            font-family: 'JetBrains Mono', monospace;
+        }
+
+        .faq-item p {
+            color: var(--text-secondary);
+        }
+
+        /* Contact Section */
+        .contact-container {
+            max-width: 800px;
+            margin: 0 auto;
+            background: var(--card-bg);
+            padding: 50px;
+        }
+
+        #contact-form {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 20px;
+        }
+
+        .form-group {
+            display: flex;
+            flex-direction: column;
+            gap: 8px;
+        }
+
+        .form-group.full-width {
+            grid-column: span 2;
+        }
+
+        label {
+            font-weight: 700;
+            text-transform: uppercase;
+            font-size: 0.8rem;
+            letter-spacing: 0.05em;
+        }
+
+        input, select, textarea {
+            background: var(--bg-color);
+            border: 1px solid var(--border-color);
+            color: var(--text-primary);
+            padding: 12px;
+            font-family: 'Inter', sans-serif;
+            transition: border-color var(--transition-speed);
+        }
+
+        input:focus, select:focus, textarea:focus {
+            outline: none;
+            border-color: var(--accent-red);
+        }
+
+        .form-checkbox {
+            grid-column: span 2;
+            display: flex;
+            align-items: center;
+            gap: 10px;
+            font-size: 0.85rem;
+        }
+
+        #contact-form button {
+            grid-column: span 2;
+            margin-top: 10px;
+        }
+
+        /* Footer */
+        footer {
+            background: #000000;
+            color: #FFFFFF;
+            padding: 80px 20px 40px;
+            border-top: 1px solid var(--border-color);
+        }
+
+        .footer-content {
+            max-width: var(--container-width);
+            margin: 0 auto;
+            display: flex;
+            justify-content: space-between;
+            margin-bottom: 60px;
+        }
+
+        .footer-logo {
+            height: 40px;
+            margin-bottom: 20px;
+        }
+
+        .footer-brand p {
+            color: #B0B0B0;
+            font-size: 0.9rem;
+        }
+
+        .footer-links p {
+            font-weight: 900;
+            text-transform: uppercase;
+            margin-bottom: 20px;
+            font-size: 0.8rem;
+        }
+
+        .footer-links ul {
+            display: flex;
+            flex-direction: column;
+            gap: 10px;
+        }
+
+        .footer-links a {
+            color: #B0B0B0;
+            font-size: 0.9rem;
+        }
+
+        .footer-links a:hover {
+            color: var(--accent-red);
+        }
+
+        .footer-bottom {
+            max-width: var(--container-width);
+            margin: 0 auto;
+            padding-top: 40px;
+            border-top: 1px solid rgba(255, 255, 255, 0.1);
+            text-align: center;
+            font-size: 0.8rem;
+            color: #666666;
+        }
+
+        /* Scroll Reveals */
+        .reveal {
+            opacity: 0;
+            transform: translateY(30px);
+            transition: all 0.8s ease-out;
+        }
+
+        .reveal.active {
+            opacity: 1;
+            transform: translateY(0);
+        }
+
+        /* Mobile Adjustments */
+        @media (max-width: 1024px) {
+            .hero-content h1 { font-size: 3rem; }
+            .case-study { grid-template-columns: 1fr; }
+            .case-study:nth-child(even) { direction: ltr; }
+            .timeline { flex-direction: column; }
+            .timeline::before { display: none; }
+            .step { text-align: left; display: flex; gap: 20px; align-items: flex-start; }
+            .step-num { flex-shrink: 0; }
+        }
+
+        @media (max-width: 768px) {
+            .nav-links { display: none; }
+            .hero-content h1 { font-size: 2.5rem; }
+            .hero-btns { flex-direction: column; }
+            .faq-grid { grid-template-columns: 1fr; }
+            #contact-form { grid-template-columns: 1fr; }
+            .form-group.full-width { grid-column: span 1; }
+            .form-checkbox { grid-column: span 1; }
+            #contact-form button { grid-column: span 1; }
+            .footer-content { flex-direction: column; gap: 40px; }
+        }
+    </style>
+</head>
+<body data-theme="dark">
+    <!-- NAVIGATION -->
+    <header>
+        <nav>
+            <div class="logo">
+                <a href="#hero">
+                    <img src="assets/veles-interiors-full-reversed-bgless.png" alt="Veles Interiors Logo" id="logo-img">
+                </a>
+            </div>
+            <ul class="nav-links">
+                <li><a href="#hero" class="nav-link active">Start</a></li>
+                <li><a href="#dlaczego" class="nav-link">Dlaczego My</a></li>
+                <li><a href="#uslugi" class="nav-link">Usługi</a></li>
+                <li><a href="#realizacje" class="nav-link">Realizacje</a></li>
+                <li><a href="#proces" class="nav-link">Proces</a></li>
+                <li><a href="#faq" class="nav-link">FAQ</a></li>
+            </ul>
+            <div style="display: flex; gap: 20px; align-items: center;">
+                <a href="#kontakt" class="cta-nav" style="font-weight: 700; color: var(--accent-red); font-size: 0.9rem; text-transform: uppercase;">Kontakt</a>
+                <button id="theme-toggle" class="theme-toggle" aria-label="Przełącz tryb">
+                    <span id="theme-icon">🌙</span>
+                </button>
+            </div>
+        </nav>
+    </header>
+
+    <main>
+        <!-- SECTION 1: HERO -->
+        <section id="hero">
+            <div class="container hero-content">
+                <h1>Wykończenia Premium.<br>Niemiecki Standard.<br>Polska Realizacja.</h1>
+                <p>Dla inwestorów i projektantów którzy nie akceptują kompromisów. Realizujemy projekty kompleksowo, dbając o każdy detal techniczny. Komunikacja: PL · EN · DE · FR · RU</p>
+                <div class="hero-btns">
+                    <a href="#kontakt" class="cta-primary">Porozmawiajmy o Twoim projekcie</a>
+                    <a href="#realizacje" class="cta-secondary">Zobacz realizacje</a>
+                </div>
+                <div class="trust-bar">
+                    <span>✓ 3 lata doświadczenia w Niemczech</span>
+                    <span>✓ 100% projektów na czas</span>
+                    <span>✓ Gwarancja jakości 24 m-ce</span>
+                    <span>✓ Standardy DIN 18202</span>
+                </div>
+            </div>
+        </section>
+
+        <!-- SECTION 2: DLACZEGO VELES INTERIORS -->
+        <section id="dlaczego">
+            <div class="container">
+                <h2 class="section-title">Dlaczego Veles Interiors?</h2>
+                <div class="grid-pillars">
+                    <div class="pillar-card">
+                        <div class="icon">🇩🇪</div>
+                        <h3>Międzynarodowy Standard</h3>
+                        <p>Doświadczenie zdobyte na dużych projektach infrastrukturalnych w Niemczech przekładamy na precyzję w wykończeniach wnętrz. Pracujemy zgodnie z surowymi normami DIN.</p>
+                    </div>
+                    <div class="pillar-card">
+                        <div class="icon">💬</div>
+                        <h3>Transparentna Komunikacja</h3>
+                        <p>Dla nas odległość nie jest barierą. Otrzymujesz raporty postępu co 48h wraz z dokumentacją fotograficzną. Rozmawiamy w Twoim języku.</p>
+                    </div>
+                    <div class="pillar-card">
+                        <div class="icon">🛡️</div>
+                        <h3>Zero Niespodzianek</h3>
+                        <p>Precyzyjny kosztorys przed startem prac to u nas standard. Każda zmiana zakresu jest dokumentowana, a Ty masz pełną kontrolę nad budżetem.</p>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- SECTION 3: ZAKRES USŁUG -->
+        <section id="uslugi">
+            <div class="container">
+                <h2 class="section-title">Zakres Usług</h2>
+                <div class="grid-services">
+                    <div class="service-card">
+                        <h3>Tynki i Gładzie</h3>
+                        <p>Maszynowe i ręczne przygotowanie powierzchni pod najbardziej wymagające wykończenia: farby satynowe, tapety premium czy tynki dekoracyjne.</p>
+                        <span class="service-scope">Mieszkanie 80m²: 12-16 dni</span>
+                    </div>
+                    <div class="service-card">
+                        <h3>Malowanie Premium</h3>
+                        <p>Praca z farbami najwyższej klasy (ekologiczne, ceramiczne). Perfekcyjne odcięcia i struktura powierzchni godna najlepszych showroomów.</p>
+                        <span class="service-scope">Norma DIN 18202</span>
+                    </div>
+                    <div class="service-card">
+                        <h3>Instalacje</h3>
+                        <p>Koordynacja prac elektrycznych i hydraulicznych z certyfikowanymi ekipami. Pełna odpowiedzialność po naszej stronie – jedna umowa, zero problemów.</p>
+                        <span class="service-scope">Pełna koordynacja</span>
+                    </div>
+                    <div class="service-card">
+                        <h3>Project Management</h3>
+                        <p>Dla klientów zagranicznych oferujemy pełny nadzór nad inwestycją. Remote supervision, cotygodniowe podsumowania wideo i profesjonalne odbiory.</p>
+                        <span class="service-scope">Dla rynków DACH/UK</span>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- SECTION 4: REALIZACJE -->
+        <section id="realizacje">
+            <div class="container">
+                <h2 class="section-title">Case Studies</h2>
+                <div class="case-studies-list">
+                    <!-- Case Study 1: Slider Before/After -->
+                    <div class="case-study reveal">
+                        <div class="case-image">
+                            <div class="before-after-container" id="ba-slider-1">
+                                <div class="img background-img">
+                                    <img data-src="https://images.unsplash.com/photo-1584622650111-993a426fbf0a?auto=format&fit=crop&q=80&w=1200" alt="Before renovation" loading="lazy">
+                                    <span class="slider-label label-before">Przed</span>
+                                </div>
+                                <div class="img foreground-img">
+                                    <img data-src="https://images.unsplash.com/photo-1600607687920-4e2a09cf159d?auto=format&fit=crop&q=80&w=1200" alt="After renovation" loading="lazy">
+                                    <span class="slider-label label-after">Po</span>
+                                </div>
+                                <input type="range" min="1" max="100" value="50" class="slider" name="slider" id="slider-1">
+                            </div>
+                        </div>
+                        <div class="case-content">
+                            <span class="accent-mono">Apartament Premium / Warszawa</span>
+                            <h3>Śródmieście: Precyzja w 14 dni</h3>
+                            <div class="case-stats">
+                                <div>
+                                    <span class="accent-mono">Metraż</span>
+                                    <p>95m²</p>
+                                </div>
+                                <div>
+                                    <span class="accent-mono">Czas</span>
+                                    <p>14 Dni Roboczych</p>
+                                </div>
+                            </div>
+                            <div class="case-description">
+                                <p><strong>Wyzwanie:</strong> Inwestor z Londynu oczekiwał jakości premium przy zerowej dostępności na miejscu.</p>
+                                <p><strong>Rozwiązanie:</strong> Remote project management z daily video updates. Wykorzystanie tynków maszynowych wg normy DIN 18202.</p>
+                                <p><strong>Rezultat:</strong> Przekazanie kluczy bez uwag. Rekomendacja dla kolejnych 2 projektów.</p>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Case Study 2 -->
+                    <div class="case-study reveal">
+                        <div class="case-image">
+                            <img data-src="https://images.unsplash.com/photo-1497366216548-37526070297c?auto=format&fit=crop&q=80&w=1200" alt="Biuro Berlin" loading="lazy">
+                        </div>
+                        <div class="case-content">
+                            <span class="accent-mono">Przestrzeń Komercyjna / Berlin</span>
+                            <h3>Showroom Motoryzacyjny</h3>
+                            <div class="case-stats">
+                                <div>
+                                    <span class="accent-mono">Metraż</span>
+                                    <p>420m²</p>
+                                </div>
+                                <div>
+                                    <span class="accent-mono">Standard</span>
+                                    <p>DIN 18202 (Q4)</p>
+                                </div>
+                            </div>
+                            <div class="case-description">
+                                <p><strong>Wyzwanie:</strong> Ściany o ekstremalnej gładkości pod oświetlenie kierunkowe o dużym natężeniu.</p>
+                                <p><strong>Rozwiązanie:</strong> Trójstopniowe szlifowanie mechaniczne z odsysem pyłu i malowanie hydrodynamiczne.</p>
+                                <p><strong>Rezultat:</strong> Powierzchnia "lustrzana" bez widocznych łączeń i smug.</p>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Case Study 3 -->
+                    <div class="case-study reveal">
+                        <div class="case-image">
+                            <img data-src="https://images.unsplash.com/photo-1613490493576-7fde63acd811?auto=format&fit=crop&q=80&w=1200" alt="Rezydencja Konstancin" loading="lazy">
+                        </div>
+                        <div class="case-content">
+                            <span class="accent-mono">Rezydencja / Konstancin</span>
+                            <h3>Holistyczne Wykończenie</h3>
+                            <div class="case-stats">
+                                <div>
+                                    <span class="accent-mono">Wartość</span>
+                                    <p>>650k PLN</p>
+                                </div>
+                                <div>
+                                    <span class="accent-mono">Gwarancja</span>
+                                    <p>36 Miesięcy</p>
+                                </div>
+                            </div>
+                            <div class="case-description">
+                                <p><strong>Wyzwanie:</strong> Koordynacja 4 podwykonawców (HVAC, Smart Home, Stolarka) pod jednym nadzorem.</p>
+                                <p><strong>Rozwiązanie:</strong> Pełny Project Management w systemie Veles. Tygodniowe raporty budżetowe.</p>
+                                <p><strong>Rezultat:</strong> Projekt oddany 3 dni przed terminem, zachowując 100% założeń budżetowych.</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- SECTION 5: PROCES WSPÓŁPRACY -->
+        <section id="proces">
+            <div class="container">
+                <h2 class="section-title">Proces Współpracy</h2>
+                <div class="timeline">
+                    <div class="step">
+                        <span class="step-num">01</span>
+                        <div>
+                            <h4>Kontakt i Brief</h4>
+                            <p>Rozmowa telefoniczna lub e-mail. Ustalamy ogólny zakres prac, oczekiwany termin i orientacyjny budżet.</p>
+                        </div>
+                    </div>
+                    <div class="step">
+                        <span class="step-num">02</span>
+                        <div>
+                            <h4>Wizja Lokalna</h4>
+                            <p>Spotykamy się na miejscu inwestycji. Dokonujemy precyzyjnych pomiarów i oceniamy stan techniczny podłoża.</p>
+                        </div>
+                    </div>
+                    <div class="step">
+                        <span class="step-num">03</span>
+                        <div>
+                            <h4>Kosztorys</h4>
+                            <p>Przygotowujemy szczegółowe zestawienie: materiały, robocizna oraz precyzyjny harmonogram prac.</p>
+                        </div>
+                    </div>
+                    <div class="step">
+                        <span class="step-num">04</span>
+                        <div>
+                            <h4>Umowa</h4>
+                            <p>Podpisujemy transparentną umowę określającą zakres, standardy jakości, terminy oraz gwarancję.</p>
+                        </div>
+                    </div>
+                    <div class="step">
+                        <span class="step-num">05</span>
+                        <div>
+                            <h4>Realizacja</h4>
+                            <p>Prowadzimy prace, przesyłamy raporty, a na koniec dokonujemy odbioru z oficjalną listą kontrolną.</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- SECTION 6: FAQ -->
+        <section id="faq">
+            <div class="container">
+                <h2 class="section-title">FAQ</h2>
+                <div class="faq-grid">
+                    <div class="faq-item">
+                        <h4>Czy pracujecie z klientami spoza Polski?</h4>
+                        <p>Tak – ponad połowa naszych realizacji to projekty dla inwestorów z Niemiec, UK i Skandynawii. Zapewniamy pełną obsługę w językach obcych.</p>
+                    </div>
+                    <div class="faq-item">
+                        <h4>Jaka jest minimalna wartość projektu?</h4>
+                        <p>Specjalizujemy się w kompleksowych wykończeniach. Standardowo podejmujemy się zleceń o wartości od 30,000 PLN.</p>
+                    </div>
+                    <div class="faq-item">
+                        <h4>Jak wygląda gwarancja?</h4>
+                        <p>Standardowo udzielamy 24-miesięcznej gwarancji na wykonane prace. W przypadku zgłoszeń, reagujemy w ciągu 48 godzin.</p>
+                    </div>
+                    <div class="faq-item">
+                        <h4>Co jeśli projekt się opóźni?</h4>
+                        <p>Nasza umowa zawiera jasne zapisy o karach za opóźnienia. Szanujemy Twój czas – do tej pory 100% naszych prac oddaliśmy w terminie.</p>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- SECTION 7: KONTAKT -->
+        <section id="kontakt">
+            <div class="container">
+                <h2 class="section-title">Porozmawiajmy o Twoim projekcie</h2>
+                <div class="contact-container">
+                    <form id="contact-form">
+                        <div class="form-group">
+                            <label for="name">Imię i nazwisko / Firma</label>
+                            <input type="text" id="name" name="name" required>
+                        </div>
+                        <div class="form-group">
+                            <label for="email">Email</label>
+                            <input type="email" id="email" name="email" required>
+                        </div>
+                        <div class="form-group">
+                            <label for="phone">Telefon</label>
+                            <input type="tel" id="phone" name="phone" placeholder="+48 ...">
+                        </div>
+                        <div class="form-group">
+                            <label for="location">Lokalizacja projektu</label>
+                            <input type="text" id="location" name="location" placeholder="np. Warszawa">
+                        </div>
+                        <div class="form-group full-width">
+                            <label for="budget">Orientacyjny budżet</label>
+                            <select id="budget" name="budget">
+                                <option value="<30k">&lt; 30,000 PLN</option>
+                                <option value="30-50k">30,000 - 50,000 PLN</option>
+                                <option value="50-100k">50,000 - 100,000 PLN</option>
+                                <option value="100k+">100,000 PLN +</option>
+                            </select>
+                        </div>
+                        <div class="form-group full-width">
+                            <label for="message">Opis projektu</label>
+                            <textarea id="message" name="message" rows="5" placeholder="Krótko opisz zakres prac i Twoje oczekiwania..."></textarea>
+                        </div>
+                        <div class="form-checkbox">
+                            <input type="checkbox" id="privacy" name="privacy" required>
+                            <label for="privacy">Akceptuję politykę prywatności i kontakt w celu przygotowania oferty.</label>
+                        </div>
+                        <button type="submit" class="cta-primary">Wyślij zapytanie</button>
+                    </form>
+                    <div id="form-response" style="display: none; margin-top: 20px; text-align: center; font-weight: 700; color: var(--accent-red);">
+                        Dziękujemy! Twoja wiadomość została wysłana. Odpowiemy w ciągu 24h.
+                    </div>
+                </div>
+            </div>
+        </section>
+    </main>
+
+    <!-- FOOTER -->
+    <footer>
+        <div class="footer-content">
+            <div class="footer-brand">
+                <img src="assets/veles-interiors-full-reversed-bgless.png" alt="Veles Interiors Logo" class="footer-logo" id="footer-logo-img">
+                <p>Specjaliści od wykończeń premium.<br>Niemiecki standard, polskie ceny.</p>
+            </div>
+            <div class="footer-links">
+                <p>Grupa Veles</p>
+                <ul>
+                    <li><a href="#">Veles Academy — Szkolenia dla Project Managerów</a></li>
+                    <li><a href="#">Veles Digital — Strony i produkty cyfrowe</a></li>
+                    <li><a href="#">Veles Group — Rozwiązania dla biznesu</a></li>
+                </ul>
+            </div>
+            <div class="footer-links">
+                <p>Nawigacja</p>
+                <ul>
+                    <li><a href="#hero">Start</a></li>
+                    <li><a href="#dlaczego">O nas</a></li>
+                    <li><a href="#uslugi">Usługi</a></li>
+                    <li><a href="#realizacje">Realizacje</a></li>
+                </ul>
+            </div>
+        </div>
+        <div class="footer-bottom">
+            <p>&copy; 2024 Veles Interiors. Część Veles Group. Wszystkie prawa zastrzeżone.</p>
+        </div>
+    </footer>
+
+    <script>
+        // Theme Toggle Logic
+        const themeToggle = document.getElementById('theme-toggle');
+        const body = document.body;
+        const themeIcon = document.getElementById('theme-icon');
+        const logoImg = document.getElementById('logo-img');
+        const footerLogoImg = document.getElementById('footer-logo-img');
+
+        const savedTheme = localStorage.getItem('theme') || 'dark';
+        setTheme(savedTheme);
+
+        themeToggle.addEventListener('click', () => {
+            const currentTheme = body.getAttribute('data-theme');
+            const newTheme = currentTheme === 'dark' ? 'light' : 'dark';
+            setTheme(newTheme);
+        });
+
+        function setTheme(theme) {
+            body.setAttribute('data-theme', theme);
+            localStorage.setItem('theme', theme);
+
+            if (theme === 'dark') {
+                themeIcon.textContent = '☀️';
+                logoImg.src = 'assets/veles-interiors-full-reversed-bgless.png';
+                footerLogoImg.src = 'assets/veles-interiors-full-reversed-bgless.png';
+            } else {
+                themeIcon.textContent = '🌙';
+                logoImg.src = 'assets/veles-interiors-full-bgless.png';
+                footerLogoImg.src = 'assets/veles-interiors-full-bgless.png';
+            }
+        }
+
+        // Navigation Active State on Scroll
+        const sections = document.querySelectorAll('section');
+        const navLinks = document.querySelectorAll('.nav-link');
+
+        window.addEventListener('scroll', () => {
+            let current = '';
+            sections.forEach(section => {
+                const sectionTop = section.offsetTop;
+                const sectionHeight = section.clientHeight;
+                if (pageYOffset >= (sectionTop - 150)) {
+                    current = section.getAttribute('id');
+                }
+            });
+
+            navLinks.forEach(link => {
+                link.classList.remove('active');
+                if (link.getAttribute('href').includes(current)) {
+                    link.classList.add('active');
+                }
+            });
+        });
+
+        // Form Handling
+        const contactForm = document.getElementById('contact-form');
+        const formResponse = document.getElementById('form-response');
+
+        contactForm.addEventListener('submit', (e) => {
+            e.preventDefault();
+            // Simulate form submission
+            contactForm.style.display = 'none';
+            formResponse.style.display = 'block';
+
+            // Log lead data (simulated)
+            const formData = new FormData(contactForm);
+            console.log('New Lead Received:', Object.fromEntries(formData));
+        });
+
+        // Before/After Slider Logic
+        const slider = document.getElementById('slider-1');
+        const foregroundImg = document.querySelector('.foreground-img');
+
+        if (slider) {
+            slider.addEventListener('input', (e) => {
+                const sliderPos = e.target.value;
+                foregroundImg.style.width = `${sliderPos}%`;
+            });
+        }
+
+        // Reveal Animations on Scroll
+        const revealObserver = new IntersectionObserver((entries) => {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) {
+                    entry.target.classList.add('active');
+                    revealObserver.unobserve(entry.target);
+                }
+            });
+        }, { threshold: 0.1 });
+
+        document.querySelectorAll('.reveal').forEach(el => revealObserver.observe(el));
+
+        // Lazy Loading for Images
+        if ('IntersectionObserver' in window) {
+            const imgObserver = new IntersectionObserver((entries) => {
+                entries.forEach(entry => {
+                    if (entry.isIntersecting) {
+                        const img = entry.target;
+                        if (img.dataset.src) {
+                            img.src = img.dataset.src;
+                            img.removeAttribute('data-src');
+                        }
+                        imgObserver.unobserve(img);
+                    }
+                });
+            });
+
+            document.querySelectorAll('img[data-src]').forEach(img => imgObserver.observe(img));
+        }
+    </script>
+</body>
+</html>
