@@ -658,6 +658,7 @@
 
         .footer-links .link-academy { color: #44C060 !important; }
         .footer-links .link-digital { color: #0170F5 !important; }
+        .footer-links .link-interiors { color: #FF3131 !important; }
         .footer-links .link-group {
             color: #000000 !important;
             background: #FFFFFF;
@@ -1035,7 +1036,10 @@
     <footer>
         <div class="footer-content">
             <div class="footer-brand">
-                <img src="assets/veles-interiors-full-reversed-bgless.png" alt="Veles Interiors Logo" class="footer-logo" id="footer-logo-img">
+                <a href="#hero" class="logo-wrapper">
+                    <img src="assets/veles-interiors-logo-alone-bgless.png" alt="Veles Interiors" class="logo-icon" id="logo-img">
+                    <span class="logo-text">VELES <span>INTERIORS</span></span>
+                </a>
                 <p>Specjaliści od wykończeń premium.<br>Niemiecki standard, polskie ceny.</p>
             </div>
             <div class="footer-links">
@@ -1043,7 +1047,7 @@
                 <ul>
                     <li><a href="https://velesacademy.app" class="link-academy">Veles Academy — Szkolenia dla Project Managerów</a></li>
                     <li><a href="https://velesdigital.co" class="link-digital">Veles Digital — Strony i produkty cyfrowe</a></li>
-                    <li><a href="https://grupaveles.com" class="link-group">Veles Group — Rozwiązania dla biznesu</a></li>
+                    <li><a href="https://velesinteriors.pl" class="link-interiors">Veles Interiors — Wykończenia premium</a></li>
                 </ul>
             </div>
             <div class="footer-links">
@@ -1058,6 +1062,7 @@
         </div>
         <div class="footer-bottom">
             <p>&copy; 2024 Veles Interiors. Część Veles Group. Wszystkie prawa zastrzeżone.</p>
+            <p>&copy; made by <a href="https://velesdigital.co" class="link-digital" style="color: #0170F5 !important">Veles Digital</a></p>
         </div>
     </footer>
 
@@ -1084,10 +1089,10 @@
 
             if (theme === 'dark') {
                 themeIcon.textContent = '☀️';
-                footerLogoImg.src = 'assets/veles-interiors-full-reversed-bgless.png';
+                footerLogoImg.src = 'assets/veles-interiors-logo-alone-bgless.png';
             } else {
                 themeIcon.textContent = '🌙';
-                footerLogoImg.src = 'assets/veles-interiors-full-bgless.png';
+                footerLogoImg.src = 'assets/veles-interiors-logo-alone-bgless.png';
             }
         }
 
