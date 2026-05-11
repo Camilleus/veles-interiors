@@ -118,9 +118,24 @@
             padding: 0 20px;
         }
 
-        .logo img {
-            height: 40px;
+        .logo-wrapper {
+            display: flex;
+            align-items: center;
+            gap: 12px;
+            font-weight: 900;
+            font-size: 1.4rem;
+            letter-spacing: 0.05em;
+            text-transform: uppercase;
+            color: var(--text-primary);
+        }
+
+        .logo-icon {
+            height: 45px;
             transition: transform var(--transition-speed);
+        }
+
+        .logo-text span {
+            color: var(--accent-red);
         }
 
         .nav-links {
@@ -217,8 +232,16 @@
             align-items: center;
             justify-content: center;
             text-align: center;
-            background: radial-gradient(circle at center, rgba(255, 49, 49, 0.05) 0%, transparent 70%);
+            background: linear-gradient(rgba(26, 26, 26, 0.85), rgba(26, 26, 26, 0.85)), url('https://images.unsplash.com/photo-1517245386807-bb43f82c33c4?auto=format&fit=crop&q=80&w=2000');
+            background-size: cover;
+            background-position: center;
             padding-top: 80px;
+        }
+
+        [data-theme="light"] #hero {
+            background: linear-gradient(rgba(255, 255, 255, 0.9), rgba(255, 255, 255, 0.9)), url('https://images.unsplash.com/photo-1517245386807-bb43f82c33c4?auto=format&fit=crop&q=80&w=2000');
+            background-size: cover;
+            background-position: center;
         }
 
         .hero-content h1 {
@@ -633,8 +656,18 @@
             font-size: 0.9rem;
         }
 
+        .footer-links .link-academy { color: #44C060 !important; }
+        .footer-links .link-digital { color: #0170F5 !important; }
+        .footer-links .link-group {
+            color: #000000 !important;
+            background: #FFFFFF;
+            padding: 0 4px;
+            font-weight: 700;
+        }
+
         .footer-links a:hover {
-            color: var(--accent-red);
+            opacity: 0.8;
+            text-decoration: underline;
         }
 
         .footer-bottom {
@@ -687,11 +720,10 @@
     <!-- NAVIGATION -->
     <header>
         <nav>
-            <div class="logo">
-                <a href="#hero">
-                    <img src="assets/veles-interiors-full-reversed-bgless.png" alt="Veles Interiors Logo" id="logo-img">
-                </a>
-            </div>
+            <a href="#hero" class="logo-wrapper">
+                <img src="assets/veles-interiors-logo-alone-bgless.png" alt="Veles Interiors" class="logo-icon" id="logo-img">
+                <span class="logo-text">VELES <span>INTERIORS</span></span>
+            </a>
             <ul class="nav-links">
                 <li><a href="#hero" class="nav-link active">Start</a></li>
                 <li><a href="#dlaczego" class="nav-link">Dlaczego My</a></li>
@@ -942,6 +974,10 @@
                         <h4>Co jeśli projekt się opóźni?</h4>
                         <p>Nasza umowa zawiera jasne zapisy o karach za opóźnienia. Szanujemy Twój czas – do tej pory 100% naszych prac oddaliśmy w terminie.</p>
                     </div>
+                    <div class="faq-item">
+                        <h4>Czy podpisujecie NDA?</h4>
+                        <p>Tak – standardowo dla projektów wysokiej wartości podpisujemy umowy o zachowaniu poufności (Non-Disclosure Agreement).</p>
+                    </div>
                 </div>
             </div>
         </section>
@@ -1005,9 +1041,9 @@
             <div class="footer-links">
                 <p>Grupa Veles</p>
                 <ul>
-                    <li><a href="#">Veles Academy — Szkolenia dla Project Managerów</a></li>
-                    <li><a href="#">Veles Digital — Strony i produkty cyfrowe</a></li>
-                    <li><a href="#">Veles Group — Rozwiązania dla biznesu</a></li>
+                    <li><a href="https://velesacademy.app" class="link-academy">Veles Academy — Szkolenia dla Project Managerów</a></li>
+                    <li><a href="https://velesdigital.co" class="link-digital">Veles Digital — Strony i produkty cyfrowe</a></li>
+                    <li><a href="https://grupaveles.com" class="link-group">Veles Group — Rozwiązania dla biznesu</a></li>
                 </ul>
             </div>
             <div class="footer-links">
@@ -1048,11 +1084,9 @@
 
             if (theme === 'dark') {
                 themeIcon.textContent = '☀️';
-                logoImg.src = 'assets/veles-interiors-full-reversed-bgless.png';
                 footerLogoImg.src = 'assets/veles-interiors-full-reversed-bgless.png';
             } else {
                 themeIcon.textContent = '🌙';
-                logoImg.src = 'assets/veles-interiors-full-bgless.png';
                 footerLogoImg.src = 'assets/veles-interiors-full-bgless.png';
             }
         }
