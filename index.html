@@ -674,6 +674,31 @@
             border-color: var(--accent-red);
         }
 
+        input[type="file"] {
+            border: 1px dashed var(--border-color);
+            padding: 15px;
+            background: rgba(255, 49, 49, 0.02);
+            cursor: pointer;
+            font-size: 0.8rem;
+        }
+
+        input[type="file"]::file-selector-button {
+            background: var(--accent-red);
+            color: white;
+            border: none;
+            padding: 8px 16px;
+            font-weight: 700;
+            text-transform: uppercase;
+            font-size: 0.7rem;
+            margin-right: 15px;
+            cursor: pointer;
+            transition: background var(--transition-speed);
+        }
+
+        input[type="file"]::file-selector-button:hover {
+            background: var(--accent-hover);
+        }
+
         .form-checkbox {
             grid-column: span 2;
             display: flex;
@@ -874,6 +899,7 @@
                 <li><a href="#uslugi" class="nav-link" data-i18n="nav_services">Usługi</a></li>
                 <li><a href="#realizacje" class="nav-link" data-i18n="nav_realizations">Realizacje</a></li>
                 <li><a href="#proces" class="nav-link" data-i18n="nav_process">Proces</a></li>
+                <li><a href="#kariera" class="nav-link" data-i18n="nav_career">Kariera</a></li>
                 <li><a href="#faq" class="nav-link" data-i18n="nav_faq">FAQ</a></li>
             </ul>
             <div style="display: flex; gap: 20px; align-items: center;">
@@ -1140,7 +1166,68 @@
             </div>
         </section>
 
-        <!-- SECTION 7: KONTAKT -->
+        <!-- SECTION 7: KARIERA -->
+        <section id="kariera">
+            <div class="container">
+                <div class="contact-grid">
+                    <div class="contact-info">
+                        <h2 class="section-title" data-i18n="career_h2">Dołącz do zespołu</h2>
+                        <p data-i18n="career_p">Szukamy specjalistów, dla яких jakość to nie pusty slogan. Jeśli pracujesz w standardzie DIN i chcesz realizować projekty premium – czekamy na Ciebie.</p>
+                        <div class="direct-contact">
+                            <p data-i18n="career_benefits_p" style="margin-bottom: 15px;">Co oferujemy:</p>
+                            <ul style="list-style: disc; margin-left: 20px; color: var(--text-secondary); font-size: 1rem; display: flex; flex-direction: column; gap: 10px;">
+                                <li data-i18n="career_benefit_1">Atrakcyjne stawki i terminowe płatności</li>
+                                <li data-i18n="career_benefit_2">Praca przy najbardziej prestiżowych projektach</li>
+                                <li data-i18n="career_benefit_3">Profesjonalny sprzęt i narzędzia renomowanych marek</li>
+                            </ul>
+                        </div>
+                    </div>
+                    <div class="contact-container">
+                        <form id="career-form">
+                            <div class="form-group">
+                                <label for="career-name" data-i18n="form_name_label">Imię i nazwisko</label>
+                                <input type="text" id="career-name" name="name" required>
+                            </div>
+                            <div class="form-group">
+                                <label for="career-email" data-i18n="form_email_label">Email</label>
+                                <input type="email" id="career-email" name="email" required>
+                            </div>
+                            <div class="form-group">
+                                <label for="career-phone" data-i18n="form_phone_label">Telefon</label>
+                                <input type="tel" id="career-phone" name="phone" placeholder="+48 ...">
+                            </div>
+                            <div class="form-group">
+                                <label for="career-position" data-i18n="career_position_label">Stanowisko</label>
+                                <select id="career-position" name="position">
+                                    <option value="specialist" data-i18n="career_pos_1">Specjalista Wykończeń</option>
+                                    <option value="manager" data-i18n="career_pos_2">Project Manager</option>
+                                    <option value="other" data-i18n="career_pos_3">Inne</option>
+                                </select>
+                            </div>
+                            <div class="form-group full-width">
+                                <label for="career-cv" data-i18n="career_cv_label">CV / Portfolio (PDF, DOCX, TXT)</label>
+                                <input type="file" id="career-cv" name="cv" accept=".pdf,.docx,.doc,.txt,.jpg,.png" style="padding: 10px 0;">
+                                <small style="font-size: 0.7rem; color: var(--text-secondary);" data-i18n="career_file_hint">Maksymalny rozmiar: 5MB</small>
+                            </div>
+                            <div class="form-group full-width">
+                                <label for="career-message" data-i18n="career_message_label">Kilka słów o Tobie</label>
+                                <textarea id="career-message" name="message" rows="4" placeholder="..." data-i18n="form_placeholder_career_message"></textarea>
+                            </div>
+                            <div class="form-checkbox">
+                                <input type="checkbox" id="career-privacy" name="privacy" required>
+                                <label for="career-privacy" data-i18n="career_privacy_label">Wyrażam zgodę na przetwarzanie danych w celach rekrutacyjnych.</label>
+                            </div>
+                            <button type="submit" class="cta-primary" data-i18n="career_submit">Aplikuj teraz</button>
+                        </form>
+                        <div id="career-response" style="display: none; margin-top: 20px; text-align: center; font-weight: 700; color: var(--accent-red);" data-i18n="career_success">
+                            Dziękujemy! Twoja aplikacja została wysłana. Odpowiemy w ciągu 2-3 dni.
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- SECTION 8: KONTAKT -->
         <section id="kontakt">
             <div class="container">
                 <div class="contact-grid">
@@ -1226,6 +1313,7 @@
                     <li><a href="#dlaczego" data-i18n="nav_why">O nas</a></li>
                     <li><a href="#uslugi" data-i18n="nav_services">Usługi</a></li>
                     <li><a href="#realizacje" data-i18n="nav_realizations">Realizacje</a></li>
+                    <li><a href="#kariera" data-i18n="nav_career">Kariera</a></li>
                 </ul>
             </div>
         </div>
@@ -1245,6 +1333,7 @@
                 "nav_services": "Usługi",
                 "nav_realizations": "Realizacje",
                 "nav_process": "Proces",
+                "nav_career": "Kariera",
                 "nav_faq": "FAQ",
                 "nav_contact": "Kontakt",
                 "hero_h1": "Wykończenia Premium.<br>Niemiecki Standard.<br>Polska Realizacja.",
@@ -1357,7 +1446,24 @@
                 "footer_interiors_link": "Veles Interiors — Wykończenia premium",
                 "footer_nav_label": "Nawigacja",
                 "footer_rights": "© 2024 Veles Interiors. Część Veles Group. Wszystkie prawa zastrzeżone.",
-                "footer_made_by": "made by"
+                "footer_made_by": "made by",
+                "career_h2": "Dołącz do zespołu",
+                "career_p": "Szukamy specjalistów, dla których jakość to nie pusty slogan. Jeśli pracujesz w standardzie DIN i chcesz realizować projekty premium – czekamy на Ciebie.",
+                "career_benefits_p": "Co oferujemy:",
+                "career_benefit_1": "Atrakcyjne stawki i terminowe płatności",
+                "career_benefit_2": "Praca przy najbardziej prestiżowych projektach",
+                "career_benefit_3": "Profesjonalny sprzęt i narzędzia renomowanych marek",
+                "career_position_label": "Stanowisko",
+                "career_pos_1": "Specjalista Wykończeń",
+                "career_pos_2": "Project Manager",
+                "career_pos_3": "Inne",
+                "career_cv_label": "CV / Portfolio (PDF, DOCX, TXT)",
+                "career_file_hint": "Maksymalny rozmiar: 5MB",
+                "career_message_label": "Kilka słów o Tobie",
+                "form_placeholder_career_message": "...",
+                "career_privacy_label": "Wyrażam zgodę na przetwarzanie danych w celach rekrutacyjnych.",
+                "career_submit": "Aplikuj teraz",
+                "career_success": "Dziękujemy! Twoja aplikacja została wysłana. Odpowiemy w ciągu 2-3 dni."
             },
             "en": {
                 "page_title": "Veles Interiors | Premium Finishing - German Standards",
@@ -1367,6 +1473,7 @@
                 "nav_services": "Services",
                 "nav_realizations": "Portfolio",
                 "nav_process": "Process",
+                "nav_career": "Careers",
                 "nav_faq": "FAQ",
                 "nav_contact": "Contact",
                 "hero_h1": "Premium Finishing.<br>German Standards.<br>Polish Execution.",
@@ -1479,7 +1586,24 @@
                 "footer_interiors_link": "Veles Interiors — Premium finishing",
                 "footer_nav_label": "Navigation",
                 "footer_rights": "© 2024 Veles Interiors. Part of Veles Group. All rights reserved.",
-                "footer_made_by": "made by"
+                "footer_made_by": "made by",
+                "career_h2": "Join our team",
+                "career_p": "We are looking for specialists for whom quality is not just a slogan. If you work according to DIN standards and want to execute premium projects – we are waiting for you.",
+                "career_benefits_p": "What we offer:",
+                "career_benefit_1": "Attractive rates and timely payments",
+                "career_benefit_2": "Work on the most prestigious projects",
+                "career_benefit_3": "Professional equipment and tools from renowned brands",
+                "career_position_label": "Position",
+                "career_pos_1": "Finishing Specialist",
+                "career_pos_2": "Project Manager",
+                "career_pos_3": "Other",
+                "career_cv_label": "CV / Portfolio (PDF, DOCX, TXT)",
+                "career_file_hint": "Maximum size: 5MB",
+                "career_message_label": "A few words about you",
+                "form_placeholder_career_message": "...",
+                "career_privacy_label": "I consent to the processing of my data for recruitment purposes.",
+                "career_submit": "Apply now",
+                "career_success": "Thank you! Your application has been sent. We will respond within 2-3 days."
             },
             "de": {
                 "page_title": "Veles Interiors | Premium-Innenausbau - Deutscher Standard",
@@ -1489,6 +1613,7 @@
                 "nav_services": "Leistungen",
                 "nav_realizations": "Projekte",
                 "nav_process": "Prozess",
+                "nav_career": "Karriere",
                 "nav_faq": "FAQ",
                 "nav_contact": "Kontakt",
                 "hero_h1": "Premium-Ausbau.<br>Deutscher Standard.<br>Polnische Realisierung.",
@@ -1601,7 +1726,24 @@
                 "footer_interiors_link": "Veles Interiors — Premium-Innenausbau",
                 "footer_nav_label": "Navigation",
                 "footer_rights": "© 2024 Veles Interiors. Teil der Veles Gruppe. Alle Rechte vorbehalten.",
-                "footer_made_by": "made by"
+                "footer_made_by": "made by",
+                "career_h2": "Werden Sie Teil des Teams",
+                "career_p": "Wir suchen Spezialisten, für die Qualität kein leeres Schlagwort ist. Wenn Sie nach DIN-Standard arbeiten und Premium-Projekte realisieren wollen – wir warten auf Sie.",
+                "career_benefits_p": "Was wir bieten:",
+                "career_benefit_1": "Attraktive Sätze und pünktliche Zahlungen",
+                "career_benefit_2": "Arbeit an den prestigeträchtigsten Projekten",
+                "career_benefit_3": "Professionelle Ausrüstung und Werkzeuge namhafter Marken",
+                "career_position_label": "Position",
+                "career_pos_1": "Ausbauspezialist",
+                "career_pos_2": "Projektleiter",
+                "career_pos_3": "Andere",
+                "career_cv_label": "Lebenslauf / Portfolio (PDF, DOCX, TXT)",
+                "career_file_hint": "Maximale Größe: 5MB",
+                "career_message_label": "Ein paar Worte über Sie",
+                "form_placeholder_career_message": "...",
+                "career_privacy_label": "Ich bin mit der Verarbeitung meiner Daten zu Rekrutierungszwecken einverstanden.",
+                "career_submit": "Jetzt bewerben",
+                "career_success": "Vielen Dank! Ihre Bewerbung wurde gesendet. Wir werden innerhalb von 2-3 Tagen antworten."
             },
             "fr": {
                 "page_title": "Veles Interiors | Finitions Premium - Standard Allemand",
@@ -1611,6 +1753,7 @@
                 "nav_services": "Services",
                 "nav_realizations": "Réalisations",
                 "nav_process": "Processus",
+                "nav_career": "Carrière",
                 "nav_faq": "FAQ",
                 "nav_contact": "Contact",
                 "hero_h1": "Finitions Premium.<br>Standard Allemand.<br>Réalisation Polonaise.",
@@ -1723,7 +1866,24 @@
                 "footer_interiors_link": "Veles Interiors — Finitions premium",
                 "footer_nav_label": "Navigation",
                 "footer_rights": "© 2024 Veles Interiors. Fait partie du Groupe Veles. Tous droits réservés.",
-                "footer_made_by": "made by"
+                "footer_made_by": "made by",
+                "career_h2": "Rejoignez l'équipe",
+                "career_p": "Nous recherchons des spécialistes pour qui la qualité n'est pas un vain mot. Si vous travaillez selon les normes DIN et souhaitez réaliser des projets premium – nous vous attendons.",
+                "career_benefits_p": "Ce que nous offrons :",
+                "career_benefit_1": "Tarifs attractifs et paiements ponctuels",
+                "career_benefit_2": "Travail sur les projets les plus prestigieux",
+                "career_benefit_3": "Équipement et outils professionnels de marques renommées",
+                "career_position_label": "Poste",
+                "career_pos_1": "Spécialiste de la finition",
+                "career_pos_2": "Chef de projet",
+                "career_pos_3": "Autre",
+                "career_cv_label": "CV / Portfolio (PDF, DOCX, TXT)",
+                "career_file_hint": "Taille maximale : 5 Mo",
+                "career_message_label": "Quelques mots sur vous",
+                "form_placeholder_career_message": "...",
+                "career_privacy_label": "Je consens au traitement de mes données à des fins de recrutement.",
+                "career_submit": "Postuler maintenant",
+                "career_success": "Merci ! Votre candidature a été envoyée. Nous vous répondrons sous 2-3 jours."
             },
             "es": {
                 "page_title": "Veles Interiors | Acabados Premium - Estándar Alemán",
@@ -1733,6 +1893,7 @@
                 "nav_services": "Servicios",
                 "nav_realizations": "Proyectos",
                 "nav_process": "Proceso",
+                "nav_career": "Carrera",
                 "nav_faq": "FAQ",
                 "nav_contact": "Contacto",
                 "hero_h1": "Acabados Premium.<br>Estándar Alemán.<br>Realización Polaca.",
@@ -1845,7 +2006,24 @@
                 "footer_interiors_link": "Veles Interiors — Acabados premium",
                 "footer_nav_label": "Navegación",
                 "footer_rights": "© 2024 Veles Interiors. Parte de Veles Group. Todos los derechos reservados.",
-                "footer_made_by": "hecho por"
+                "footer_made_by": "hecho por",
+                "career_h2": "Únete al equipo",
+                "career_p": "Buscamos especialistas para quienes la calidad no sea solo un eslogan. Si trabajas bajo estándares DIN y quieres realizar proyectos premium, te estamos esperando.",
+                "career_benefits_p": "Qué ofrecemos:",
+                "career_benefit_1": "Tarifas atractivas y pagos puntuales",
+                "career_benefit_2": "Trabajo en los proyectos más prestigiosos",
+                "career_benefit_3": "Equipos y herramientas profesionales de marcas reconocidas",
+                "career_position_label": "Puesto",
+                "career_pos_1": "Especialista en acabados",
+                "career_pos_2": "Gerente de proyecto",
+                "career_pos_3": "Otro",
+                "career_cv_label": "CV / Portafolio (PDF, DOCX, TXT)",
+                "career_file_hint": "Tamaño máximo: 5MB",
+                "career_message_label": "Unas palabras sobre ti",
+                "form_placeholder_career_message": "...",
+                "career_privacy_label": "Doy mi consentimiento para el procesamiento de mis datos con fines de reclutamiento.",
+                "career_submit": "Postular ahora",
+                "career_success": "¡Gracias! Tu solicitud ha sido enviada. Responderemos en un plazo de 2 a 3 días."
             },
             "ru": {
                 "page_title": "Veles Interiors | Отделка Премиум-класса - Немецкий стандарт",
@@ -1855,6 +2033,7 @@
                 "nav_services": "Услуги",
                 "nav_realizations": "Портфолио",
                 "nav_process": "Процесс",
+                "nav_career": "Карьера",
                 "nav_faq": "FAQ",
                 "nav_contact": "Контакт",
                 "hero_h1": "Премиальная отделка.<br>Немецкий стандарт.<br>Польская реализация.",
@@ -1967,7 +2146,24 @@
                 "footer_interiors_link": "Veles Interiors — Премиальная отделка",
                 "footer_nav_label": "Навигация",
                 "footer_rights": "© 2024 Veles Interiors. Часть Veles Group. Все права защищены.",
-                "footer_made_by": "разработка"
+                "footer_made_by": "разработка",
+                "career_h2": "Присоединяйтесь к команде",
+                "career_p": "Мы ищем специалистов, для которых качество — это не пустой лозунг. Если вы работаете по стандартам DIN и хотите реализовывать премиальные проекты — мы ждем вас.",
+                "career_benefits_p": "Что мы предлагаем:",
+                "career_benefit_1": "Привлекательные ставки и своевременные выплаты",
+                "career_benefit_2": "Работа над самыми престижными проектами",
+                "career_benefit_3": "Профессиональное оборудование и инструменты известных брендов",
+                "career_position_label": "Должность",
+                "career_pos_1": "Специалист по отделке",
+                "career_pos_2": "Руководитель проекта",
+                "career_pos_3": "Другое",
+                "career_cv_label": "Резюме / Портфолио (PDF, DOCX, TXT)",
+                "career_file_hint": "Максимальный размер: 5МБ",
+                "career_message_label": "Несколько слов о себе",
+                "form_placeholder_career_message": "...",
+                "career_privacy_label": "Я даю согласие на обработку моих данных в целях подбора персонала.",
+                "career_submit": "Подать заявку",
+                "career_success": "Спасибо! Ваша заявка отправлена. Мы ответим в течение 2-3 дней."
             },
             "ua": {
                 "page_title": "Veles Interiors | Оздоблення Преміум-класу - Німецький стандарт",
@@ -1977,6 +2173,7 @@
                 "nav_services": "Послуги",
                 "nav_realizations": "Портфоліо",
                 "nav_process": "Процес",
+                "nav_career": "Кар'єра",
                 "nav_faq": "FAQ",
                 "nav_contact": "Контакт",
                 "hero_h1": "Преміальне оздоблення.<br>Німецький стандарт.<br>Польська реалізація.",
@@ -2089,7 +2286,24 @@
                 "footer_interiors_link": "Veles Interiors — Преміальне оздоблення",
                 "footer_nav_label": "Навігація",
                 "footer_rights": "© 2024 Veles Interiors. Частина Veles Group. Всі права застережені.",
-                "footer_made_by": "розробка"
+                "footer_made_by": "розробка",
+                "career_h2": "Приєднуйтесь до команди",
+                "career_p": "Ми шукаємо фахівців, для яких якість — це не порожній слоган. Якщо ви працюєте за стандартами DIN і хочете реалізовувати преміальні проекти — ми чекаємо на вас.",
+                "career_benefits_p": "Що ми пропонуємо:",
+                "career_benefit_1": "Привабливі ставки та своєчасні виплати",
+                "career_benefit_2": "Робота над найпрестижнішими проектами",
+                "career_benefit_3": "Професійне обладнання та інструменти відомих брендів",
+                "career_position_label": "Посада",
+                "career_pos_1": "Фахівець з оздоблення",
+                "career_pos_2": "Керівник проекту",
+                "career_pos_3": "Інше",
+                "career_cv_label": "Резюме / Портфоліо (PDF, DOCX, TXT)",
+                "career_file_hint": "Максимальний розмір: 5МБ",
+                "career_message_label": "Кілька слів про себе",
+                "form_placeholder_career_message": "...",
+                "career_privacy_label": "Я даю згоду на обробку моїх даних з метою підбору персоналу.",
+                "career_submit": "Подати заявку",
+                "career_success": "Дякуємо! Ваша заявка надіслана. Ми відповімо протягом 2-3 днів."
             }
         };
 
@@ -2218,6 +2432,24 @@
             const formData = new FormData(contactForm);
             console.log('New Lead Received:', Object.fromEntries(formData));
         });
+
+        // Career Form Handling
+        const careerForm = document.getElementById('career-form');
+        const careerResponse = document.getElementById('career-response');
+
+        if (careerForm) {
+            careerForm.addEventListener('submit', (e) => {
+                e.preventDefault();
+                // Simulate form submission
+                careerForm.style.display = 'none';
+                careerResponse.style.display = 'block';
+
+                const formData = new FormData(careerForm);
+                // In a production environment, you would use a service like Formspree
+                // <form action="https://formspree.io/f/your-id" method="POST" enctype="multipart/form-data">
+                console.log('New Application Received:', Object.fromEntries(formData));
+            });
+        }
 
         // Before/After Slider Logic
         const slider = document.getElementById('slider-1');
