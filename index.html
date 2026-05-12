@@ -792,6 +792,69 @@
             #contact-form button { grid-column: span 1; }
             .footer-content { flex-direction: column; gap: 40px; }
         }
+
+        /* Language Selector */
+        .lang-selector {
+            position: relative;
+            display: inline-block;
+        }
+
+        .lang-btn {
+            background: none;
+            border: 1px solid var(--border-color);
+            color: var(--text-primary);
+            padding: 8px 12px;
+            font-size: 0.85rem;
+            font-weight: 700;
+            cursor: pointer;
+            display: flex;
+            align-items: center;
+            gap: 8px;
+            transition: all var(--transition-speed);
+        }
+
+        .lang-btn:hover {
+            border-color: var(--accent-red);
+            color: var(--accent-red);
+        }
+
+        .lang-dropdown {
+            position: absolute;
+            top: 100%;
+            right: 0;
+            background: var(--card-bg);
+            border: 1px solid var(--border-color);
+            min-width: 140px;
+            display: none;
+            z-index: 1001;
+            box-shadow: 0 10px 30px rgba(0,0,0,0.3);
+        }
+
+        .lang-selector:hover .lang-dropdown {
+            display: block;
+        }
+
+        .lang-option {
+            padding: 10px 15px;
+            cursor: pointer;
+            display: flex;
+            align-items: center;
+            gap: 10px;
+            font-size: 0.85rem;
+            font-weight: 500;
+            transition: background var(--transition-speed);
+            color: var(--text-primary);
+        }
+
+        .lang-option:hover {
+            background: rgba(255, 49, 49, 0.1);
+            color: var(--accent-red);
+        }
+
+        .lang-option.active {
+            color: var(--accent-red);
+            font-weight: 700;
+        }
     </style>
 </head>
 <body data-theme="dark">
@@ -806,15 +869,29 @@
                 </div>
             </a>
             <ul class="nav-links">
-                <li><a href="#hero" class="nav-link active">Start</a></li>
-                <li><a href="#dlaczego" class="nav-link">Dlaczego My</a></li>
-                <li><a href="#uslugi" class="nav-link">Usługi</a></li>
-                <li><a href="#realizacje" class="nav-link">Realizacje</a></li>
-                <li><a href="#proces" class="nav-link">Proces</a></li>
-                <li><a href="#faq" class="nav-link">FAQ</a></li>
+                <li><a href="#hero" class="nav-link active" data-i18n="nav_start">Start</a></li>
+                <li><a href="#dlaczego" class="nav-link" data-i18n="nav_why">Dlaczego My</a></li>
+                <li><a href="#uslugi" class="nav-link" data-i18n="nav_services">Usługi</a></li>
+                <li><a href="#realizacje" class="nav-link" data-i18n="nav_realizations">Realizacje</a></li>
+                <li><a href="#proces" class="nav-link" data-i18n="nav_process">Proces</a></li>
+                <li><a href="#faq" class="nav-link" data-i18n="nav_faq">FAQ</a></li>
             </ul>
             <div style="display: flex; gap: 20px; align-items: center;">
-                <a href="#kontakt" class="cta-nav" style="font-weight: 700; color: var(--accent-red); font-size: 0.9rem; text-transform: uppercase;">Kontakt</a>
+                <div class="lang-selector">
+                    <button class="lang-btn" id="lang-btn">
+                        <span id="current-lang">🇵🇱 PL</span>
+                    </button>
+                    <div class="lang-dropdown">
+                        <div class="lang-option active" data-lang="pl">🇵🇱 PL</div>
+                        <div class="lang-option" data-lang="en">🇬🇧 EN</div>
+                        <div class="lang-option" data-lang="de">🇩🇪 DE</div>
+                        <div class="lang-option" data-lang="fr">🇫🇷 FR</div>
+                        <div class="lang-option" data-lang="es">🇪🇸 ES</div>
+                        <div class="lang-option" data-lang="ru">🇷🇺 RU</div>
+                        <div class="lang-option" data-lang="ua">🇺🇦 UA</div>
+                    </div>
+                </div>
+                <a href="#kontakt" class="cta-nav" data-i18n="nav_contact" style="font-weight: 700; color: var(--accent-red); font-size: 0.9rem; text-transform: uppercase;">Kontakt</a>
                 <button id="theme-toggle" class="theme-toggle" aria-label="Przełącz tryb">
                     <span id="theme-icon">🌙</span>
                 </button>
@@ -826,17 +903,17 @@
         <!-- SECTION 1: HERO -->
         <section id="hero">
             <div class="container hero-content">
-                <h1>Wykończenia Premium.<br>Niemiecki Standard.<br>Polska Realizacja.</h1>
-                <p>Dla inwestorów i projektantów którzy nie akceptują kompromisów. Realizujemy projekty kompleksowo, dbając o każdy detal techniczny. Komunikacja: PL · EN · DE · FR · RU</p>
+                <h1 data-i18n="hero_h1">Wykończenia Premium.<br>Niemiecki Standard.<br>Polska Realizacja.</h1>
+                <p data-i18n="hero_p">Dla inwestorów i projektantów którzy nie akceptują kompromisów. Realizujemy projekty kompleksowo, dbając o każdy detal techniczny. Komunikacja: PL · EN · DE · FR · RU</p>
                 <div class="hero-btns">
-                    <a href="#kontakt" class="cta-primary">Porozmawiajmy o Twoim projekcie</a>
-                    <a href="#realizacje" class="cta-secondary">Zobacz realizacje</a>
+                    <a href="#kontakt" class="cta-primary" data-i18n="hero_cta_primary">Porozmawiajmy o Twoim projekcie</a>
+                    <a href="#realizacje" class="cta-secondary" data-i18n="hero_cta_secondary">Zobacz realizacje</a>
                 </div>
                 <div class="trust-bar">
-                    <span>✓ 3 lata doświadczenia w Niemczech</span>
-                    <span>✓ 100% projektów na czas</span>
-                    <span>✓ Gwarancja jakości 24 m-ce</span>
-                    <span>✓ Standardy DIN 18202</span>
+                    <span data-i18n="trust_1">✓ 3 lata doświadczenia w Niemczech</span>
+                    <span data-i18n="trust_2">✓ 100% projektów na czas</span>
+                    <span data-i18n="trust_3">✓ Gwarancja jakości 24 m-ce</span>
+                    <span data-i18n="trust_4">✓ Standardy DIN 18202</span>
                 </div>
             </div>
         </section>
@@ -844,22 +921,22 @@
         <!-- SECTION 2: DLACZEGO VELES INTERIORS -->
         <section id="dlaczego">
             <div class="container">
-                <h2 class="section-title">Dlaczego Veles Interiors?</h2>
+                <h2 class="section-title" data-i18n="why_title">Dlaczego Veles Interiors?</h2>
                 <div class="grid-pillars">
                     <div class="pillar-card">
                         <div class="icon">🇩🇪</div>
-                        <h3>Międzynarodowy Standard</h3>
-                        <p>Doświadczenie zdobyte na dużych projektach infrastrukturalnych w Niemczech przekładamy na precyzję w wykończeniach wnętrz. Pracujemy zgodnie z surowymi normami DIN.</p>
+                        <h3 data-i18n="pillar_1_h3">Międzynarodowy Standard</h3>
+                        <p data-i18n="pillar_1_p">Doświadczenie zdobyte na dużych projektach infrastrukturalnych w Niemczech przekładamy na precyzję w wykończeniach wnętrz. Pracujemy zgodnie z surowymi normami DIN.</p>
                     </div>
                     <div class="pillar-card">
                         <div class="icon">💬</div>
-                        <h3>Transparentna Komunikacja</h3>
-                        <p>Dla nas odległość nie jest barierą. Otrzymujesz raporty postępu co 48h wraz z dokumentacją fotograficzną. Rozmawiamy w Twoim języku.</p>
+                        <h3 data-i18n="pillar_2_h3">Transparentna Komunikacja</h3>
+                        <p data-i18n="pillar_2_p">Dla nas odległość nie jest barierą. Otrzymujesz raporty postępu co 48h wraz z dokumentacją fotograficzną. Rozmawiamy w Twoim języku.</p>
                     </div>
                     <div class="pillar-card">
                         <div class="icon">🛡️</div>
-                        <h3>Zero Niespodzianek</h3>
-                        <p>Precyzyjny kosztorys przed startem prac to u nas standard. Każda zmiana zakresu jest dokumentowana, a Ty masz pełną kontrolę nad budżetem.</p>
+                        <h3 data-i18n="pillar_3_h3">Zero Niespodzianek</h3>
+                        <p data-i18n="pillar_3_p">Precyzyjny kosztorys przed startem prac to u nas standard. Każda zmiana zakresu jest dokumentowana, a Ty masz pełną kontrolę nad budżetem.</p>
                     </div>
                 </div>
             </div>
@@ -868,27 +945,27 @@
         <!-- SECTION 3: ZAKRES USŁUG -->
         <section id="uslugi">
             <div class="container">
-                <h2 class="section-title">Zakres Usług</h2>
+                <h2 class="section-title" data-i18n="services_title">Zakres Usług</h2>
                 <div class="grid-services">
                     <div class="service-card">
-                        <h3>Tynki i Gładzie</h3>
-                        <p>Maszynowe i ręczne przygotowanie powierzchni pod najbardziej wymagające wykończenia: farby satynowe, tapety premium czy tynki dekoracyjne.</p>
-                        <span class="service-scope">Mieszkanie 80m²: 12-16 dni</span>
+                        <h3 data-i18n="service_1_h3">Tynki i Gładzie</h3>
+                        <p data-i18n="service_1_p">Maszynowe i ręczne przygotowanie powierzchni pod najbardziej wymagające wykończenia: farby satynowe, tapety premium czy tynki dekoracyjne.</p>
+                        <span class="service-scope" data-i18n="service_1_scope">Mieszkanie 80m²: 12-16 dni</span>
                     </div>
                     <div class="service-card">
-                        <h3>Malowanie Premium</h3>
-                        <p>Praca z farbami najwyższej klasy (ekologiczne, ceramiczne). Perfekcyjne odcięcia i struktura powierzchni godna najlepszych showroomów.</p>
-                        <span class="service-scope">Norma DIN 18202</span>
+                        <h3 data-i18n="service_2_h3">Malowanie Premium</h3>
+                        <p data-i18n="service_2_p">Praca z farbami najwyższej klasy (ekologiczne, ceramiczne). Perfekcyjne odcięcia i struktura powierzchni godna najlepszych showroomów.</p>
+                        <span class="service-scope" data-i18n="service_2_scope">Norma DIN 18202</span>
                     </div>
                     <div class="service-card">
-                        <h3>Instalacje</h3>
-                        <p>Koordynacja prac elektrycznych i hydraulicznych z certyfikowanymi ekipami. Pełna odpowiedzialność po naszej stronie – jedna umowa, zero problemów.</p>
-                        <span class="service-scope">Pełna koordynacja</span>
+                        <h3 data-i18n="service_3_h3">Instalacje</h3>
+                        <p data-i18n="service_3_p">Koordynacja prac elektrycznych i hydraulicznych z certyfikowanymi ekipami. Pełna odpowiedzialność po naszej stronie – jedna umowa, zero problemów.</p>
+                        <span class="service-scope" data-i18n="service_3_scope">Pełna koordynacja</span>
                     </div>
                     <div class="service-card">
-                        <h3>Project Management</h3>
-                        <p>Dla klientów zagranicznych oferujemy pełny nadzór nad inwestycją. Remote supervision, cotygodniowe podsumowania wideo i profesjonalne odbiory.</p>
-                        <span class="service-scope">Dla rynków DACH/UK</span>
+                        <h3 data-i18n="service_4_h3">Project Management</h3>
+                        <p data-i18n="service_4_p">Dla klientów zagranicznych oferujemy pełny nadzór nad inwestycją. Remote supervision, cotygodniowe podsumowania wideo i profesjonalne odbiory.</p>
+                        <span class="service-scope" data-i18n="service_4_scope">Dla rynków DACH/UK</span>
                     </div>
                 </div>
             </div>
@@ -897,7 +974,7 @@
         <!-- SECTION 4: REALIZACJE -->
         <section id="realizacje">
             <div class="container">
-                <h2 class="section-title">Case Studies</h2>
+                <h2 class="section-title" data-i18n="cases_title">Case Studies</h2>
                 <div class="case-studies-list">
                     <!-- Case Study 1: Slider Before/After -->
                     <div class="case-study reveal">
@@ -905,32 +982,32 @@
                             <div class="before-after-container" id="ba-slider-1">
                                 <div class="img background-img">
                                     <img data-src="https://images.unsplash.com/photo-1584622650111-993a426fbf0a?auto=format&fit=crop&q=80&w=1200" alt="Before renovation" loading="lazy">
-                                    <span class="slider-label label-before">Przed</span>
+                                    <span class="slider-label label-before" data-i18n="label_before">Przed</span>
                                 </div>
                                 <div class="img foreground-img">
                                     <img data-src="https://images.unsplash.com/photo-1600607687920-4e2a09cf159d?auto=format&fit=crop&q=80&w=1200" alt="After renovation" loading="lazy">
-                                    <span class="slider-label label-after">Po</span>
+                                    <span class="slider-label label-after" data-i18n="label_after">Po</span>
                                 </div>
                                 <input type="range" min="1" max="100" value="50" class="slider" name="slider" id="slider-1">
                             </div>
                         </div>
                         <div class="case-content">
-                            <span class="accent-mono">Apartament Premium / Warszawa</span>
-                            <h3>Śródmieście: Precyzja w 14 dni</h3>
+                            <span class="accent-mono" data-i18n="case_1_accent">Apartament Premium / Warszawa</span>
+                            <h3 data-i18n="case_1_h3">Śródmieście: Precyzja w 14 dni</h3>
                             <div class="case-stats">
                                 <div>
-                                    <span class="accent-mono">Metraż</span>
-                                    <p>95m²</p>
+                                    <span class="accent-mono" data-i18n="case_1_stat_1_label">Metraż</span>
+                                    <p data-i18n="case_1_stat_1_val">95m²</p>
                                 </div>
                                 <div>
-                                    <span class="accent-mono">Czas</span>
-                                    <p>14 Dni Roboczych</p>
+                                    <span class="accent-mono" data-i18n="case_1_stat_2_label">Czas</span>
+                                    <p data-i18n="case_1_stat_2_val">14 Dni Roboczych</p>
                                 </div>
                             </div>
                             <div class="case-description">
-                                <p><strong>Wyzwanie:</strong> Inwestor z Londynu oczekiwał jakości premium przy zerowej dostępności na miejscu.</p>
-                                <p><strong>Rozwiązanie:</strong> Remote project management z daily video updates. Wykorzystanie tynków maszynowych wg normy DIN 18202.</p>
-                                <p><strong>Rezultat:</strong> Przekazanie kluczy bez uwag. Rekomendacja dla kolejnych 2 projektów.</p>
+                                <p><strong data-i18n="case_1_challenge_label">Wyzwanie:</strong> <span data-i18n="case_1_challenge_p">Inwestor z Londynu oczekiwał jakości premium przy zerowej dostępności na miejscu.</span></p>
+                                <p><strong data-i18n="case_1_solution_label">Rozwiązanie:</strong> <span data-i18n="case_1_solution_p">Remote project management z daily video updates. Wykorzystanie tynków maszynowych wg normy DIN 18202.</span></p>
+                                <p><strong data-i18n="case_1_result_label">Rezultat:</strong> <span data-i18n="case_1_result_p">Przekazanie kluczy bez uwag. Rekomendacja dla kolejnych 2 projektów.</span></p>
                             </div>
                         </div>
                     </div>
@@ -941,22 +1018,22 @@
                             <img data-src="https://images.unsplash.com/photo-1497366216548-37526070297c?auto=format&fit=crop&q=80&w=1200" alt="Biuro Berlin" loading="lazy">
                         </div>
                         <div class="case-content">
-                            <span class="accent-mono">Przestrzeń Komercyjna / Berlin</span>
-                            <h3>Showroom Motoryzacyjny</h3>
+                            <span class="accent-mono" data-i18n="case_2_accent">Przestrzeń Komercyjna / Berlin</span>
+                            <h3 data-i18n="case_2_h3">Showroom Motoryzacyjny</h3>
                             <div class="case-stats">
                                 <div>
-                                    <span class="accent-mono">Metraż</span>
-                                    <p>420m²</p>
+                                    <span class="accent-mono" data-i18n="case_2_stat_1_label">Metraż</span>
+                                    <p data-i18n="case_2_stat_1_val">420m²</p>
                                 </div>
                                 <div>
-                                    <span class="accent-mono">Standard</span>
-                                    <p>DIN 18202 (Q4)</p>
+                                    <span class="accent-mono" data-i18n="case_2_stat_2_label">Standard</span>
+                                    <p data-i18n="case_2_stat_2_val">DIN 18202 (Q4)</p>
                                 </div>
                             </div>
                             <div class="case-description">
-                                <p><strong>Wyzwanie:</strong> Ściany o ekstremalnej gładkości pod oświetlenie kierunkowe o dużym natężeniu.</p>
-                                <p><strong>Rozwiązanie:</strong> Trójstopniowe szlifowanie mechaniczne z odsysem pyłu i malowanie hydrodynamiczne.</p>
-                                <p><strong>Rezultat:</strong> Powierzchnia "lustrzana" bez widocznych łączeń i smug.</p>
+                                <p><strong data-i18n="case_2_challenge_label">Wyzwanie:</strong> <span data-i18n="case_2_challenge_p">Ściany o ekstremalnej gładkości pod oświetlenie kierunkowe o dużym natężeniu.</span></p>
+                                <p><strong data-i18n="case_2_solution_label">Rozwiązanie:</strong> <span data-i18n="case_2_solution_p">Trójstopniowe szlifowanie mechaniczne z odsysem pyłu i malowanie hydrodynamiczne.</span></p>
+                                <p><strong data-i18n="case_2_result_label">Rezultat:</strong> <span data-i18n="case_2_result_p">Powierzchnia "lustrzana" bez widocznych łączeń i smug.</span></p>
                             </div>
                         </div>
                     </div>
@@ -967,22 +1044,22 @@
                             <img data-src="https://images.unsplash.com/photo-1613490493576-7fde63acd811?auto=format&fit=crop&q=80&w=1200" alt="Rezydencja Konstancin" loading="lazy">
                         </div>
                         <div class="case-content">
-                            <span class="accent-mono">Rezydencja / Konstancin</span>
-                            <h3>Holistyczne Wykończenie</h3>
+                            <span class="accent-mono" data-i18n="case_3_accent">Rezydencja / Konstancin</span>
+                            <h3 data-i18n="case_3_h3">Holistyczne Wykończenie</h3>
                             <div class="case-stats">
                                 <div>
-                                    <span class="accent-mono">Wartość</span>
-                                    <p>>650k PLN</p>
+                                    <span class="accent-mono" data-i18n="case_3_stat_1_label">Wartość</span>
+                                    <p data-i18n="case_3_stat_1_val">>650k PLN</p>
                                 </div>
                                 <div>
-                                    <span class="accent-mono">Gwarancja</span>
-                                    <p>36 Miesięcy</p>
+                                    <span class="accent-mono" data-i18n="case_3_stat_2_label">Gwarancja</span>
+                                    <p data-i18n="case_3_stat_2_val">36 Miesięcy</p>
                                 </div>
                             </div>
                             <div class="case-description">
-                                <p><strong>Wyzwanie:</strong> Koordynacja 4 podwykonawców (HVAC, Smart Home, Stolarka) pod jednym nadzorem.</p>
-                                <p><strong>Rozwiązanie:</strong> Pełny Project Management w systemie Veles. Tygodniowe raporty budżetowe.</p>
-                                <p><strong>Rezultat:</strong> Projekt oddany 3 dni przed terminem, zachowując 100% założeń budżetowych.</p>
+                                <p><strong data-i18n="case_3_challenge_label">Wyzwanie:</strong> <span data-i18n="case_3_challenge_p">Koordynacja 4 podwykonawców (HVAC, Smart Home, Stolarka) pod jednym nadzorem.</span></p>
+                                <p><strong data-i18n="case_3_solution_label">Rozwiązanie:</strong> <span data-i18n="case_3_solution_p">Pełny Project Management w systemie Veles. Tygodniowe raporty budżetowe.</span></p>
+                                <p><strong data-i18n="case_3_result_label">Rezultat:</strong> <span data-i18n="case_3_result_p">Projekt oddany 3 dni przed terminem, zachowując 100% założeń budżetowych.</span></p>
                             </div>
                         </div>
                     </div>
@@ -993,41 +1070,41 @@
         <!-- SECTION 5: PROCES WSPÓŁPRACY -->
         <section id="proces">
             <div class="container">
-                <h2 class="section-title">Proces Współpracy</h2>
+                <h2 class="section-title" data-i18n="process_title">Proces Współpracy</h2>
                 <div class="timeline">
                     <div class="step">
                         <span class="step-num">01</span>
                         <div>
-                            <h4>Kontakt i Brief</h4>
-                            <p>Rozmowa telefoniczna lub e-mail. Ustalamy ogólny zakres prac, oczekiwany termin i orientacyjny budżet.</p>
+                            <h4 data-i18n="step_1_h4">Kontakt i Brief</h4>
+                            <p data-i18n="step_1_p">Rozmowa telefoniczna lub e-mail. Ustalamy ogólny zakres prac, oczekiwany termin i orientacyjny budżet.</p>
                         </div>
                     </div>
                     <div class="step">
                         <span class="step-num">02</span>
                         <div>
-                            <h4>Wizja Lokalna</h4>
-                            <p>Spotykamy się na miejscu inwestycji. Dokonujemy precyzyjnych pomiarów i oceniamy stan techniczny podłoża.</p>
+                            <h4 data-i18n="step_2_h4">Wizja Lokalna</h4>
+                            <p data-i18n="step_2_p">Spotykamy się na miejscu inwestycji. Dokonujemy precyzyjnych pomiarów i oceniamy stan techniczny podłoża.</p>
                         </div>
                     </div>
                     <div class="step">
                         <span class="step-num">03</span>
                         <div>
-                            <h4>Kosztorys</h4>
-                            <p>Przygotowujemy szczegółowe zestawienie: materiały, robocizna oraz precyzyjny harmonogram prac.</p>
+                            <h4 data-i18n="step_3_h4">Kosztorys</h4>
+                            <p data-i18n="step_3_p">Przygotowujemy szczegółowe zestawienie: materiały, robocizna oraz precyzyjny harmonogram prac.</p>
                         </div>
                     </div>
                     <div class="step">
                         <span class="step-num">04</span>
                         <div>
-                            <h4>Umowa</h4>
-                            <p>Podpisujemy transparentną umowę określającą zakres, standardy jakości, terminy oraz gwarancję.</p>
+                            <h4 data-i18n="step_4_h4">Umowa</h4>
+                            <p data-i18n="step_4_p">Podpisujemy transparentną umowę określającą zakres, standardy jakości, terminy oraz gwarancję.</p>
                         </div>
                     </div>
                     <div class="step">
                         <span class="step-num">05</span>
                         <div>
-                            <h4>Realizacja</h4>
-                            <p>Prowadzimy prace, przesyłamy raporty, a na koniec dokonujemy odbioru z oficjalną listą kontrolną.</p>
+                            <h4 data-i18n="step_5_h4">Realizacja</h4>
+                            <p data-i18n="step_5_p">Prowadzimy prace, przesyłamy raporty, a na koniec dokonujemy odbioru z oficjalną listą kontrolną.</p>
                         </div>
                     </div>
                 </div>
@@ -1037,27 +1114,27 @@
         <!-- SECTION 6: FAQ -->
         <section id="faq">
             <div class="container">
-                <h2 class="section-title">FAQ</h2>
+                <h2 class="section-title" data-i18n="faq_title">FAQ</h2>
                 <div class="faq-grid">
                     <div class="faq-item">
-                        <h4>Czy pracujecie z klientami spoza Polski?</h4>
-                        <p>Tak – ponad połowa naszych realizacji to projekty dla inwestorów z Niemiec, UK i Skandynawii. Zapewniamy pełną obsługę w językach obcych.</p>
+                        <h4 data-i18n="faq_1_q">Czy pracujecie z klientami spoza Polski?</h4>
+                        <p data-i18n="faq_1_a">Tak – ponad połowa naszych realizacji to projekty dla inwestorów z Niemiec, UK i Skandynawii. Zapewniamy pełną obsługę w językach obcych.</p>
                     </div>
                     <div class="faq-item">
-                        <h4>Jaka jest minimalna wartość projektu?</h4>
-                        <p>Specjalizujemy się w kompleksowych wykończeniach. Standardowo podejmujemy się zleceń o wartości od 30,000 PLN.</p>
+                        <h4 data-i18n="faq_2_q">Jaka jest minimalna wartość projektu?</h4>
+                        <p data-i18n="faq_2_a">Specjalizujemy się w kompleksowych wykończeniach. Standardowo podejmujemy się zleceń o wartości od 30,000 PLN.</p>
                     </div>
                     <div class="faq-item">
-                        <h4>Jak wygląda gwarancja?</h4>
-                        <p>Standardowo udzielamy 24-miesięcznej gwarancji na wykonane prace. W przypadku zgłoszeń, reagujemy w ciągu 48 godzin.</p>
+                        <h4 data-i18n="faq_3_q">Jak wygląda gwarancja?</h4>
+                        <p data-i18n="faq_3_a">Standardowo udzielamy 24-miesięcznej gwarancji na wykonane prace. W przypadku zgłoszeń, reagujemy w ciągu 48 godzin.</p>
                     </div>
                     <div class="faq-item">
-                        <h4>Co jeśli projekt się opóźni?</h4>
-                        <p>Nasza umowa zawiera jasne zapisy o karach za opóźnienia. Szanujemy Twój czas – do tej pory 100% naszych prac oddaliśmy w terminie.</p>
+                        <h4 data-i18n="faq_4_q">Co jeśli projekt się opóźni?</h4>
+                        <p data-i18n="faq_4_a">Nasza umowa zawiera jasne zapisy o karach za opóźnienia. Szanujemy Twój czas – do tej pory 100% naszych prac oddaliśmy w terminie.</p>
                     </div>
                     <div class="faq-item">
-                        <h4>Czy podpisujecie NDA?</h4>
-                        <p>Tak – standardowo dla projektów wysokiej wartości podpisujemy umowy o zachowaniu poufności (Non-Disclosure Agreement).</p>
+                        <h4 data-i18n="faq_5_q">Czy podpisujecie NDA?</h4>
+                        <p data-i18n="faq_5_a">Tak – standardowo dla projektów wysokiej wartości podpisujemy umowy o zachowaniu poufności (Non-Disclosure Agreement).</p>
                     </div>
                 </div>
             </div>
@@ -1068,33 +1145,33 @@
             <div class="container">
                 <div class="contact-grid">
                     <div class="contact-info">
-                        <h2 class="section-title">Gotowy na nowy standard?</h2>
-                        <p>Oddzwonimy w ciągu 24h roboczych, aby omówić szczegóły Twojego projektu.</p>
+                        <h2 class="section-title" data-i18n="contact_h2">Gotowy na nowy standard?</h2>
+                        <p data-i18n="contact_p">Oddzwonimy w ciągu 24h roboczych, aby omówić szczegóły Twojego projektu.</p>
                         <div class="direct-contact">
-                            <p>Bezpośredni kontakt:</p>
+                            <p data-i18n="contact_direct_p">Bezpośredni kontakt:</p>
                             <span class="phone">+48 XXX XXX XXX</span>
                         </div>
                     </div>
                     <div class="contact-container">
                         <form id="contact-form">
                         <div class="form-group">
-                            <label for="name">Imię i nazwisko / Firma</label>
+                            <label for="name" data-i18n="form_name_label">Imię i nazwisko / Firma</label>
                             <input type="text" id="name" name="name" required>
                         </div>
                         <div class="form-group">
-                            <label for="email">Email</label>
+                            <label for="email" data-i18n="form_email_label">Email</label>
                             <input type="email" id="email" name="email" required>
                         </div>
                         <div class="form-group">
-                            <label for="phone">Telefon</label>
+                            <label for="phone" data-i18n="form_phone_label">Telefon</label>
                             <input type="tel" id="phone" name="phone" placeholder="+48 ...">
                         </div>
                         <div class="form-group">
-                            <label for="location">Lokalizacja projektu</label>
-                            <input type="text" id="location" name="location" placeholder="np. Warszawa">
+                            <label for="location" data-i18n="form_location_label">Lokalizacja projektu</label>
+                            <input type="text" id="location" name="location" placeholder="np. Warszawa" data-i18n="form_placeholder_location">
                         </div>
                         <div class="form-group full-width">
-                            <label for="budget">Orientacyjny budżet</label>
+                            <label for="budget" data-i18n="form_budget_label">Orientacyjny budżet</label>
                             <select id="budget" name="budget">
                                 <option value="<30k">&lt; 30,000 PLN</option>
                                 <option value="30-50k">30,000 - 50,000 PLN</option>
@@ -1103,16 +1180,16 @@
                             </select>
                         </div>
                         <div class="form-group full-width">
-                            <label for="message">Opis projektu</label>
-                            <textarea id="message" name="message" rows="5" placeholder="Krótko opisz zakres prac i Twoje oczekiwania..."></textarea>
+                            <label for="message" data-i18n="form_message_label">Opis projektu</label>
+                            <textarea id="message" name="message" rows="5" placeholder="Krótko opisz zakres prac i Twoje oczekiwania..." data-i18n="form_placeholder_message"></textarea>
                         </div>
                         <div class="form-checkbox">
                             <input type="checkbox" id="privacy" name="privacy" required>
-                            <label for="privacy">Akceptuję politykę prywatności i kontakt w celu przygotowania oferty.</label>
+                            <label for="privacy" data-i18n="form_privacy_label">Akceptuję politykę prywatności i kontakt w celu przygotowania oferty.</label>
                         </div>
-                            <button type="submit" class="cta-primary">Wyślij zapytanie</button>
+                            <button type="submit" class="cta-primary" data-i18n="form_submit">Wyślij zapytanie</button>
                         </form>
-                        <div id="form-response" style="display: none; margin-top: 20px; text-align: center; font-weight: 700; color: var(--accent-red);">
+                        <div id="form-response" style="display: none; margin-top: 20px; text-align: center; font-weight: 700; color: var(--accent-red);" data-i18n="form_success">
                             Dziękujemy! Twoja wiadomość została wysłana. Odpowiemy w ciągu 24h.
                         </div>
                     </div>
@@ -1132,10 +1209,10 @@
                         <span class="logo-sub">INTERIORS</span>
                     </div>
                 </a>
-                <p>Specjaliści od wykończeń premium.<br>Niemiecki standard, polskie ceny.</p>
+                <p data-i18n="footer_brand_p">Specjaliści od wykończeń premium.<br>Niemiecki standard, polskie ceny.</p>
             </div>
             <div class="footer-links">
-                <p>Grupa Veles</p>
+                <p data-i18n="footer_group_label">Grupa Veles</p>
                 <ul>
                     <li><a href="https://velesacademy.app" class="link-academy">Veles Academy — Szkolenia dla Project Managerów</a></li>
                     <li><a href="https://velesdigital.co" class="link-digital">Veles Digital — Strony i produkty cyfrowe</a></li>
@@ -1143,22 +1220,911 @@
                 </ul>
             </div>
             <div class="footer-links">
-                <p>Nawigacja</p>
+                <p data-i18n="footer_nav_label">Nawigacja</p>
                 <ul>
-                    <li><a href="#hero">Start</a></li>
-                    <li><a href="#dlaczego">O nas</a></li>
-                    <li><a href="#uslugi">Usługi</a></li>
-                    <li><a href="#realizacje">Realizacje</a></li>
+                    <li><a href="#hero" data-i18n="nav_start">Start</a></li>
+                    <li><a href="#dlaczego" data-i18n="nav_why">O nas</a></li>
+                    <li><a href="#uslugi" data-i18n="nav_services">Usługi</a></li>
+                    <li><a href="#realizacje" data-i18n="nav_realizations">Realizacje</a></li>
                 </ul>
             </div>
         </div>
         <div class="footer-bottom">
-            <p>&copy; 2024 Veles Interiors. Część Veles Group. Wszystkie prawa zastrzeżone.</p>
-            <p>&copy; made by <a href="https://velesdigital.co" class="link-digital" style="color: #0170F5 !important">Veles Digital</a></p>
+            <p data-i18n="footer_rights">&copy; 2024 Veles Interiors. Część Veles Group. Wszystkie prawa zastrzeżone.</p>
+            <p><span data-i18n="footer_made_by">made by</span> <a href="https://velesdigital.co" class="link-digital" style="color: #0170F5 !important">Veles Digital</a></p>
         </div>
     </footer>
 
     <script>
+        const translations = {
+            "pl": {
+                "page_title": "Veles Interiors | Wykończenia Premium - Niemiecki Standard",
+                "meta_description": "Veles Interiors - profesjonalne wykończenia wnętrz dla inwestorów. Niemiecki standard jakości, polska cena, międzynarodowa komunikacja.",
+                "nav_start": "Start",
+                "nav_why": "Dlaczego My",
+                "nav_services": "Usługi",
+                "nav_realizations": "Realizacje",
+                "nav_process": "Proces",
+                "nav_faq": "FAQ",
+                "nav_contact": "Kontakt",
+                "hero_h1": "Wykończenia Premium.<br>Niemiecki Standard.<br>Polska Realizacja.",
+                "hero_p": "Dla inwestorów i projektantów którzy nie akceptują kompromisów. Realizujemy projekty kompleksowo, dbając o każdy detal techniczny. Komunikacja: PL · EN · DE · FR · RU",
+                "hero_cta_primary": "Porozmawiajmy o Twoim projekcie",
+                "hero_cta_secondary": "Zobacz realizacje",
+                "trust_1": "✓ 3 lata doświadczenia w Niemczech",
+                "trust_2": "✓ 100% projektów na czas",
+                "trust_3": "✓ Gwarancja jakości 24 m-ce",
+                "trust_4": "✓ Standardy DIN 18202",
+                "why_title": "Dlaczego Veles Interiors?",
+                "pillar_1_h3": "Międzynarodowy Standard",
+                "pillar_1_p": "Doświadczenie zdobyte na dużych projektach infrastrukturalnych w Niemczech przekładamy na precyzję w wykończeniach wnętrz. Pracujemy zgodnie z surowymi normami DIN.",
+                "pillar_2_h3": "Transparentna Komunikacja",
+                "pillar_2_p": "Dla nas odległość nie jest barierą. Otrzymujesz raporty postępu co 48h wraz z dokumentacją fotograficzną. Rozmawiamy w Twoim języku.",
+                "pillar_3_h3": "Zero Niespodzianek",
+                "pillar_3_p": "Precyzyjny kosztorys przed startem prac to u nas standard. Każda zmiana zakresu jest dokumentowana, a Ty masz pełną kontrolę nad budżetem.",
+                "services_title": "Zakres Usług",
+                "service_1_h3": "Tynki i Gładzie",
+                "service_1_p": "Maszynowe i ręczne przygotowanie powierzchni pod najbardziej wymagające wykończenia: farby satynowe, tapety premium czy tynki dekoracyjne.",
+                "service_1_scope": "Mieszkanie 80m²: 12-16 dni",
+                "service_2_h3": "Malowanie Premium",
+                "service_2_p": "Praca z farbami najwyższej klasy (ekologiczne, ceramiczne). Perfekcyjne odcięcia i struktura powierzchni godna najlepszych showroomów.",
+                "service_2_scope": "Norma DIN 18202",
+                "service_3_h3": "Instalacje",
+                "service_3_p": "Koordynacja prac elektrycznych i hydraulicznych z certyfikowanymi ekipami. Pełna odpowiedzialność po naszej stronie – jedna umowa, zero problemów.",
+                "service_3_scope": "Pełna koordynacja",
+                "service_4_h3": "Project Management",
+                "service_4_p": "Dla klientów zagranicznych oferujemy pełny nadzór nad inwestycją. Remote supervision, cotygodniowe podsumowania wideo i profesjonalne odbiory.",
+                "service_4_scope": "Dla rynków DACH/UK",
+                "cases_title": "Case Studies",
+                "case_1_accent": "Apartament Premium / Warszawa",
+                "case_1_h3": "Śródmieście: Precyzja w 14 dni",
+                "case_1_stat_1_label": "Metraż",
+                "case_1_stat_1_val": "95m²",
+                "case_1_stat_2_label": "Czas",
+                "case_1_stat_2_val": "14 Dni Roboczych",
+                "case_1_challenge_label": "Wyzwanie:",
+                "case_1_challenge_p": "Inwestor z Londynu oczekiwał jakości premium przy zerowej dostępności na miejscu.",
+                "case_1_solution_label": "Rozwiązanie:",
+                "case_1_solution_p": "Remote project management z daily video updates. Wykorzystanie tynków maszynowych wg normy DIN 18202.",
+                "case_1_result_label": "Rezultat:",
+                "case_1_result_p": "Przekazanie kluczy bez uwag. Rekomendacja dla kolejnych 2 projektów.",
+                "label_before": "Przed",
+                "label_after": "Po",
+                "case_2_accent": "Przestrzeń Komercyjna / Berlin",
+                "case_2_h3": "Showroom Motoryzacyjny",
+                "case_2_stat_1_label": "Metraż",
+                "case_2_stat_1_val": "420m²",
+                "case_2_stat_2_label": "Standard",
+                "case_2_stat_2_val": "DIN 18202 (Q4)",
+                "case_2_challenge_label": "Wyzwanie:",
+                "case_2_challenge_p": "Ściany o ekstremalnej gładkości pod oświetlenie kierunkowe o dużym natężeniu.",
+                "case_2_solution_label": "Rozwiązanie:",
+                "case_2_solution_p": "Trójstopniowe szlifowanie mechaniczne z odsysem pyłu i malowanie hydrodynamiczne.",
+                "case_2_result_label": "Rezultat:",
+                "case_2_result_p": "Powierzchnia \"lustrzana\" bez widocznych łączeń i smug.",
+                "case_3_accent": "Rezydencja / Konstancin",
+                "case_3_h3": "Holistyczne Wykończenie",
+                "case_3_stat_1_label": "Wartość",
+                "case_3_stat_1_val": ">650k PLN",
+                "case_3_stat_2_label": "Gwarancja",
+                "case_3_stat_2_val": "36 Miesięcy",
+                "case_3_challenge_label": "Wyzwanie:",
+                "case_3_challenge_p": "Koordynacja 4 podwykonawców (HVAC, Smart Home, Stolarka) pod jednym nadzorem.",
+                "case_3_solution_label": "Rozwiązanie:",
+                "case_3_solution_p": "Pełny Project Management w systemie Veles. Tygodniowe raporty budżetowe.",
+                "case_3_result_label": "Rezultat:",
+                "case_3_result_p": "Projekt oddany 3 dni przed terminem, zachowując 100% założeń budżetowych.",
+                "process_title": "Proces Współpracy",
+                "step_1_h4": "Kontakt i Brief",
+                "step_1_p": "Rozmowa telefoniczna lub e-mail. Ustalamy ogólny zakres prac, oczekiwany termin i orientacyjny budżet.",
+                "step_2_h4": "Wizja Lokalna",
+                "step_2_p": "Spotykamy się na miejscu inwestycji. Dokonujemy precyzyjnych pomiarów i oceniamy stan techniczny podłoża.",
+                "step_3_h4": "Kosztorys",
+                "step_3_p": "Przygotowujemy szczegółowe zestawienie: materiały, robocizna oraz precyzyjny harmonogram prac.",
+                "step_4_h4": "Umowa",
+                "step_4_p": "Podpisujemy transparentną umowę określającą zakres, standardy jakości, terminy oraz gwarancję.",
+                "step_5_h4": "Realizacja",
+                "step_5_p": "Prowadzimy prace, przesyłamy raporty, a na koniec dokonujemy odbioru z oficjalną listą kontrolną.",
+                "faq_title": "FAQ",
+                "faq_1_q": "Czy pracujecie z klientami spoza Polski?",
+                "faq_1_a": "Tak – ponad połowa naszych realizacji to projekty dla inwestorów z Niemiec, UK i Skandynawii. Zapewniamy pełną obsługę w językach obcych.",
+                "faq_2_q": "Jaka jest minimalna wartość projektu?",
+                "faq_2_a": "Specjalizujemy się w kompleksowych wykończeniach. Standardowo podejmujemy się zleceń o wartości od 30,000 PLN.",
+                "faq_3_q": "Jak wygląda gwarancja?",
+                "faq_3_a": "Standardowo udzielamy 24-miesięcznej gwarancji na wykonane prace. W przypadku zgłoszeń, reagujemy w ciągu 48 godzin.",
+                "faq_4_q": "Co jeśli projekt się opóźni?",
+                "faq_4_a": "Nasza umowa zawiera jasne zapisy o karach za opóźnienia. Szanujemy Twój czas – do tej pory 100% naszych prac oddaliśmy w terminie.",
+                "faq_5_q": "Czy podpisujecie NDA?",
+                "faq_5_a": "Tak – standardowo dla projektów wysokiej wartości podpisujemy umowy o zachowaniu poufności (Non-Disclosure Agreement).",
+                "contact_h2": "Gotowy na nowy standard?",
+                "contact_p": "Oddzwonimy w ciągu 24h roboczych, aby omówić szczegóły Twojego projektu.",
+                "contact_direct_p": "Bezpośredni kontakt:",
+                "form_name_label": "Imię i nazwisko / Firma",
+                "form_email_label": "Email",
+                "form_phone_label": "Telefon",
+                "form_location_label": "Lokalizacja projektu",
+                "form_budget_label": "Orientacyjny budżet",
+                "form_message_label": "Opis projektu",
+                "form_privacy_label": "Akceptuję politykę prywatności i kontakt w celu przygotowania oferty.",
+                "form_submit": "Wyślij zapytanie",
+                "form_placeholder_location": "np. Warszawa",
+                "form_placeholder_message": "Krótko opisz zakres prac i Twoje oczekiwania...",
+                "form_success": "Dziękujemy! Twoja wiadomość została wysłana. Odpowiemy w ciągu 24h.",
+                "footer_brand_p": "Specjaliści od wykończeń premium.<br>Niemiecki standard, polskie ceny.",
+                "footer_group_label": "Grupa Veles",
+                "footer_nav_label": "Nawigacja",
+                "footer_rights": "© 2024 Veles Interiors. Część Veles Group. Wszystkie prawa zastrzeżone.",
+                "footer_made_by": "made by"
+            },
+            "en": {
+                "page_title": "Veles Interiors | Premium Finishing - German Standards",
+                "meta_description": "Veles Interiors - professional interior finishing for investors. German quality standards, Polish efficiency, international communication.",
+                "nav_start": "Home",
+                "nav_why": "Why Us",
+                "nav_services": "Services",
+                "nav_realizations": "Portfolio",
+                "nav_process": "Process",
+                "nav_faq": "FAQ",
+                "nav_contact": "Contact",
+                "hero_h1": "Premium Finishing.<br>German Standards.<br>Polish Execution.",
+                "hero_p": "For investors and designers who do not accept compromises. We deliver projects comprehensively, focusing on every technical detail. Languages: PL · EN · DE · FR · RU",
+                "hero_cta_primary": "Discuss Your Project",
+                "hero_cta_secondary": "View Portfolio",
+                "trust_1": "✓ 3 years of experience in Germany",
+                "trust_2": "✓ 100% projects on time",
+                "trust_3": "✓ 24-month quality guarantee",
+                "trust_4": "✓ DIN 18202 Standards",
+                "why_title": "Why Veles Interiors?",
+                "pillar_1_h3": "International Standard",
+                "pillar_1_p": "We translate experience gained from major infrastructure projects in Germany into precision in interior finishing. We work according to strict DIN standards.",
+                "pillar_2_h3": "Transparent Communication",
+                "pillar_2_p": "Distance is not a barrier for us. You receive progress reports every 48 hours along with photo documentation. We speak your language.",
+                "pillar_3_h3": "Zero Surprises",
+                "pillar_3_p": "A precise cost estimate before starting work is our standard. Every change in scope is documented, giving you full budget control.",
+                "services_title": "Our Scope of Services",
+                "service_1_h3": "Plastering & Skimming",
+                "service_1_p": "Mechanical and manual surface preparation for the most demanding finishes: satin paints, premium wallpapers, or decorative plasters.",
+                "service_1_scope": "80m² Apartment: 12-16 days",
+                "service_2_h3": "Premium Painting",
+                "service_2_p": "Working with top-tier paints (eco-friendly, ceramic). Perfect lines and surface texture worthy of the best showrooms.",
+                "service_2_scope": "DIN 18202 Standard",
+                "service_3_h3": "Installations",
+                "service_3_p": "Coordination of electrical and plumbing works with certified teams. Full responsibility on our side – one contract, zero problems.",
+                "service_3_scope": "Full coordination",
+                "service_4_h3": "Project Management",
+                "service_4_p": "For international clients, we offer full project supervision. Remote supervision, weekly video summaries, and professional handovers.",
+                "service_4_scope": "For DACH/UK markets",
+                "cases_title": "Case Studies",
+                "case_1_accent": "Premium Apartment / Warsaw",
+                "case_1_h3": "City Center: Precision in 14 Days",
+                "case_1_stat_1_label": "Area",
+                "case_1_stat_1_val": "95m²",
+                "case_1_stat_2_label": "Time",
+                "case_1_stat_2_val": "14 Working Days",
+                "case_1_challenge_label": "Challenge:",
+                "case_1_challenge_p": "A London-based investor expected premium quality with zero local availability.",
+                "case_1_solution_label": "Solution:",
+                "case_1_solution_p": "Remote project management with daily video updates. Machine plastering according to DIN 18202.",
+                "case_1_result_label": "Result:",
+                "case_1_result_p": "Handover without issues. Recommended for 2 subsequent projects.",
+                "label_before": "Before",
+                "label_after": "After",
+                "case_2_accent": "Commercial Space / Berlin",
+                "case_2_h3": "Automotive Showroom",
+                "case_2_stat_1_label": "Area",
+                "case_2_stat_1_val": "420m²",
+                "case_2_stat_2_label": "Standard",
+                "case_2_stat_2_val": "DIN 18202 (Q4)",
+                "case_2_challenge_label": "Challenge:",
+                "case_2_challenge_p": "Extremely smooth walls for high-intensity directional lighting.",
+                "case_2_solution_label": "Solution:",
+                "case_2_solution_p": "Three-stage mechanical sanding with dust extraction and hydrodynamic painting.",
+                "case_2_result_label": "Result:",
+                "case_2_result_p": "\"Mirror-like\" surface without visible joints or streaks.",
+                "case_3_accent": "Residence / Konstancin",
+                "case_3_h3": "Holistic Finishing",
+                "case_3_stat_1_label": "Value",
+                "case_3_stat_1_val": ">650k PLN",
+                "case_3_stat_2_label": "Warranty",
+                "case_3_stat_2_val": "36 Months",
+                "case_3_challenge_label": "Challenge:",
+                "case_3_challenge_p": "Coordination of 4 subcontractors (HVAC, Smart Home, Joinery) under single supervision.",
+                "case_3_solution_label": "Solution:",
+                "case_3_solution_p": "Full Project Management in the Veles system. Weekly budget reports.",
+                "case_3_result_label": "Result:",
+                "case_3_result_p": "Project delivered 3 days before the deadline, meeting 100% of the budget assumptions.",
+                "process_title": "Our Process",
+                "step_1_h4": "Contact & Brief",
+                "step_1_p": "Phone call or email. We determine the scope, timeline, and estimated budget.",
+                "step_2_h4": "Site Visit",
+                "step_2_p": "We meet at the investment site. We take precise measurements and assess the technical condition of the surfaces.",
+                "step_3_h4": "Cost Estimate",
+                "step_3_p": "We prepare a detailed breakdown: materials, labor, and a precise work schedule.",
+                "step_4_h4": "Contract",
+                "step_4_p": "We sign a transparent agreement defining the scope, quality standards, deadlines, and warranty.",
+                "step_5_h4": "Execution",
+                "step_5_p": "We conduct the work, send reports, and finalize with a formal quality checklist handover.",
+                "faq_title": "FAQ",
+                "faq_1_q": "Do you work with clients outside of Poland?",
+                "faq_1_a": "Yes – more than half of our realizations are for investors from Germany, UK, and Scandinavia. We provide full service in foreign languages.",
+                "faq_2_q": "What is the minimum project value?",
+                "faq_2_a": "We specialize in comprehensive finishing. Typically, we undertake orders starting from 30,000 PLN.",
+                "faq_3_q": "How does the warranty work?",
+                "faq_3_a": "We provide a standard 24-month warranty on all performed works. We respond to reports within 48 hours.",
+                "faq_4_q": "What if the project is delayed?",
+                "faq_4_a": "Our contract includes clear penalty clauses for delays. We respect your time – so far 100% of our works have been delivered on schedule.",
+                "faq_5_q": "Do you sign NDAs?",
+                "faq_5_a": "Yes – as a standard for high-value projects, we sign Non-Disclosure Agreements.",
+                "contact_h2": "Ready for a New Standard?",
+                "contact_p": "We will call you back within 24 business hours to discuss your project details.",
+                "contact_direct_p": "Direct Contact:",
+                "form_name_label": "Full Name / Company",
+                "form_email_label": "Email",
+                "form_phone_label": "Phone",
+                "form_location_label": "Project Location",
+                "form_budget_label": "Estimated Budget",
+                "form_message_label": "Project Description",
+                "form_privacy_label": "I accept the privacy policy and contact for the purpose of preparing an offer.",
+                "form_submit": "Send Inquiry",
+                "form_placeholder_location": "e.g. Warsaw",
+                "form_placeholder_message": "Briefly describe the scope of work and your expectations...",
+                "form_success": "Thank you! Your message has been sent. We will respond within 24h.",
+                "footer_brand_p": "Specialists in premium finishing.<br>German standards, competitive prices.",
+                "footer_group_label": "Veles Group",
+                "footer_nav_label": "Navigation",
+                "footer_rights": "© 2024 Veles Interiors. Part of Veles Group. All rights reserved.",
+                "footer_made_by": "made by"
+            },
+            "de": {
+                "page_title": "Veles Interiors | Premium-Innenausbau - Deutscher Standard",
+                "meta_description": "Veles Interiors - professioneller Innenausbau für Investoren. Deutsche Qualitätsstandards, polnische Preise, internationale Kommunikation.",
+                "nav_start": "Start",
+                "nav_why": "Warum wir",
+                "nav_services": "Leistungen",
+                "nav_realizations": "Projekte",
+                "nav_process": "Prozess",
+                "nav_faq": "FAQ",
+                "nav_contact": "Kontakt",
+                "hero_h1": "Premium-Ausbau.<br>Deutscher Standard.<br>Polnische Realisierung.",
+                "hero_p": "Für Investoren und Planer, die keine Kompromisse eingehen. Wir realisieren Projekte ganzheitlich und achten auf jedes technische Detail. Kommunikation: PL · EN · DE · FR · RU",
+                "hero_cta_primary": "Lassen Sie uns über Ihr Projekt sprechen",
+                "hero_cta_secondary": "Projekte ansehen",
+                "trust_1": "✓ 3 Jahre Erfahrung in Deutschland",
+                "trust_2": "✓ 100% Termintreue",
+                "trust_3": "✓ 24 Monate Qualitätsgarantie",
+                "trust_4": "✓ DIN 18202 Standards",
+                "why_title": "Warum Veles Interiors?",
+                "pillar_1_h3": "Internationaler Standard",
+                "pillar_1_p": "Erfahrungen aus großen Infrastrukturprojekten in Deutschland übertragen wir auf die Präzision im Innenausbau. Wir arbeiten nach strengen DIN-Normen.",
+                "pillar_2_h3": "Transparente Kommunikation",
+                "pillar_2_p": "Entfernung ist für uns kein Hindernis. Sie erhalten alle 48 Stunden Fortschrittsberichte inklusive Fotodokumentation. Wir sprechen Ihre Sprache.",
+                "pillar_3_h3": "Keine Überraschungen",
+                "pillar_3_p": "Ein präziser Kostenvoranschlag vor Arbeitsbeginn ist bei uns Standard. Jede Änderung des Leistungsumfangs wird dokumentiert – Sie behalten die volle Budgetkontrolle.",
+                "services_title": "Leistungsspektrum",
+                "service_1_h3": "Putz- und Spachtelarbeiten",
+                "service_1_p": "Maschinelle und manuelle Untergrundvorbehandlung für anspruchsvollste Oberflächen: Seidenmattlacke, Premium-Tapeten oder Dekorphase.",
+                "service_1_scope": "80m² Wohnung: 12-16 Tage",
+                "service_2_h3": "Premium-Malerarbeiten",
+                "service_2_p": "Verarbeitung hochwertigster Farben (ökologisch, keramisch). Perfekte Kanten und Oberflächenstrukturen auf Showroom-Niveau.",
+                "service_2_scope": "DIN 18202 Standard",
+                "service_3_h3": "Installationen",
+                "service_3_p": "Koordination von Elektro- und Sanitärarbeiten mit zertifizierten Teams. Volle Verantwortung unsererseits – ein Vertrag, keine Probleme.",
+                "service_3_scope": "Vollständige Koordination",
+                "service_4_h3": "Projektmanagement",
+                "service_4_p": "Für ausländische Kunden bieten wir eine vollständige Bauleitung an. Fernüberwachung, wöchentliche Video-Zusammenfassungen und professionelle Abnahmen.",
+                "service_4_scope": "Für DACH/UK Märkte",
+                "cases_title": "Fallstudien",
+                "case_1_accent": "Premium-Apartment / Warschau",
+                "case_1_h3": "Stadtzentrum: Präzision in 14 Tagen",
+                "case_1_stat_1_label": "Fläche",
+                "case_1_stat_1_val": "95m²",
+                "case_1_stat_2_label": "Zeit",
+                "case_1_stat_2_val": "14 Arbeitstage",
+                "case_1_challenge_label": "Herausforderung:",
+                "case_1_challenge_p": "Ein Investor aus London erwartete Premium-Qualität bei eigener Abwesenheit vor Ort.",
+                "case_1_solution_label": "Lösung:",
+                "case_1_solution_p": "Remote-Projektmanagement mit täglichen Video-Updates. Maschinelle Verputzung nach DIN 18202.",
+                "case_1_result_label": "Ergebnis:",
+                "case_1_result_p": "Schlüsselübergabe ohne Mängel. Empfehlung für 2 weitere Projekte.",
+                "label_before": "Vorher",
+                "label_after": "Nachher",
+                "case_2_accent": "Gewerbefläche / Berlin",
+                "case_2_h3": "Automobil-Showroom",
+                "case_2_stat_1_label": "Fläche",
+                "case_2_stat_1_val": "420m²",
+                "case_2_stat_2_label": "Standard",
+                "case_2_stat_2_val": "DIN 18202 (Q4)",
+                "case_2_challenge_label": "Herausforderung:",
+                "case_2_challenge_p": "Extrem glatte Wände für hochintensive Richtbeleuchtung.",
+                "case_2_solution_label": "Lösung:",
+                "case_2_solution_p": "Dreistufiger maschineller Schliff mit Staubabsaugung und hydrodynamische Lackierung.",
+                "case_2_result_label": "Ergebnis:",
+                "case_2_result_p": "\"Spiegelglatte\" Oberfläche ohne sichtbare Übergänge oder Streifen.",
+                "case_3_accent": "Residenz / Konstancin",
+                "case_3_h3": "Ganzheitlicher Ausbau",
+                "case_3_stat_1_label": "Wert",
+                "case_3_stat_1_val": ">650k PLN",
+                "case_3_stat_2_label": "Garantie",
+                "case_3_stat_2_val": "36 Monate",
+                "case_3_challenge_label": "Herausforderung:",
+                "case_3_challenge_p": "Koordination von 4 Subunternehmern (HLK, Smart Home, Tischlerei) unter einer Leitung.",
+                "case_3_solution_label": "Lösung:",
+                "case_3_solution_p": "Vollständiges Projektmanagement im Veles-System. Wöchentliche Budgetberichte.",
+                "case_3_result_label": "Ergebnis:",
+                "case_3_result_p": "Projekt 3 Tage vor dem Termin übergeben, 100% Budgeteinhaltung.",
+                "process_title": "Zusammenarbeit",
+                "step_1_h4": "Kontakt & Briefing",
+                "step_1_p": "Telefonat oder E-Mail. Wir klären den Umfang, den Zeitplan und das Budget.",
+                "step_2_h4": "Besichtigung",
+                "step_2_p": "Wir treffen uns vor Ort. Wir führen präzise Messungen durch und prüfen den technischen Zustand.",
+                "step_3_h4": "Kostenvoranschlag",
+                "step_3_p": "Detaillierte Aufstellung: Material, Arbeitskraft und ein präziser Zeitplan.",
+                "step_4_h4": "Vertrag",
+                "step_4_p": "Transparenter Vertrag mit definiertem Umfang, Qualitätsstandards und Terminen.",
+                "step_5_h4": "Realisierung",
+                "step_5_p": "Wir führen die Arbeiten aus, senden Berichte und schließen mit einer offiziellen Abnahme ab.",
+                "faq_title": "FAQ",
+                "faq_1_q": "Arbeiten Sie mit Kunden außerhalb Polens zusammen?",
+                "faq_1_a": "Ja – über die Hälfte unserer Projekte sind für Investoren aus Deutschland, Großbritannien und Skandinavien.",
+                "faq_2_q": "Wie hoch jest der Mindestprojektwert?",
+                "faq_2_a": "Wir sind auf kompletten Innenausbau spezialisiert. In der Regel ab 30.000 PLN.",
+                "faq_3_q": "Wie sieht die Garantie aus?",
+                "faq_3_a": "Wir gewähren 24 Monate Garantie. Wir reagieren innerhalb von 48 Stunden auf Meldungen.",
+                "faq_4_q": "Was passiert bei Verzögerungen?",
+                "faq_4_a": "Unsere Verträge enthalten klare Klauseln. Bisher haben wir 100% der Projekte pünktlich übergeben.",
+                "faq_5_q": "Unterzeichnen Sie NDAs?",
+                "faq_5_a": "Ja – bei hochwertigen Projekten unterzeichnen wir standardmäßig Geheimhaltungsvereinbarungen.",
+                "contact_h2": "Bereit für einen neuen Standard?",
+                "contact_p": "Wir rufen Sie innerhalb von 24 Stunden zurück, um Details zu besprechen.",
+                "contact_direct_p": "Direkter Kontakt:",
+                "form_name_label": "Name / Firma",
+                "form_email_label": "E-Mail",
+                "form_phone_label": "Telefon",
+                "form_location_label": "Projektstandort",
+                "form_budget_label": "Ungefähres Budget",
+                "form_message_label": "Projektbeschreibung",
+                "form_privacy_label": "Ich akzeptiere die Datenschutzbestimmungen und die Kontaktaufnahme zur Angebotserstellung.",
+                "form_submit": "Anfrage senden",
+                "form_placeholder_location": "z.B. Warschau",
+                "form_placeholder_message": "Beschreiben Sie kurz den Umfang und Ihre Erwartungen...",
+                "form_success": "Vielen Dank! Ihre Nachricht wurde gesendet. Wir antworten innerhalb von 24h.",
+                "footer_brand_p": "Spezialisten für Premium-Ausbau.<br>Deutscher Standard, attraktive Preise.",
+                "footer_group_label": "Veles Gruppe",
+                "footer_nav_label": "Navigation",
+                "footer_rights": "© 2024 Veles Interiors. Teil der Veles Gruppe. Alle Rechte vorbehalten.",
+                "footer_made_by": "made by"
+            },
+            "fr": {
+                "page_title": "Veles Interiors | Finitions Premium - Standard Allemand",
+                "meta_description": "Veles Interiors - finitions intérieures professionnelles pour investisseurs. Standard de qualité allemand, prix polonais, communication internationale.",
+                "nav_start": "Accueil",
+                "nav_why": "Pourquoi Nous",
+                "nav_services": "Services",
+                "nav_realizations": "Réalisations",
+                "nav_process": "Processus",
+                "nav_faq": "FAQ",
+                "nav_contact": "Contact",
+                "hero_h1": "Finitions Premium.<br>Standard Allemand.<br>Réalisation Polonaise.",
+                "hero_p": "Pour les investisseurs et designers qui n'acceptent aucun compromis. Nous réalisons vos projets de A à Z. Communication : PL · EN · DE · FR · RU",
+                "hero_cta_primary": "Discutons de votre projet",
+                "hero_cta_secondary": "Voir les réalisations",
+                "trust_1": "✓ 3 ans d'expérience en Allemagne",
+                "trust_2": "✓ 100% des projets livrés à temps",
+                "trust_3": "✓ Garantie qualité de 24 mois",
+                "trust_4": "✓ Normes DIN 18202",
+                "why_title": "Pourquoi Veles Interiors ?",
+                "pillar_1_h3": "Standard International",
+                "pillar_1_p": "Nous appliquons l'expérience acquise sur de grands projets d'infrastructure en Allemagne à la précision des finitions intérieures. Nous travaillons selon les normes DIN.",
+                "pillar_2_h3": "Communication Transparente",
+                "pillar_2_p": "La distance n'est pas une barrière. Vous recevez des rapports d'avancement toutes les 48h avec photos. Nous parlons votre langue.",
+                "pillar_3_h3": "Zéro Surprise",
+                "pillar_3_p": "Un devis précis avant le début des travaux est notre standard. Chaque modification est documentée, vous gardez le contrôle total du budget.",
+                "services_title": "Nos Services",
+                "service_1_h3": "Plâtrerie et Enduits",
+                "service_1_p": "Préparation des surfaces (mécanique et manuelle) pour les finitions les plus exigeantes : peintures satinées, papiers peints premium.",
+                "service_1_scope": "Appartement 80m² : 12-16 jours",
+                "service_2_h3": "Peinture Premium",
+                "service_2_p": "Utilisation de peintures de haute qualité (écologiques, céramiques). Finitions parfaites dignes des meilleurs showrooms.",
+                "service_2_scope": "Norme DIN 18202",
+                "service_3_h3": "Installations",
+                "service_3_p": "Coordination des travaux électriques et hydrauliques. Responsabilité totale de notre part – un seul contrat, zéro souci.",
+                "service_3_scope": "Coordination complète",
+                "service_4_h3": "Gestion de Projet",
+                "service_4_p": "Pour nos clients étrangers, nous offrons une supervision complète. Rapports vidéo hebdomadaires et réceptions professionnelles.",
+                "service_4_scope": "Pour les marchés DACH/UK",
+                "cases_title": "Études de Cas",
+                "case_1_accent": "Appartement Premium / Varsovie",
+                "case_1_h3": "Centre-ville : Précision en 14 jours",
+                "case_1_stat_1_label": "Surface",
+                "case_1_stat_1_val": "95m²",
+                "case_1_stat_2_label": "Délai",
+                "case_1_stat_2_val": "14 jours ouvrés",
+                "case_1_challenge_label": "Défi :",
+                "case_1_challenge_p": "Un investisseur à Londres exigeait une qualité premium sans être présent sur place.",
+                "case_1_solution_label": "Solution :",
+                "case_1_solution_p": "Gestion de projet à distance avec mises à jour vidéo quotidiennes. Plâtrage mécanique selon la norme DIN 18202.",
+                "case_1_result_label": "Résultat :",
+                "case_1_result_p": "Remise des clés sans aucune réserve. Recommandé pour 2 autres projets.",
+                "label_before": "Avant",
+                "label_after": "Après",
+                "case_2_accent": "Espace Commercial / Berlin",
+                "case_2_h3": "Showroom Automobile",
+                "case_2_stat_1_label": "Surface",
+                "case_2_stat_1_val": "420m²",
+                "case_2_stat_2_label": "Standard",
+                "case_2_stat_2_val": "DIN 18202 (Q4)",
+                "case_2_challenge_label": "Défi :",
+                "case_2_challenge_p": "Murs d'une lissage extrême pour un éclairage directionnel haute intensité.",
+                "case_2_solution_label": "Solution :",
+                "case_2_solution_p": "Ponçage mécanique en trois étapes avec aspiration et peinture hydrodynamique.",
+                "case_2_result_label": "Résultat :",
+                "case_2_result_p": "Surface \"miroir\" sans joints ni traces visibles.",
+                "case_3_accent": "Résidence / Konstancin",
+                "case_3_h3": "Finition Holistique",
+                "case_3_stat_1_label": "Valeur",
+                "case_3_stat_1_val": ">650k PLN",
+                "case_3_stat_2_label": "Garantie",
+                "case_3_stat_2_val": "36 Mois",
+                "case_3_challenge_label": "Défi :",
+                "case_3_challenge_p": "Coordination de 4 sous-traitants (CVC, Smart Home, Menuiserie) sous une seule direction.",
+                "case_3_solution_label": "Solution :",
+                "case_3_solution_p": "Gestion complète du projet dans le système Veles. Rapports budgétaires hebdomadaires.",
+                "case_3_result_label": "Résultat :",
+                "case_3_result_p": "Projet livré 3 jours avant le délai, respectant 100% du budget.",
+                "process_title": "Processus",
+                "step_1_h4": "Contact et Brief",
+                "step_1_p": "Appel ou email. Nous définissons l'étendue des travaux, le délai et le budget indicatif.",
+                "step_2_h4": "Visite sur Place",
+                "step_2_p": "Nous nous rencontrons sur le site. Nous prenons des mesures précises et évaluons l'état technique.",
+                "step_3_h4": "Devis",
+                "step_3_p": "Nous préparons un état détaillé : matériaux, main-d'œuvre et calendrier précis.",
+                "step_4_h4": "Contrat",
+                "step_4_p": "Nous signons un contrat transparent précisant la qualité, les délais et la garantie.",
+                "step_5_h4": "Réalisation",
+                "step_5_p": "Nous effectuons les travaux, envoyons des rapports et terminons par une réception officielle.",
+                "faq_title": "FAQ",
+                "faq_1_q": "Travaillez-vous avec des clients hors de Pologne ?",
+                "faq_1_a": "Oui – plus de la moitié de nos projets sont pour des investisseurs d'Allemagne, du Royaume-Uni et de Scandinavie.",
+                "faq_2_q": "Quelle est la valeur minimale d'un projet ?",
+                "faq_2_a": "Nous sommes spécialisés dans les finitions complètes. Généralement à partir de 30 000 PLN.",
+                "faq_3_q": "Comment fonctionne la garantie ?",
+                "faq_3_a": "Nous offrons une garantie de 24 mois. Nous intervenons sous 48h en cas de signalement.",
+                "faq_4_q": "Et si le projet prend du retard ?",
+                "faq_4_a": "Nos contrats incluent des pénalités de retard. Jusqu'à présent, 100% de nos projets ont été livrés à temps.",
+                "faq_5_q": "Signez-vous des accords de confidentialité (NDA) ?",
+                "faq_5_a": "Oui – c'est notre standard pour les projets de haute valeur.",
+                "contact_h2": "Prêt pour un nouveau standard ?",
+                "contact_p": "Nous vous rappelons sous 24h ouvrées pour discuter de votre projet.",
+                "contact_direct_p": "Contact direct :",
+                "form_name_label": "Nom / Entreprise",
+                "form_email_label": "E-mail",
+                "form_phone_label": "Téléphone",
+                "form_location_label": "Lieu du projet",
+                "form_budget_label": "Budget indicatif",
+                "form_message_label": "Description du projet",
+                "form_privacy_label": "J'accepte la politique de confidentialité et d'être contacté pour un devis.",
+                "form_submit": "Envoyer la demande",
+                "form_placeholder_location": "ex: Varsovie",
+                "form_placeholder_message": "Décrivez brièvement vos attentes...",
+                "form_success": "Merci ! Votre message a été envoyé. Nous vous répondrons sous 24h.",
+                "footer_brand_p": "Spécialistes des finitions premium.<br>Standard allemand, prix polonais.",
+                "footer_group_label": "Groupe Veles",
+                "footer_nav_label": "Navigation",
+                "footer_rights": "© 2024 Veles Interiors. Fait partie du Groupe Veles. Tous droits réservés.",
+                "footer_made_by": "made by"
+            },
+            "es": {
+                "page_title": "Veles Interiors | Acabados Premium - Estándar Alemán",
+                "meta_description": "Veles Interiors - acabados de interiores profesionales para inversores. Calidad alemana, precios polacos, comunicación internacional.",
+                "nav_start": "Inicio",
+                "nav_why": "Por qué nosotros",
+                "nav_services": "Servicios",
+                "nav_realizations": "Proyectos",
+                "nav_process": "Proceso",
+                "nav_faq": "FAQ",
+                "nav_contact": "Contacto",
+                "hero_h1": "Acabados Premium.<br>Estándar Alemán.<br>Realización Polaca.",
+                "hero_p": "Para inversores y diseñadores que no aceptan compromisos. Realizamos proyectos de forma integral, cuidando cada detalle técnico. Idiomas: PL · EN · DE · FR · RU",
+                "hero_cta_primary": "Hablemos de su proyecto",
+                "hero_cta_secondary": "Ver proyectos",
+                "trust_1": "✓ 3 años de experiencia en Alemania",
+                "trust_2": "✓ 100% de proyectos a tiempo",
+                "trust_3": "✓ Garantía de calidad de 24 meses",
+                "trust_4": "✓ Normas DIN 18202",
+                "why_title": "¿Por qué Veles Interiors?",
+                "pillar_1_h3": "Estándar Internacional",
+                "pillar_1_p": "Aplicamos la experiencia adquirida en grandes proyectos en Alemania a la precisión de los acabados interiores. Trabajamos según las normas DIN.",
+                "pillar_2_h3": "Comunicación Transparente",
+                "pillar_2_p": "La distancia no es una barrera. Recibirá informes de progreso cada 48h con fotos. Hablamos su idioma.",
+                "pillar_3_h3": "Cero Surpresas",
+                "pillar_3_p": "Un presupuesto preciso antes de empezar es nuestro estándar. Cada cambio se documenta, usted mantiene el control total del presupuesto.",
+                "services_title": "Nuestros Servicios",
+                "service_1_h3": "Yeso y Alisado",
+                "service_1_p": "Preparación de superficies para los acabados más exigentes: pinturas satinadas, papeles pintados premium.",
+                "service_1_scope": "Apartamento 80m²: 12-16 días",
+                "service_2_h3": "Pintura Premium",
+                "service_2_p": "Uso de pinturas de alta calidad (ecológicas, cerámicas). Acabados perfectos dignos de los mejores showrooms.",
+                "service_2_scope": "Norma DIN 18202",
+                "service_3_h3": "Instalaciones",
+                "service_3_p": "Coordinación de trabajos eléctricos e hidráulicos. Responsabilidad total de nuestra parte – un solo contrato, cero problemas.",
+                "service_3_scope": "Coordinación completa",
+                "service_4_h3": "Gestión de Proyectos",
+                "service_4_p": "Para clientes extranjeros, ofrecemos supervisión completa. Informes de video semanales y entregas profesionales.",
+                "service_4_scope": "Para mercados DACH/UK",
+                "cases_title": "Casos de Éxito",
+                "case_1_accent": "Apartamento Premium / Varsovia",
+                "case_1_h3": "Centro: Precisión en 14 días",
+                "case_1_stat_1_label": "Superficie",
+                "case_1_stat_1_val": "95m²",
+                "case_1_stat_2_label": "Tiempo",
+                "case_1_stat_2_val": "14 días laborables",
+                "case_1_challenge_label": "Desafío:",
+                "case_1_challenge_p": "Inversor en Londres exigía calidad premium sin poder estar presente.",
+                "case_1_solution_label": "Solución:",
+                "case_1_solution_p": "Gestión a distancia con actualizaciones de video diarias. Yeso mecánico según DIN 18202.",
+                "case_1_result_label": "Resultado:",
+                "case_1_result_p": "Entrega sin observaciones. Recomendado para 2 proyectos más.",
+                "label_before": "Antes",
+                "label_after": "Después",
+                "case_2_accent": "Espacio Comercial / Berlín",
+                "case_2_h3": "Showroom de Automóviles",
+                "case_2_stat_1_label": "Superficie",
+                "case_2_stat_1_val": "420m²",
+                "case_2_stat_2_label": "Estándar",
+                "case_2_stat_2_val": "DIN 18202 (Q4)",
+                "case_2_challenge_label": "Desafío:",
+                "case_2_challenge_p": "Paredes de liso extremo para iluminación direccional de alta intensidad.",
+                "case_2_solution_label": "Solución:",
+                "case_2_solution_p": "Lijado mecánico en tres etapas con aspiración y pintura hidrodinámica.",
+                "case_2_result_label": "Resultado:",
+                "case_2_result_p": "Superficie \"espejo\" sin juntas ni marcas visibles.",
+                "case_3_accent": "Residencia / Konstancin",
+                "case_3_h3": "Acabado Holístico",
+                "case_3_stat_1_label": "Valor",
+                "case_3_stat_1_val": ">650k PLN",
+                "case_3_stat_2_label": "Garantía",
+                "case_3_stat_2_val": "36 Meses",
+                "case_3_challenge_label": "Desafío:",
+                "case_3_challenge_p": "Coordinación de 4 subcontratistas bajo una sola supervisión.",
+                "case_3_solution_label": "Solución:",
+                "case_3_solution_p": "Gestión completa en el sistema Veles. Informes presupuestarios semanales.",
+                "case_3_result_label": "Resultado:",
+                "case_3_result_p": "Proyecto entregado 3 días antes del plazo.",
+                "process_title": "Proceso",
+                "step_1_h4": "Contacto",
+                "step_1_p": "Llamada o email. Definimos el alcance, plazos y presupuesto.",
+                "step_2_h4": "Visita Técnica",
+                "step_2_p": "Nos reunimos en el lugar. Tomamos medidas y evaluamos el estado técnico.",
+                "step_3_h4": "Presupuesto",
+                "step_3_p": "Preparamos un desglose detallado: materiales y cronograma.",
+                "step_4_h4": "Contrato",
+                "step_4_p": "Firmamos un contrato transparente con estándares de calidad y plazos.",
+                "step_5_h4": "Realización",
+                "step_5_p": "Realizamos los trabajos, enviamos informes y finalizamos con entrega oficial.",
+                "faq_title": "FAQ",
+                "faq_1_q": "¿Trabajan con clientes fuera de Polonia?",
+                "faq_1_a": "Sí – la mayoría de nuestros proyectos son para inversores extranjeros.",
+                "faq_2_q": "¿Cuál es el valor mínimo?",
+                "faq_2_a": "Normalmente a partir de 30.000 PLN.",
+                "faq_3_q": "¿Cómo funciona la garantía?",
+                "faq_3_a": "Ofrecemos 24 meses de garantía.",
+                "faq_4_q": "¿Y si hay retrasos?",
+                "faq_4_a": "Nuestros contratos incluyen penalizaciones. Hemos entregado el 100% a tiempo.",
+                "faq_5_q": "¿Firman NDA?",
+                "faq_5_a": "Sí – es nuestro estándar para proyectos de alto valor.",
+                "contact_h2": "¿Listo para un nuevo estándar?",
+                "contact_p": "Le llamaremos en menos de 24h para hablar de su proyecto.",
+                "contact_direct_p": "Contacto directo:",
+                "form_name_label": "Nombre / Empresa",
+                "form_email_label": "Email",
+                "form_phone_label": "Teléfono",
+                "form_location_label": "Ubicación del proyecto",
+                "form_budget_label": "Presupuesto aproximado",
+                "form_message_label": "Descripción",
+                "form_privacy_label": "Acepto la política de privacidad.",
+                "form_submit": "Enviar consulta",
+                "form_placeholder_location": "ej. Varsovia",
+                "form_placeholder_message": "Describa brevemente sus expectativas...",
+                "form_success": "¡Gracias! Su mensaje ha sido enviado.",
+                "footer_brand_p": "Especialistas en acabados premium.<br>Calidad alemana, precios polacos.",
+                "footer_group_label": "Grupo Veles",
+                "footer_nav_label": "Navegación",
+                "footer_rights": "© 2024 Veles Interiors. Parte de Veles Group. Todos los derechos reservados.",
+                "footer_made_by": "hecho por"
+            },
+            "ru": {
+                "page_title": "Veles Interiors | Отделка Премиум-класса - Немецкий стандарт",
+                "meta_description": "Veles Interiors - профессиональная отделка интерьеров для инвесторов. Немецкое качество, польские цены, международная коммуникация.",
+                "nav_start": "Главная",
+                "nav_why": "Почему мы",
+                "nav_services": "Услуги",
+                "nav_realizations": "Портфолио",
+                "nav_process": "Процесс",
+                "nav_faq": "FAQ",
+                "nav_contact": "Контакт",
+                "hero_h1": "Премиальная отделка.<br>Немецкий стандарт.<br>Польская реализация.",
+                "hero_p": "Для инвесторов и дизайнеров, которые не идут на компромиссы. Реализуем проекты комплексно, уделяя внимание каждой технической детали. Языки: PL · EN · DE · FR · RU",
+                "hero_cta_primary": "Обсудить ваш проект",
+                "hero_cta_secondary": "Посмотреть работы",
+                "trust_1": "✓ 3 года опыта в Германии",
+                "trust_2": "✓ 100% проектов сданы вовремя",
+                "trust_3": "✓ Гарантия качества 24 месяца",
+                "trust_4": "✓ Стандарты DIN 18202",
+                "why_title": "Почему Veles Interiors?",
+                "pillar_1_h3": "Международный стандарт",
+                "pillar_1_p": "Опыт, полученный на крупных инфраструктурных проектах в Германии, мы переносим на точность в отделке интерьеров. Работаем по строгим нормам DIN.",
+                "pillar_2_h3": "Прозрачная коммуникация",
+                "pillar_2_p": "Расстояние для нас не преграда. Вы получаете отчеты о прогрессе каждые 48 часов с фотофиксацией. Мы говорим на вашем языке.",
+                "pillar_3_h3": "Никаких сюрпризов",
+                "pillar_3_p": "Точная смета перед началом работ — наш стандарт. Любое изменение объема документируется, вы полностью контролируете бюджет.",
+                "services_title": "Наши услуги",
+                "service_1_h3": "Штукатурка и шпаклевка",
+                "service_1_p": "Машинная и ручная подготовка поверхностей под самые требовательные покрытия: сатиновые краски, премиальные обои.",
+                "service_1_scope": "Квартира 80м²: 12-16 дней",
+                "service_2_h3": "Премиальная покраска",
+                "service_2_p": "Работа с красками высшего класса (экологичные, керамические). Идеальные линии и текстура на уровне лучших шоурумов.",
+                "service_2_scope": "Стандарт DIN 18202",
+                "service_3_h3": "Инженерные системы",
+                "service_3_p": "Координация электромонтажных и сантехнических работ. Полная ответственность с нашей стороны — один договор.",
+                "service_3_scope": "Полная координация",
+                "service_4_h3": "Управление проектами",
+                "service_4_p": "Для иностранных клиентов предлагаем полный надзор. Удаленный контроль, еженедельные видеоотчеты и профессиональная приемка.",
+                "service_4_scope": "Для рынков DACH/UK",
+                "cases_title": "Кейсы",
+                "case_1_accent": "Премиум-апартаменты / Варшава",
+                "case_1_h3": "Центр города: точность за 14 дней",
+                "case_1_stat_1_label": "Площадь",
+                "case_1_stat_1_val": "95м²",
+                "case_1_stat_2_label": "Срок",
+                "case_1_stat_2_val": "14 рабочих дней",
+                "case_1_challenge_label": "Задача:",
+                "case_1_challenge_p": "Инвестор из Лондона требовал премиум-качество при отсутствии возможности личного присутствия.",
+                "case_1_solution_label": "Решение:",
+                "case_1_solution_p": "Удаленное управление с ежедневными видеоотчетами. Машинная штукатурка по DIN 18202.",
+                "case_1_result_label": "Результат:",
+                "case_1_result_p": "Сдача объекта без замечаний. Рекомендация на следующие 2 проекта.",
+                "label_before": "До",
+                "label_after": "После",
+                "case_2_accent": "Коммерческое пространство / Берлин",
+                "case_2_h3": "Автомобильный шоурум",
+                "case_2_stat_1_label": "Площадь",
+                "case_2_stat_1_val": "420м²",
+                "case_2_stat_2_label": "Стандарт",
+                "case_2_stat_2_val": "DIN 18202 (Q4)",
+                "case_2_challenge_label": "Задача:",
+                "case_2_challenge_p": "Идеально гладкие стены под интенсивное направленное освещение.",
+                "case_2_solution_label": "Решение:",
+                "case_2_solution_p": "Трехступенчатая механическая шлифовка с пылеудалением и гидродинамическая покраска.",
+                "case_2_result_label": "Результат:",
+                "case_2_result_p": "\"Зеркальная\" поверхность без видимых стыков и полос.",
+                "case_3_accent": "Резиденция / Констанцин",
+                "case_3_h3": "Холистическая отделка",
+                "case_3_stat_1_label": "Стоимость",
+                "case_3_stat_1_val": ">650k PLN",
+                "case_3_stat_2_label": "Гарантия",
+                "case_3_stat_2_val": "36 месяцев",
+                "case_3_challenge_label": "Задача:",
+                "case_3_challenge_p": "Координация 4 субподрядчиков под единым руководством.",
+                "case_3_solution_label": "Решение:",
+                "case_3_solution_p": "Полный проджект-менеджмент. Еженедельные финансовые отчеты.",
+                "case_3_result_label": "Результат:",
+                "case_3_result_p": "Объект сдан на 3 дня раньше срока.",
+                "process_title": "Процесс работы",
+                "step_1_h4": "Контакт и бриф",
+                "step_1_p": "Звонок или email. Определяем объем, сроки и ориентировочный бюджет.",
+                "step_2_h4": "Осмотр объекта",
+                "step_2_p": "Встреча на объекте. Точные замеры и оценка технического состояния.",
+                "step_3_h4": "Смета",
+                "step_3_p": "Детальный расчет: материалы, работы и точный график реализации.",
+                "step_4_h4": "Договор",
+                "step_4_p": "Подписываем прозрачный договор с гарантиями качества и сроков.",
+                "step_5_h4": "Реализация",
+                "step_5_p": "Выполняем работы, присылаем отчеты и проводим финальную приемку.",
+                "faq_title": "FAQ",
+                "faq_1_q": "Работаете ли вы с клиентами из-за рубежа?",
+                "faq_1_a": "Да — более половины наших проектов реализованы для инвесторов из Германии и Великобритании.",
+                "faq_2_q": "Минимальная стоимость проекта?",
+                "faq_2_a": "Мы специализируемся на комплексных работах. Обычно от 30 000 PLN.",
+                "faq_3_q": "Как работает гарантия?",
+                "faq_3_a": "Мы даем гарантию 24 месяца. Реагируем на заявки в течение 48 часов.",
+                "faq_4_q": "Что если проект задержится?",
+                "faq_4_a": "В договоре прописаны штрафы. На данный момент 100% объектов сданы вовремя.",
+                "faq_5_q": "Подписываете ли вы NDA?",
+                "faq_5_a": "Да — это стандарт для премиальных проектов.",
+                "contact_h2": "Готовы к новому стандарту?",
+                "contact_p": "Мы перезвоним вам в течение 24 рабочих часов.",
+                "contact_direct_p": "Прямой контакт:",
+                "form_name_label": "Имя и фамилия / Компания",
+                "form_email_label": "Email",
+                "form_phone_label": "Телефон",
+                "form_location_label": "Локация объекта",
+                "form_budget_label": "Бюджет",
+                "form_message_label": "Описание проекта",
+                "form_privacy_label": "Я принимаю политику конфиденциальности.",
+                "form_submit": "Отправить запрос",
+                "form_placeholder_location": "напр. Варшава",
+                "form_placeholder_message": "Кратко опишите ваши пожелания...",
+                "form_success": "Спасибо! Ваше сообщение отправлено.",
+                "footer_brand_p": "Специалисты по премиальной отделке.<br>Немецкий стандарт, польские цены.",
+                "footer_group_label": "Veles Group",
+                "footer_nav_label": "Навигация",
+                "footer_rights": "© 2024 Veles Interiors. Часть Veles Group. Все права защищены.",
+                "footer_made_by": "разработка"
+            },
+            "ua": {
+                "page_title": "Veles Interiors | Оздоблення Преміум-класу - Німецький стандарт",
+                "meta_description": "Veles Interiors - професійне оздоблення інтер'єрів для інвесторів. Німецька якість, польські ціни, міжнародна комунікація.",
+                "nav_start": "Головна",
+                "nav_why": "Чому ми",
+                "nav_services": "Послуги",
+                "nav_realizations": "Портфоліо",
+                "nav_process": "Процес",
+                "nav_faq": "FAQ",
+                "nav_contact": "Контакт",
+                "hero_h1": "Преміальне оздоблення.<br>Німецький стандарт.<br>Польська реалізація.",
+                "hero_p": "Для інвесторів та дизайнерів, які не йдуть на компроміси. Реалізуємо проекти комплексно, приділяючи увагу кожній технічній деталі. Мови: PL · EN · DE · FR · RU",
+                "hero_cta_primary": "Обговорити ваш проект",
+                "hero_cta_secondary": "Переглянути роботи",
+                "trust_1": "✓ 3 роки досвіду в Німеччині",
+                "trust_2": "✓ 100% проектів вчасно",
+                "trust_3": "✓ Гарантія якості 24 місяці",
+                "trust_4": "✓ Стандарти DIN 18202",
+                "why_title": "Чому Veles Interiors?",
+                "pillar_1_h3": "Міжнародний стандарт",
+                "pillar_1_p": "Досвід, отриманий на великих інфраструктурних проектах у Німеччині, ми переносимо на точність в оздобленні інтер'єрів. Працюємо за суворими нормами DIN.",
+                "pillar_2_h3": "Прозора комунікація",
+                "pillar_2_p": "Відстань для нас не перешкода. Ви отримуєте звіти про прогрес кожні 48 годин із фотофіксацією. Ми розмовляємо вашою мовою.",
+                "pillar_3_h3": "Жодних сюрпризів",
+                "pillar_3_p": "Точний кошторис перед початком робіт — наш стандарт. Кожна зміна обсягу документується, ви повністю контролюєте бюджет.",
+                "services_title": "Наші послуги",
+                "service_1_h3": "Штукатурка та шпаклівка",
+                "service_1_p": "Машинна та ручна підготовка поверхонь під найвибагливіші покриття: сатинові фарби, преміальні шпалери.",
+                "service_1_scope": "Квартира 80м²: 12-16 днів",
+                "service_2_h3": "Преміальне фарбування",
+                "service_2_p": "Робота з фарбами вищого класу (екологічні, керамічні). Ідеальні лінії та текстура на рівні найкращих шоурумів.",
+                "service_2_scope": "Стандарт DIN 18202",
+                "service_3_h3": "Інженерні системи",
+                "service_3_p": "Координація електромонтажних та сантехнічних робіт. Повна відповідальність з нашого боку — один договір.",
+                "service_3_scope": "Повна координація",
+                "service_4_h3": "Управління проектами",
+                "service_4_p": "Для іноземних клієнтів пропонуємо повний нагляд. Дистанційний контроль, щотижневі відеозвіти та професійне приймання.",
+                "service_4_scope": "Для ринків DACH/UK",
+                "cases_title": "Кейси",
+                "case_1_accent": "Преміум-апартаменти / Варшава",
+                "case_1_h3": "Центр міста: точність за 14 днів",
+                "case_1_stat_1_label": "Площа",
+                "case_1_stat_1_val": "95м²",
+                "case_1_stat_2_label": "Термін",
+                "case_1_stat_2_val": "14 робочих днів",
+                "case_1_challenge_label": "Завдання:",
+                "case_1_challenge_p": "Інвестор з Лондона вимагав преміум-якість за відсутності можливості особистої присутності.",
+                "case_1_solution_label": "Рішення:",
+                "case_1_solution_p": "Дистанційне управління з щоденними відеозвітами. Машинна штукатурка по DIN 18202.",
+                "case_1_result_label": "Результат:",
+                "case_1_result_p": "Здача об'єкта без зауважень. Рекомендація на наступні 2 проекти.",
+                "label_before": "До",
+                "label_after": "Після",
+                "case_2_accent": "Комерційний простір / Берлін",
+                "case_2_h3": "Автомобільний шоурум",
+                "case_2_stat_1_label": "Площа",
+                "case_2_stat_1_val": "420м²",
+                "case_2_stat_2_label": "Стандарт",
+                "case_2_stat_2_val": "DIN 18202 (Q4)",
+                "case_2_challenge_label": "Завдання:",
+                "case_2_challenge_p": "Ідеально гладкі стіни під інтенсивне спрямоване освітлення.",
+                "case_2_solution_label": "Рішення:",
+                "case_2_solution_p": "Триступеневе механічне шліфування з пиловидаленням та гідродинамічне фарбування.",
+                "case_2_result_label": "Результат:",
+                "case_2_result_p": "\"Дзеркальна\" поверхня без видимих стиків та смуг.",
+                "case_3_accent": "Резиденція / Констанцин",
+                "case_3_h3": "Холістичне оздоблення",
+                "case_3_stat_1_label": "Вартість",
+                "case_3_stat_1_val": ">650k PLN",
+                "case_3_stat_2_label": "Гарантія",
+                "case_3_stat_2_val": "36 місяців",
+                "case_3_challenge_label": "Завдання:",
+                "case_3_challenge_p": "Координація 4 субпідрядників под єдиним керівництвом.",
+                "case_3_solution_label": "Рішення:",
+                "case_3_solution_p": "Повний проджект-менеджмент. Щотижневі фінансові звіти.",
+                "case_3_result_label": "Результат:",
+                "case_3_result_p": "Об'єкт зданий на 3 дні раніше терміну.",
+                "process_title": "Процес роботи",
+                "step_1_h4": "Контакт та бриф",
+                "step_1_p": "Дзвінок або email. Визначаємо обсяг, терміни та орієнтовний бюджет.",
+                "step_2_h4": "Огляд об'єкта",
+                "step_2_p": "Зустріч на об'єкті. Точні заміри та оцінка технічного стану.",
+                "step_3_h4": "Кошторис",
+                "step_3_p": "Детальний розрахунок: матеріали, роботи та точний графік реалізації.",
+                "step_4_h4": "Договір",
+                "step_4_p": "Підписуємо прозорий договір з гарантіями якості та термінів.",
+                "step_5_h4": "Реалізація",
+                "step_5_p": "Виконуємо роботи, надсилаємо звіти та проводимо фінальне приймання.",
+                "faq_title": "FAQ",
+                "faq_1_q": "Чи працюєте ви з клієнтами з-за кордону?",
+                "faq_1_a": "Так — більше половини наших проектів реалізовані для інвесторів з Німеччини та Великої Британії.",
+                "faq_2_q": "Мінімальна вартість проекту?",
+                "faq_2_a": "Ми спеціалізуємося на комплексних роботах. Зазвичай від 30 000 PLN.",
+                "faq_3_q": "Як працює гарантія?",
+                "faq_3_a": "Ми надаємо гарантію 24 місяці. Реагуємо на заявки протягом 48 годин.",
+                "faq_4_q": "Що якщо проект затримається?",
+                "faq_4_a": "У договорі прописані штрафні санкції. На даний момент 100% об'єктів здані вчасно.",
+                "faq_5_q": "Чи підписуєте ви NDA?",
+                "faq_5_a": "Так — це стандарт для преміальних проектів.",
+                "contact_h2": "Готові до нового стандарту?",
+                "contact_p": "Ми зателефонуємо вам протягом 24 робочих годин.",
+                "contact_direct_p": "Прямий контакт:",
+                "form_name_label": "Ім'я та прізвище / Компанія",
+                "form_email_label": "Email",
+                "form_phone_label": "Телефон",
+                "form_location_label": "Локація об'єкта",
+                "form_budget_label": "Бюджет",
+                "form_message_label": "Опис проекту",
+                "form_privacy_label": "Я приймаю політику конфіденційності.",
+                "form_submit": "Надіслати запит",
+                "form_placeholder_location": "напр. Варшава",
+                "form_placeholder_message": "Коротко опишіть ваші побажання...",
+                "form_success": "Дякуємо! Ваше повідомлення надіслано.",
+                "footer_brand_p": "Фахівці з преміального оздоблення.<br>Німецький стандарт, польські ціни.",
+                "footer_group_label": "Veles Group",
+                "footer_nav_label": "Навігація",
+                "footer_rights": "© 2024 Veles Interiors. Частина Veles Group. Всі права застережені.",
+                "footer_made_by": "розробка"
+            }
+        };
+
+        function changeLanguage(lang) {
+            const translation = translations[lang];
+            if (!translation) return;
+
+            // Update all elements with data-i18n attribute
+            document.querySelectorAll('[data-i18n]').forEach(element => {
+                const key = element.getAttribute('data-i18n');
+                if (translation[key]) {
+                    if (element.tagName === 'INPUT' || element.tagName === 'TEXTAREA') {
+                        if (key.startsWith('form_placeholder')) {
+                            element.placeholder = translation[key];
+                        }
+                    } else {
+                        element.innerHTML = translation[key];
+                    }
+                }
+            });
+
+            // Update title and meta description
+            document.title = translation.page_title;
+            const metaDescription = document.querySelector('meta[name="description"]');
+            if (metaDescription) metaDescription.setAttribute('content', translation.meta_description);
+
+            // Update Open Graph and Twitter meta tags
+            document.querySelectorAll('meta[property="og:title"], meta[name="twitter:title"]').forEach(meta => meta.setAttribute('content', translation.page_title));
+            document.querySelectorAll('meta[property="og:description"], meta[name="twitter:description"]').forEach(meta => meta.setAttribute('content', translation.meta_description));
+
+            // Update current language display
+            const langBtn = document.getElementById('lang-btn');
+            const activeOption = document.querySelector(`.lang-option[data-lang="${lang}"]`);
+            if (langBtn && activeOption) {
+                document.getElementById('current-lang').textContent = activeOption.textContent;
+                document.querySelectorAll('.lang-option').forEach(opt => opt.classList.remove('active'));
+                activeOption.classList.add('active');
+            }
+
+            // Persistence
+            localStorage.setItem('preferred_language', lang);
+            document.documentElement.lang = lang;
+        }
+
+        // Language toggle listeners
+        document.querySelectorAll('.lang-option').forEach(option => {
+            option.addEventListener('click', () => {
+                const lang = option.getAttribute('data-lang');
+                changeLanguage(lang);
+            });
+        });
+
+        // Initialize language
+        const savedLang = localStorage.getItem('preferred_language') || 'pl';
+        changeLanguage(savedLang);
+
         // Theme Toggle Logic
         const themeToggle = document.getElementById('theme-toggle');
         const body = document.body;
