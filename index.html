@@ -21,7 +21,6 @@
     <meta property="twitter:image" content="https://velesinteriors.pl/assets/og-image.jpg">
 
     <!-- Google Fonts -->
-    <link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/lipis/flag-icons@7.3.2/css/flag-icons.min.css" />
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;700;900&family=JetBrains+Mono:wght@500&family=Space+Grotesk:wght@700&display=swap" rel="stylesheet">
@@ -675,6 +674,31 @@
             border-color: var(--accent-red);
         }
 
+        input[type="file"] {
+            border: 1px dashed var(--border-color);
+            padding: 15px;
+            background: rgba(255, 49, 49, 0.02);
+            cursor: pointer;
+            font-size: 0.8rem;
+        }
+
+        input[type="file"]::file-selector-button {
+            background: var(--accent-red);
+            color: white;
+            border: none;
+            padding: 8px 16px;
+            font-weight: 700;
+            text-transform: uppercase;
+            font-size: 0.7rem;
+            margin-right: 15px;
+            cursor: pointer;
+            transition: background var(--transition-speed);
+        }
+
+        input[type="file"]::file-selector-button:hover {
+            background: var(--accent-hover);
+        }
+
         .form-checkbox {
             grid-column: span 2;
             display: flex;
@@ -875,6 +899,7 @@
                 <li><a href="#uslugi" class="nav-link" data-i18n="nav_services">Usługi</a></li>
                 <li><a href="#realizacje" class="nav-link" data-i18n="nav_realizations">Realizacje</a></li>
                 <li><a href="#proces" class="nav-link" data-i18n="nav_process">Proces</a></li>
+                <li><a href="#kariera" class="nav-link" data-i18n="nav_career">Kariera</a></li>
                 <li><a href="#faq" class="nav-link" data-i18n="nav_faq">FAQ</a></li>
             </ul>
             <div style="display: flex; gap: 20px; align-items: center;">
@@ -905,7 +930,7 @@
         <section id="hero">
             <div class="container hero-content">
                 <h1 data-i18n="hero_h1">Wykończenia Premium.<br>Niemiecki Standard.<br>Polska Realizacja.</h1>
-                <p data-i18n="hero_p">Dla inwestorów i projektantów którzy nie akceptują kompromisów. Realizujemy projekty kompleksowo, dbając o każdy detal techniczny. Komunikacja: PL · EN · DE · FR · RU</p>
+                <p data-i18n="hero_p">Dla inwestorów i projektantów którzy nie akceptują kompromisów. Realizujemy projekty kompleksowo, dbając o każdy detal techniczny. Komunikacja: PL · EN · DE · FR · ES · RU · UA</p>
                 <div class="hero-btns">
                     <a href="#kontakt" class="cta-primary" data-i18n="hero_cta_primary">Porozmawiajmy o Twoim projekcie</a>
                     <a href="#realizacje" class="cta-secondary" data-i18n="hero_cta_secondary">Zobacz realizacje</a>
@@ -925,9 +950,9 @@
                 <h2 class="section-title" data-i18n="why_title">Dlaczego Veles Interiors?</h2>
                 <div class="grid-pillars">
                     <div class="pillar-card">
-                        <div class="icon">🇩🇪🇳🇴</div>
+                        <div class="icon">🇩🇪</div>
                         <h3 data-i18n="pillar_1_h3">Międzynarodowy Standard</h3>
-                        <p data-i18n="pillar_1_p">Doświadczenie zdobyte na dużych projektach infrastrukturalnych w Niemczech i Norwegii przekładamy na precyzję w wykończeniach wnętrz. Pracujemy zgodnie z surowymi normami DIN.</p>
+                        <p data-i18n="pillar_1_p">Doświadczenie zdobyte na dużych projektach infrastrukturalnych w Niemczech przekładamy na precyzję w wykończeniach wnętrz. Pracujemy zgodnie z surowymi normami DIN.</p>
                     </div>
                     <div class="pillar-card">
                         <div class="icon">💬</div>
@@ -1141,7 +1166,68 @@
             </div>
         </section>
 
-        <!-- SECTION 7: KONTAKT -->
+        <!-- SECTION 7: KARIERA -->
+        <section id="kariera">
+            <div class="container">
+                <div class="contact-grid">
+                    <div class="contact-info">
+                        <h2 class="section-title" data-i18n="career_h2">Dołącz do zespołu</h2>
+                        <p data-i18n="career_p">Szukamy specjalistów, dla których jakość to nie pusty slogan. Jeśli pracujesz w standardzie DIN i chcesz realizować projekty premium – czekamy na Ciebie.</p>
+                        <div class="direct-contact">
+                            <p data-i18n="career_benefits_p" style="margin-bottom: 15px;">Co oferujemy:</p>
+                            <ul style="list-style: disc; margin-left: 20px; color: var(--text-secondary); font-size: 1rem; display: flex; flex-direction: column; gap: 10px;">
+                                <li data-i18n="career_benefit_1">Atrakcyjne stawki i terminowe płatności</li>
+                                <li data-i18n="career_benefit_2">Praca przy najbardziej prestiżowych projektach</li>
+                                <li data-i18n="career_benefit_3">Profesjonalny sprzęt i narzędzia renomowanych marek</li>
+                            </ul>
+                        </div>
+                    </div>
+                    <div class="contact-container">
+                        <form id="career-form">
+                            <div class="form-group">
+                                <label for="career-name" data-i18n="form_name_label">Imię i nazwisko</label>
+                                <input type="text" id="career-name" name="name" required>
+                            </div>
+                            <div class="form-group">
+                                <label for="career-email" data-i18n="form_email_label">Email</label>
+                                <input type="email" id="career-email" name="email" required>
+                            </div>
+                            <div class="form-group">
+                                <label for="career-phone" data-i18n="form_phone_label">Telefon</label>
+                                <input type="tel" id="career-phone" name="phone" placeholder="+48 ...">
+                            </div>
+                            <div class="form-group">
+                                <label for="career-position" data-i18n="career_position_label">Stanowisko</label>
+                                <select id="career-position" name="position">
+                                    <option value="specialist" data-i18n="career_pos_1">Specjalista Wykończeń</option>
+                                    <option value="manager" data-i18n="career_pos_2">Project Manager</option>
+                                    <option value="other" data-i18n="career_pos_3">Inne</option>
+                                </select>
+                            </div>
+                            <div class="form-group full-width">
+                                <label for="career-cv" data-i18n="career_cv_label">CV / Portfolio (PDF, DOCX, TXT)</label>
+                                <input type="file" id="career-cv" name="cv" accept=".pdf,.docx,.doc,.txt,.jpg,.png" style="padding: 10px 0;">
+                                <small style="font-size: 0.7rem; color: var(--text-secondary);" data-i18n="career_file_hint">Maksymalny rozmiar: 5MB</small>
+                            </div>
+                            <div class="form-group full-width">
+                                <label for="career-message" data-i18n="career_message_label">Kilka słów o Tobie</label>
+                                <textarea id="career-message" name="message" rows="4" placeholder="..." data-i18n="form_placeholder_career_message"></textarea>
+                            </div>
+                            <div class="form-checkbox">
+                                <input type="checkbox" id="career-privacy" name="privacy" required>
+                                <label for="career-privacy" data-i18n="career_privacy_label">Wyrażam zgodę na przetwarzanie danych w celach rekrutacyjnych.</label>
+                            </div>
+                            <button type="submit" class="cta-primary" data-i18n="career_submit">Aplikuj teraz</button>
+                        </form>
+                        <div id="career-response" style="display: none; margin-top: 20px; text-align: center; font-weight: 700; color: var(--accent-red);" data-i18n="career_success">
+                            Dziękujemy! Twoja aplikacja została wysłana. Odpowiemy w ciągu 2-3 dni.
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- SECTION 8: KONTAKT -->
         <section id="kontakt">
             <div class="container">
                 <div class="contact-grid">
@@ -1227,6 +1313,7 @@
                     <li><a href="#dlaczego" data-i18n="nav_why">O nas</a></li>
                     <li><a href="#uslugi" data-i18n="nav_services">Usługi</a></li>
                     <li><a href="#realizacje" data-i18n="nav_realizations">Realizacje</a></li>
+                    <li><a href="#kariera" data-i18n="nav_career">Kariera</a></li>
                 </ul>
             </div>
         </div>
@@ -1246,10 +1333,11 @@
                 "nav_services": "Usługi",
                 "nav_realizations": "Realizacje",
                 "nav_process": "Proces",
+                "nav_career": "Kariera",
                 "nav_faq": "FAQ",
                 "nav_contact": "Kontakt",
                 "hero_h1": "Wykończenia Premium.<br>Niemiecki Standard.<br>Polska Realizacja.",
-                "hero_p": "Dla inwestorów i projektantów którzy nie akceptują kompromisów. Realizujemy projekty kompleksowo, dbając o każdy detal techniczny. Komunikacja: PL · EN · DE · FR · RU",
+                "hero_p": "Dla inwestorów i projektantów którzy nie akceptują kompromisów. Realizujemy projekty kompleksowo, dbając o każdy detal techniczny. Komunikacja: PL · EN · DE · FR · ES · RU · UA",
                 "hero_cta_primary": "Porozmawiajmy o Twoim projekcie",
                 "hero_cta_secondary": "Zobacz realizacje",
                 "trust_1": "✓ 3 lata doświadczenia w Niemczech",
@@ -1258,7 +1346,7 @@
                 "trust_4": "✓ Standardy DIN 18202",
                 "why_title": "Dlaczego Veles Interiors?",
                 "pillar_1_h3": "Międzynarodowy Standard",
-                "pillar_1_p": "Doświadczenie zdobyte na dużych projektach infrastrukturalnych w Niemczech i Norwegii przekładamy na precyzję w wykończeniach wnętrz. Pracujemy zgodnie z surowymi normami DIN.",
+                "pillar_1_p": "Doświadczenie zdobyte na dużych projektach infrastrukturalnych w Niemczech przekładamy na precyzję w wykończeniach wnętrz. Pracujemy zgodnie z surowymi normami DIN.",
                 "pillar_2_h3": "Transparentna Komunikacja",
                 "pillar_2_p": "Dla nas odległość nie jest barierą. Otrzymujesz raporty postępu co 48h wraz z dokumentacją fotograficzną. Rozmawiamy w Twoim języku.",
                 "pillar_3_h3": "Zero Niespodzianek",
@@ -1360,7 +1448,7 @@
                 "footer_rights": "© 2024 Veles Interiors. Część Veles Group. Wszystkie prawa zastrzeżone.",
                 "footer_made_by": "made by",
                 "career_h2": "Dołącz do zespołu",
-                "career_p": "Szukamy specjalistów, dla których jakość to nie pusty slogan. Jeśli pracujesz w standardzie DIN i chcesz realizować projekty premium – czekamy на Ciebie.",
+                "career_p": "Szukamy specjalistów, dla których jakość to nie pusty slogan. Jeśli pracujesz w standardzie DIN i chcesz realizować projekty premium – czekamy na Ciebie.",
                 "career_benefits_p": "Co oferujemy:",
                 "career_benefit_1": "Atrakcyjne stawki i terminowe płatności",
                 "career_benefit_2": "Praca przy najbardziej prestiżowych projektach",
@@ -1385,19 +1473,20 @@
                 "nav_services": "Services",
                 "nav_realizations": "Portfolio",
                 "nav_process": "Process",
+                "nav_career": "Careers",
                 "nav_faq": "FAQ",
                 "nav_contact": "Contact",
-                "hero_h1": "Premium Finishing.<br>European Standards.<br>Polish Execution.",
-                "hero_p": "For investors and designers who do not accept compromises. We deliver projects comprehensively, focusing on every technical detail. Languages: PL · EN · DE · FR · RU",
+                "hero_h1": "Premium Finishing.<br>German Standards.<br>Polish Execution.",
+                "hero_p": "For investors and designers who do not accept compromises. We deliver projects comprehensively, focusing on every technical detail. Languages: PL · EN · DE · FR · ES · RU · UA",
                 "hero_cta_primary": "Discuss Your Project",
                 "hero_cta_secondary": "View Portfolio",
-                "trust_1": "✓ 2 years of experience in Germany",
+                "trust_1": "✓ 3 years of experience in Germany",
                 "trust_2": "✓ 100% projects on time",
                 "trust_3": "✓ 24-month quality guarantee",
                 "trust_4": "✓ DIN 18202 Standards",
                 "why_title": "Why Veles Interiors?",
                 "pillar_1_h3": "International Standard",
-                "pillar_1_p": "We translate experience gained from major infrastructure projects in Germany and Norway into precision in interior finishing. We work according to strict DIN standards.",
+                "pillar_1_p": "We translate experience gained from major infrastructure projects in Germany into precision in interior finishing. We work according to strict DIN standards.",
                 "pillar_2_h3": "Transparent Communication",
                 "pillar_2_p": "Distance is not a barrier for us. You receive progress reports every 48 hours along with photo documentation. We speak your language.",
                 "pillar_3_h3": "Zero Surprises",
@@ -1467,7 +1556,7 @@
                 "step_5_p": "We conduct the work, send reports, and finalize with a formal quality checklist handover.",
                 "faq_title": "FAQ",
                 "faq_1_q": "Do you work with clients outside of Poland?",
-                "faq_1_a": "Yes – more than half of our realizations are for investors from Germany and Scandinavia. We provide full service in foreign languages.",
+                "faq_1_a": "Yes – more than half of our realizations are for investors from Germany, UK, and Scandinavia. We provide full service in foreign languages.",
                 "faq_2_q": "What is the minimum project value?",
                 "faq_2_a": "We specialize in comprehensive finishing. Typically, we undertake orders starting from 30,000 PLN.",
                 "faq_3_q": "How does the warranty work?",
@@ -1497,7 +1586,24 @@
                 "footer_interiors_link": "Veles Interiors — Premium finishing",
                 "footer_nav_label": "Navigation",
                 "footer_rights": "© 2024 Veles Interiors. Part of Veles Group. All rights reserved.",
-                "footer_made_by": "made by"
+                "footer_made_by": "made by",
+                "career_h2": "Join our team",
+                "career_p": "We are looking for specialists for whom quality is not just a slogan. If you work according to DIN standards and want to execute premium projects – we are waiting for you.",
+                "career_benefits_p": "What we offer:",
+                "career_benefit_1": "Attractive rates and timely payments",
+                "career_benefit_2": "Work on the most prestigious projects",
+                "career_benefit_3": "Professional equipment and tools from renowned brands",
+                "career_position_label": "Position",
+                "career_pos_1": "Finishing Specialist",
+                "career_pos_2": "Project Manager",
+                "career_pos_3": "Other",
+                "career_cv_label": "CV / Portfolio (PDF, DOCX, TXT)",
+                "career_file_hint": "Maximum size: 5MB",
+                "career_message_label": "A few words about you",
+                "form_placeholder_career_message": "...",
+                "career_privacy_label": "I consent to the processing of my data for recruitment purposes.",
+                "career_submit": "Apply now",
+                "career_success": "Thank you! Your application has been sent. We will respond within 2-3 days."
             },
             "de": {
                 "page_title": "Veles Interiors | Premium-Innenausbau - Deutscher Standard",
@@ -1507,10 +1613,11 @@
                 "nav_services": "Leistungen",
                 "nav_realizations": "Projekte",
                 "nav_process": "Prozess",
+                "nav_career": "Karriere",
                 "nav_faq": "FAQ",
                 "nav_contact": "Kontakt",
                 "hero_h1": "Premium-Ausbau.<br>Deutscher Standard.<br>Polnische Realisierung.",
-                "hero_p": "Für Investoren und Planer, die keine Kompromisse eingehen. Wir realisieren Projekte ganzheitlich und achten auf jedes technische Detail. Kommunikation: PL · EN · DE · FR · RU",
+                "hero_p": "Für Investoren und Planer, die keine Kompromisse eingehen. Wir realisieren Projekte ganzheitlich und achten auf jedes technische Detail. Kommunikation: PL · EN · DE · FR · ES · RU · UA",
                 "hero_cta_primary": "Lassen Sie uns über Ihr Projekt sprechen",
                 "hero_cta_secondary": "Projekte ansehen",
                 "trust_1": "✓ 3 Jahre Erfahrung in Deutschland",
@@ -1519,7 +1626,7 @@
                 "trust_4": "✓ DIN 18202 Standards",
                 "why_title": "Warum Veles Interiors?",
                 "pillar_1_h3": "Internationaler Standard",
-                "pillar_1_p": "Erfahrungen aus großen Infrastrukturprojekten in Deutschland und Norwegen übertragen wir auf die Präzision im Innenausbau. Wir arbeiten nach strengen DIN-Normen.",
+                "pillar_1_p": "Erfahrungen aus großen Infrastrukturprojekten in Deutschland übertragen wir auf die Präzision im Innenausbau. Wir arbeiten nach strengen DIN-Normen.",
                 "pillar_2_h3": "Transparente Kommunikation",
                 "pillar_2_p": "Entfernung ist für uns kein Hindernis. Sie erhalten alle 48 Stunden Fortschrittsberichte inklusive Fotodokumentation. Wir sprechen Ihre Sprache.",
                 "pillar_3_h3": "Keine Überraschungen",
@@ -1646,19 +1753,20 @@
                 "nav_services": "Services",
                 "nav_realizations": "Réalisations",
                 "nav_process": "Processus",
+                "nav_career": "Carrière",
                 "nav_faq": "FAQ",
                 "nav_contact": "Contact",
-                "hero_h1": "Finitions Premium.<br>Standard Européen.<br>Réalisation Polonaise.",
-                "hero_p": "Pour les investisseurs et designers qui n'acceptent aucun compromis. Nous réalisons vos projets de A à Z. Communication : PL · EN · DE · FR · RU",
+                "hero_h1": "Finitions Premium.<br>Standard Allemand.<br>Réalisation Polonaise.",
+                "hero_p": "Pour les investisseurs et designers qui n'acceptent aucun compromis. Nous réalisons vos projets de A à Z. Communication : PL · EN · DE · FR · ES · RU · UA",
                 "hero_cta_primary": "Discutons de votre projet",
                 "hero_cta_secondary": "Voir les réalisations",
-                "trust_1": "✓ 2 ans d'expérience en Allemagne",
+                "trust_1": "✓ 3 ans d'expérience en Allemagne",
                 "trust_2": "✓ 100% des projets livrés à temps",
                 "trust_3": "✓ Garantie qualité de 24 mois",
                 "trust_4": "✓ Normes DIN 18202",
                 "why_title": "Pourquoi Veles Interiors ?",
                 "pillar_1_h3": "Standard International",
-                "pillar_1_p": "Nous appliquons l'expérience acquise sur de grands projets d'infrastructure en Allemagne et en Norvège à la précision des finitions intérieures. Nous travaillons selon les normes DIN.",
+                "pillar_1_p": "Nous appliquons l'expérience acquise sur de grands projets d'infrastructure en Allemagne à la précision des finitions intérieures. Nous travaillons selon les normes DIN.",
                 "pillar_2_h3": "Communication Transparente",
                 "pillar_2_p": "La distance n'est pas une barrière. Vous recevez des rapports d'avancement toutes les 48h avec photos. Nous parlons votre langue.",
                 "pillar_3_h3": "Zéro Surprise",
@@ -1785,19 +1893,20 @@
                 "nav_services": "Servicios",
                 "nav_realizations": "Proyectos",
                 "nav_process": "Proceso",
+                "nav_career": "Carrera",
                 "nav_faq": "FAQ",
                 "nav_contact": "Contacto",
-                "hero_h1": "Acabados Premium.<br>Estándar Europeo.<br>Realización Polaca.",
-                "hero_p": "Para inversores y diseñadores que no aceptan compromisos. Realizamos proyectos de forma integral, cuidando cada detalle técnico. Idiomas: PL · EN · DE · FR · RU",
+                "hero_h1": "Acabados Premium.<br>Estándar Alemán.<br>Realización Polaca.",
+                "hero_p": "Para inversores y diseñadores que no aceptan compromisos. Realizamos proyectos de forma integral, cuidando cada detalle técnico. Idiomas: PL · EN · DE · FR · ES · RU · UA",
                 "hero_cta_primary": "Hablemos de su proyecto",
                 "hero_cta_secondary": "Ver proyectos",
-                "trust_1": "✓ 2 años de experiencia en Alemania",
+                "trust_1": "✓ 3 años de experiencia en Alemania",
                 "trust_2": "✓ 100% de proyectos a tiempo",
                 "trust_3": "✓ Garantía de calidad de 24 meses",
                 "trust_4": "✓ Normas DIN 18202",
                 "why_title": "¿Por qué Veles Interiors?",
                 "pillar_1_h3": "Estándar Internacional",
-                "pillar_1_p": "Aplicamos la experiencia adquirida en grandes proyectos en Alemania y Noruega a la precisión de los acabados interiores. Trabajamos según las normas DIN.",
+                "pillar_1_p": "Aplicamos la experiencia adquirida en grandes proyectos en Alemania a la precisión de los acabados interiores. Trabajamos según las normas DIN.",
                 "pillar_2_h3": "Comunicación Transparente",
                 "pillar_2_p": "La distancia no es una barrera. Recibirá informes de progreso cada 48h con fotos. Hablamos su idioma.",
                 "pillar_3_h3": "Cero Surpresas",
@@ -1924,19 +2033,20 @@
                 "nav_services": "Услуги",
                 "nav_realizations": "Портфолио",
                 "nav_process": "Процесс",
+                "nav_career": "Карьера",
                 "nav_faq": "FAQ",
                 "nav_contact": "Контакт",
-                "hero_h1": "Премиальная отделка.<br>Европейский стандарт.<br>Польская реализация.",
-                "hero_p": "Для инвесторов и дизайнеров, которые не идут на компромиссы. Реализуем проекты комплексно, уделяя внимание каждой технической детали. Языки: PL · EN · DE · FR · RU",
+                "hero_h1": "Премиальная отделка.<br>Немецкий стандарт.<br>Польская реализация.",
+                "hero_p": "Для инвесторов и дизайнеров, которые не идут на компромиссы. Реализуем проекты комплексно, уделяя внимание каждой технической детали. Языки: PL · EN · DE · FR · ES · RU · UA",
                 "hero_cta_primary": "Обсудить ваш проект",
                 "hero_cta_secondary": "Посмотреть работы",
-                "trust_1": "✓ 2 года опыта в Германии",
+                "trust_1": "✓ 3 года опыта в Германии",
                 "trust_2": "✓ 100% проектов сданы вовремя",
                 "trust_3": "✓ Гарантия качества 24 месяца",
                 "trust_4": "✓ Стандарты DIN 18202",
                 "why_title": "Почему Veles Interiors?",
                 "pillar_1_h3": "Международный стандарт",
-                "pillar_1_p": "Опыт, полученный на крупных инфраструктурных проектах в Германии и Норвегии, мы переносим на точность в отделке интерьеров. Работаем по строгим нормам DIN.",
+                "pillar_1_p": "Опыт, полученный на крупных инфраструктурных проектах в Германии, мы переносим на точность в отделке интерьеров. Работаем по строгим нормам DIN.",
                 "pillar_2_h3": "Прозрачная коммуникация",
                 "pillar_2_p": "Расстояние для нас не преграда. Вы получаете отчеты о прогрессе каждые 48 часов с фотофиксацией. Мы говорим на вашем языке.",
                 "pillar_3_h3": "Никаких сюрпризов",
@@ -2063,19 +2173,20 @@
                 "nav_services": "Послуги",
                 "nav_realizations": "Портфоліо",
                 "nav_process": "Процес",
+                "nav_career": "Кар'єра",
                 "nav_faq": "FAQ",
                 "nav_contact": "Контакт",
-                "hero_h1": "Преміальне оздоблення.<br>Європейський стандарт.<br>Польська реалізація.",
-                "hero_p": "Для інвесторів та дизайнерів, які не йдуть на компроміси. Реалізуємо проекти комплексно, приділяючи увагу кожній технічній деталі. Мови: PL · EN · DE · FR · RU",
+                "hero_h1": "Преміальне оздоблення.<br>Німецький стандарт.<br>Польська реалізація.",
+                "hero_p": "Для інвесторів та дизайнерів, які не йдуть на компроміси. Реалізуємо проекти комплексно, приділяючи увагу кожній технічній деталі. Мови: PL · EN · DE · FR · ES · RU · UA",
                 "hero_cta_primary": "Обговорити ваш проект",
                 "hero_cta_secondary": "Переглянути роботи",
-                "trust_1": "✓ 2 роки досвіду в Німеччині",
+                "trust_1": "✓ 3 роки досвіду в Німеччині",
                 "trust_2": "✓ 100% проектів вчасно",
                 "trust_3": "✓ Гарантія якості 24 місяці",
                 "trust_4": "✓ Стандарти DIN 18202",
                 "why_title": "Чому Veles Interiors?",
                 "pillar_1_h3": "Міжнародний стандарт",
-                "pillar_1_p": "Досвід, отриманий на великих інфраструктурних проектах у Німеччині та Норвегії, ми переносимо на точність в оздобленні інтер'єрів. Працюємо за суворими нормами DIN.",
+                "pillar_1_p": "Досвід, отриманий на великих інфраструктурних проектах у Німеччині, ми переносимо на точність в оздобленні інтер'єрів. Працюємо за суворими нормами DIN.",
                 "pillar_2_h3": "Прозора комунікація",
                 "pillar_2_p": "Відстань для нас не перешкода. Ви отримуєте звіти про прогрес кожні 48 годин із фотофіксацією. Ми розмовляємо вашою мовою.",
                 "pillar_3_h3": "Жодних сюрпризів",
@@ -2269,20 +2380,14 @@
             body.setAttribute('data-theme', theme);
             localStorage.setItem('theme', theme);
 
-            // Based on V2, we might want to swap logos or keep the same if assets are missing
-            // V2 snippet used "veles-interiors-logo-alone-bgless-reversed.png" for dark mode
-            // But instruction says fix błąd in footer and logic.
-            // Let's assume we use the same logo but handle icon and state correctly.
+            const isDark = theme === 'dark';
+            themeIcon.textContent = isDark ? '☀️' : '🌙';
 
-            if (theme === 'dark') {
-                themeIcon.textContent = '☀️';
-                if(headerLogoImg) headerLogoImg.src = 'assets/veles-interiors-logo-alone-bgless.png';
-                if(footerLogoImg) footerLogoImg.src = 'assets/veles-interiors-logo-alone-bgless.png';
-            } else {
-                themeIcon.textContent = '🌙';
-                if(headerLogoImg) headerLogoImg.src = 'assets/veles-interiors-logo-alone-bgless.png';
-                if(footerLogoImg) footerLogoImg.src = 'assets/veles-interiors-logo-alone-bgless.png';
-            }
+            // Toggle logos: -reversed for dark mode (white logo), standard for light mode (dark logo)
+            const logoSrc = isDark ? 'assets/veles-interiors-logo-alone-bgless-reversed.png' : 'assets/veles-interiors-logo-alone-bgless.png';
+
+            if(headerLogoImg) headerLogoImg.src = logoSrc;
+            if(footerLogoImg) footerLogoImg.src = logoSrc;
         }
 
         // Navigation Active State on Scroll
